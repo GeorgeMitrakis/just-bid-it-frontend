@@ -1,4 +1,5 @@
 import React from 'react';
+import Mycmp from './Mycmp';
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <h1>HELLOOOO</h1>
+      <Mycmp/>
     </div>
   );
 }

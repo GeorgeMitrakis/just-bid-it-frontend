@@ -1,29 +1,31 @@
 import React from 'react';
 import Mycmp from './Mycmp';
+import { Route, BrowserRouter as Router, Redirect, withRouter, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import Login from './Login';
+import Signup from './Signup';
+import Home from './Home';
+import Welcome from './Welcome';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <h1>HELLOOOO</h1>
-      <Mycmp/>
-    </div>
-  );
+class App extends React.Component {
+	constructor(props){
+		super(props);
+	}
+	render(){
+		return (
+		<div className="App">
+			<Router>
+				<Switch>
+					<Route path={["/", "/welcome"]} exact component={Welcome}/>
+					<Route path="/home" exact component={Home}/>
+					<Route path="/login" exact component={Login}/>
+					<Route path="/signup" exact component={Signup}/>
+					<Redirect to="/"/>
+				</Switch>
+			</Router>
+		</div>
+	);}
 }
 
 export default App;

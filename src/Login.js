@@ -76,15 +76,18 @@ class Login extends React.Component{
                                     <CardBody>                                
                                         <p className="small text-muted">Sign in to use our services</p>
                                         <Form onSubmit={this.submitHandler}>
+                                            <br/>
                                             <Row>
                                                 <Col>Username:</Col>  
                                                 <Col><input type="text" name="username" ref={this.username}/></Col>   
                                             </Row>
+                                            <br/>
                                             <Row>
                                                 <Col>Password:</Col>  
                                                 <Col><input type="password" name="password" ref={this.password}/></Col>   
-                                            </Row>                                        
-                                                                                    
+                                            </Row>  
+                                            <br/>   
+                                            <br/>                                       
                                             <Row className="justify-content-center">
                                                 <Button type="submit">
                                                     Sign in

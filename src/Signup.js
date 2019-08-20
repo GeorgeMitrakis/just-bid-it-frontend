@@ -32,13 +32,13 @@ render(){
                                 <Form>
                                         <Row>
                                             <Col> First Name </Col>
-                                            <Col> <input type="text" placeholder="firstname" name="first_name"/> </Col>
+                                            <Col> <input type="text" name="first_name"/> </Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name </Col>
-                                            <Col> <input type="text" placeholder="lastname" name="last_name"/> </Col>
+                                            <Col> <input type="text"  name="last_name"/> </Col>
                                         </Row>
                                     <br/>
                                         <Row>
@@ -90,6 +90,7 @@ render(){
                                         </Row>
 
                                     {/* <Button className="float-right font-weight-bold" id={classes.submit_btn}>Είσοδος</Button> */}
+                                    <br/>
                                     <Button onClick={this.submitHandler}>
                                         Submit
                                     </Button>

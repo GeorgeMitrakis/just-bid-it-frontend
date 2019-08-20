@@ -9,6 +9,7 @@ import Home from './Home';
 import Logout from './Logout';
 import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
+import Newauction from './Newauction';
 
 import { getUserInfoField } from './Utility';
 import { getUserInfo } from './Utility';
@@ -93,6 +94,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/items" exact component={Newauction}/>
 				{/* additional dynamic routes: /items/{id} */}
 				<Redirect to="/"/>
 			</Switch>

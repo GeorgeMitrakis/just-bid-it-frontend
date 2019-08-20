@@ -33,13 +33,13 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col> First Name </Col>
-                                            <Col> <input type="text" placeholder="firstname" name="firstname"/> </Col>
+                                            <Col> <input type="text" name="firstname"/> </Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name </Col>
-                                            <Col> <input type="text" placeholder="lastname" name="lastname"/> </Col>
+                                            <Col> <input type="text" name="lastname"/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>

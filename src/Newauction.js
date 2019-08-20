@@ -75,7 +75,7 @@ class Newauction extends React.Component {
                                                             <input 
                                                                 type="text" 
                                                                 name="category"
-                                                                value={category.name}
+                                                                value={category.category}
                                                                 onChange={(event)=>this.changeCategoryHandler(index, event)}
                                                             /> 
                                                             <Button

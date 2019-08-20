@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
-import DatePicker from 'react-datepicker';
-import { getUserInfo } from './Utility';
+//import DatePicker from 'react-datepicker';
+//import { getUserInfo } from './Utility';
 import './Newauction.css'
 
 

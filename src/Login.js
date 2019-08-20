@@ -2,8 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
 import './Login.css';
-import Example from './Example';
-import { getUserInfoField } from './Utility';
+//import { getUserInfoField } from './Utility';
 import { getUserInfo } from './Utility';
 
 import $ from 'jquery';

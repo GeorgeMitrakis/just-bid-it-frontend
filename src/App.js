@@ -10,6 +10,7 @@ import Logout from './Logout';
 import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
 import Newauction from './Newauction';
+import Header from './Header';
 
 import { getUserInfoField } from './Utility';
 import { getUserInfo } from './Utility';
@@ -121,6 +122,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Router>
+					<Route path="/" component={Header}/>
 					{this.userRoutes()}
 				</Router>
 			</div>

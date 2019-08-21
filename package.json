@@ -7,12 +7,15 @@
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-bootstrap-dropdown-menu": "^1.1.15",
     "react-date-picker": "^7.8.1",
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
+    "react-dropdown": "^1.6.4",
     "react-native-cli": "^2.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-simple-dropdown": "^3.2.3",
     "reactstrap": "^8.0.1"
   },
   "scripts": {

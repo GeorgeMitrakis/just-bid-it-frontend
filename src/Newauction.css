@@ -1,0 +1,11 @@
+.coords{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.formelem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}

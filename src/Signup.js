@@ -30,34 +30,35 @@ render(){
                             <CardBody>
                                 <p className="small text-muted">Register to use our services</p>
                                 <Form>
+                                        <br/>
                                         <Row>
                                             <Col> First Name </Col>
-                                            <Col> <input type="text" name="first_name"/> </Col>
+                                            <Col> <input type="text" name="firstname"/> </Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name </Col>
-                                            <Col> <input type="text"  name="last_name"/> </Col>
+                                            <Col> <input type="text" name="lastname"/> </Col>
                                         </Row>
-                                    <br/>
+                                        <br/>
                                         <Row>
                                             <Col>Email </Col>
                                             <Col><input type="email" placeholder="example@example.com" name="email"/></Col>
 
                                         </Row>
-                                    <br/>
+                                        <br/>
                                         <Row>
                                             <Col>Country </Col>
                                             <Col><input type="text" name="country"/> </Col>
                                         </Row>
-                                    <br/>
+                                        <br/>
                                         <Row>
 
                                             <Col>Location</Col>
                                             <Col> <input type="text" name="location"/></Col>
                                         </Row>
-                                    <br/>
+                                        <br/>
 
                                         <Row>
 
@@ -65,13 +66,15 @@ render(){
                                         <Col><input type="text" name="phone_number"/></Col>
 
                                         </Row>
-                                    <br/>
+                                        <br/>
                                         <Row>
                                             <Col>Tax registration number</Col>
                                             <Col><input type="text" name="tax_registration_number"/></Col>
 
                                         </Row>
-                                    <br/>
+                                        <br/>
+                                        <hr/>
+                                        <br/>
                                         <Row>
                                             <Col>Username</Col>
                                             <Col><input type="text" name="username"/></Col>
@@ -89,8 +92,8 @@ render(){
                                             <Col><input type="password" name="password1"/></Col>
                                         </Row>
 
-                                    {/* <Button className="float-right font-weight-bold" id={classes.submit_btn}>Είσοδος</Button> */}
-                                    <br/>
+                                        <br/>
+                                        <br/>
                                     <Button onClick={this.submitHandler}>
                                         Submit
                                     </Button>

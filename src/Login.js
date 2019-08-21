@@ -2,8 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
 import './Login.css';
-import Example from './Example';
-import { getUserInfoField } from './Utility';
+//import { getUserInfoField } from './Utility';
 import { getUserInfo } from './Utility';
 
 import $ from 'jquery';
@@ -76,15 +75,18 @@ class Login extends React.Component{
                                     <CardBody>                                
                                         <p className="small text-muted">Sign in to use our services</p>
                                         <Form onSubmit={this.submitHandler}>
+                                            <br/>
                                             <Row>
                                                 <Col>Username:</Col>  
                                                 <Col><input type="text" name="username" ref={this.username}/></Col>   
                                             </Row>
+                                            <br/>
                                             <Row>
                                                 <Col>Password:</Col>  
                                                 <Col><input type="password" name="password" ref={this.password}/></Col>   
-                                            </Row>                                        
-                                                                                    
+                                            </Row>  
+                                            <br/>   
+                                            <br/>                                       
                                             <Row className="justify-content-center">
                                                 <Button type="submit">
                                                     Sign in

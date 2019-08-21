@@ -1,15 +1,15 @@
 import React from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import logo from './logo.svg';
 import { Row, Col, Button } from 'reactstrap';
 import { getUserInfoField } from './Utility';
-import { getUserInfo } from './Utility';
+//import { getUserInfo } from './Utility';
 
 
 class Welcome extends React.Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     redirectHandler = (url) => {
         this.props.history.push(url);

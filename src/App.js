@@ -1,7 +1,6 @@
 import React from 'react';
-import Mycmp from './Mycmp';
-import { Route, BrowserRouter as Router, Redirect, withRouter, Switch } from 'react-router-dom';
-import logo from './logo.svg';
+import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+//import logo from './logo.svg';
 import './App.css';
 import Login from './Login';
 import Signup from './Signup';
@@ -13,7 +12,7 @@ import Newauction from './Newauction';
 import Header from './Header';
 
 import { getUserInfoField } from './Utility';
-import { getUserInfo } from './Utility';
+//import { getUserInfo } from './Utility';
 
 class App extends React.Component {
 	constructor(props){

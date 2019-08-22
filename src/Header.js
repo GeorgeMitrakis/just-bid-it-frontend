@@ -40,13 +40,13 @@ import {Navbar}from 'reactstrap';
                  />
                  </a>
              </div>
-                         <div  className="dropdown" style = {{background:"grey",width:"200px"}} >
+                         <div  className="dropdown" style = {{width:"200px"}} >
                              <div className="button" onClick={this.showDropdownMenu}> Profile </div>
 
                              { this.state.displayMenu ? (
                                  <div>
                                      <ul>
-                                         <li><a className="active" href="#Create Page">Edit Profile</a></li>
+                                         <li><a href="#">Edit Profile</a></li>
                                          <li><a href="#">My Bids</a></li>
                                          <li><a href="#">My Auctions</a></li>
                                          <li><a href="#">Messages</a></li>

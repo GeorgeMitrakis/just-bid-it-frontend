@@ -1,5 +1,7 @@
 import React from 'react';
 import './Header.css';
+import Logo from "./resourses/icons/bid.png";
+import {Navbar}from 'reactstrap';
 
  class Header extends React.Component {
 
@@ -30,13 +32,14 @@ import './Header.css';
 
      render() {
          return (
-
+             <Navbar className="bg-light justify-content-between">
              <div className="d-flex justify-content-between">
-                         <a href="#LOGO">LOGO</a>
-                 <img
-                     style={{width: 50, height: 50}}
-                     source={{uri: 'https://images.assetsdelivery.com/compings_v2/friendesigns/friendesigns1606/friendesigns160600754.jpg'}}
+                 <a href="Home.js">
+                 <img style={{width: 50, height: 50}}
+                     source={Logo} alt="website logo"
                  />
+                 </a>
+             </div>
                          <div  className="dropdown" style = {{background:"grey",width:"200px"}} >
                              <div className="button" onClick={this.showDropdownMenu}> Profile </div>
 
@@ -44,11 +47,11 @@ import './Header.css';
                                  <div>
                                      <ul>
                                          <li><a className="active" href="#Create Page">Edit Profile</a></li>
-                                         <li><a href="#Create Ads">My Bids</a></li>
-                                         <li><a href="#Manage Ads">My Auctions</a></li>
-                                         <li><a href="#Activity Logs">Messages</a></li>
+                                         <li><a href="#">My Bids</a></li>
+                                         <li><a href="#">My Auctions</a></li>
+                                         <li><a href="#">Messages</a></li>
                                          <li><a href="#Setting">Settings</a></li>
-                                         <li><a href="#Log Out">Sign Out</a></li>
+                                         <li><a href="Log Out">Sign Out</a></li>
                                      </ul>
                                  </div>
                                  ):
@@ -57,7 +60,8 @@ import './Header.css';
 
                          </div>
 
-             </div>
+
+             </Navbar>
          );
      }
  }

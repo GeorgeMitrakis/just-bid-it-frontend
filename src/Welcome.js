@@ -18,9 +18,6 @@ class Welcome extends React.Component{
     render(){
         return(
             <div>
-			    <header className="App-header">		
-                    <img src={logo} className="App-logo" alt="logo" />                                 
-                </header>
                 <body className="App-body">
                     <Row className="d-flex justify-content-center">
                         Hello dear 

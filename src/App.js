@@ -12,6 +12,7 @@ import Newauction from './Newauction';
 import Header from './Header';
 
 import { getUserInfoField } from './Utility';
+import {Row} from "reactstrap";
 //import { getUserInfo } from './Utility';
 
 class App extends React.Component {
@@ -121,6 +122,9 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Header/>
+                <Row className="justify-content-center">
+                    <h1>JUST BID IT</h1>
+                </Row>
 				<Router>
 					{this.userRoutes()}
 				</Router>

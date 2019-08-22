@@ -61,9 +61,6 @@ class Login extends React.Component{
             return(
                 <Container fluid id="content">
                     <Col>
-                        <Row className="justify-content-center">
-                            <h1>JUST BID IT</h1>
-                        </Row>
                         <Row className="mb-3"/>
                         <Row className="justify-content-center">
                             {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}

@@ -23,7 +23,6 @@ li a:hover:not(.active) {
 }
 
 .active {
-    background-color: #4CAF50;
 }
 .dropdown {
     position: relative;
@@ -55,11 +54,9 @@ li:last-child {
     border-bottom: none;
 }
 li:hover {
-    background-color: #e5e5e5;
     color: white;
 }
 .button{
-    background-color:#ff3232 ;
     padding:12px;
     border-radius:5px;
     font-weight:bold;

@@ -30,8 +30,13 @@ import './Header.css';
 
      render() {
          return (
+
              <div className="d-flex justify-content-between">
                          <a href="#LOGO">LOGO</a>
+                 <img
+                     style={{width: 50, height: 50}}
+                     source={{uri: 'https://images.assetsdelivery.com/compings_v2/friendesigns/friendesigns1606/friendesigns160600754.jpg'}}
+                 />
                          <div  className="dropdown" style = {{background:"grey",width:"200px"}} >
                              <div className="button" onClick={this.showDropdownMenu}> Profile </div>
 

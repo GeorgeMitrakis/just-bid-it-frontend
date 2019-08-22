@@ -55,13 +55,13 @@ class Signup extends React.Component{
                 password1 : psw1
             }
         })
-            .then(json => {
-                console.log(json)
-                this.props.logInHandler(json.result.value);
-            })
-            .fail(err=>{
-                console.log(err)
-            })
+        .then(json => {
+            console.log(json)
+            this.props.logInHandler(json.result.value);
+        })
+        .fail(err=>{
+            console.log(err)
+        })
     }
 
 

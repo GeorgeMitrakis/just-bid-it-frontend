@@ -1,23 +1,84 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
+import produce from 'immer';
 //import DatePicker from 'react-datepicker';
 //import { getUserInfo } from './Utility';
 import './Newauction.css'
+
+import $ from 'jquery';
 
 
 class Newauction extends React.Component {
     constructor(props){
         super(props);
+        
+        //this.inputChangeHandler = this.inputChangeHandler.bind(this);
         this.state = {
-            categoryList:[{category: ''}]
+            name:'',
+            categoryList:[{category: ''}],
+            location: '',
+            latitude: '',
+            longitude: '',
+            country:'',
+            buyPrice: 15.50,
+            firstBid: 15.50,
+            ends:'',
+            description:''
         }
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-        console.log("auction start successful!!");
-        console.log(this.state);
+        // console.log(this.state);
+
+        let categories = [];
+        this.state.categoryList.map((elem, index) =>{
+            categories.push(elem.category);
+        })
+        // console.log(categories);
+
+        $.ajax({
+            url: "https://localhost:8443/app/api/items",
+            dataType : 'raw',
+            type: 'POST',
+            data: {
+                userId: 9,
+                name: this.state.name,
+                categories: categories,
+                location: this.state.location,
+                latitude:  this.state.latitude,
+                longitude: this.state.longitude,
+                country: this.state.country,
+                buy_price: this.state.buyPrice,
+                first_bid: this.state.firstBid,
+                end: this.state.ends,
+                description: this.state.description
+            }
+        })
+        .then(msg => {
+            console.log(JSON.parse(msg.responseText))            
+        })
+        .fail(err=>{
+            if(err.status === 200){
+                console.log(JSON.parse(JSON.stringify(err.responseText)));
+            }
+            else{
+                console.log(err);
+            }
+        })
+    }
+
+    inputChangeHandler(field, event){
+        // console.log(field);
+        //event.persist();
+        // console.log(event);
+        let v = event.target.value;
+        this.setState(
+            produce(draft=>{
+                draft[field] = v;
+            })
+        )
     }
 
     addCategoryHandler = () => {
@@ -62,7 +123,7 @@ class Newauction extends React.Component {
                                     <Form onSubmit={this.submitHandler}>
                                         <Row>
                                             <Col> Name </Col>
-                                            <Col> <input type="text" name="bid_name"/> </Col>
+                                            <Col> <input type="text" name="bid_name" value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
@@ -102,23 +163,16 @@ class Newauction extends React.Component {
                                         </Row>
                                         <br/>
                                         <Row>
-
-                                            <Col>Description</Col>
-                                            <Col><input type="text" name="description"/></Col>
-
-                                        </Row>
-                                        <br/>
-                                        <Row>
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location"/></Col>
+                                            <Col> <input type="text" name="location" value={this.state.location} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input type="text" placeholder="latitude" name="latitude"/></Col>
-                                                    <Col><input type="text" placeholder="longitude" name="longitude"/></Col>
+                                                    <Col><input type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
+                                                    <Col><input type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
                                                     
                                                 </Row>
                                                 <Row className="justify-content-center">
@@ -129,25 +183,32 @@ class Newauction extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country"/> </Col>
+                                            <Col><input type="text" name="country" value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
                                         </Row>
                                         <br/>
 
                                         <Row>
                                             <Col>Buy Price</Col>
-                                            <Col><input type="text" name="buy_price"/></Col>
+                                            <Col><input type="text" name="buy_price" value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>First Bid</Col>
-                                            <Col><input type="text" name="first_bid"/></Col>
+                                            <Col><input type="text" name="first_bid" value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Ends</Col>
-                                            <Col><input type="datetime-local" name="ends"/></Col>
+                                            <Col><input type="datetime-local" name="ends" value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+
+                                            <Col>Description</Col>
+                                            <Col><textarea type="text" name="description" value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
+
                                         </Row>
                                         <br/>
                                         {/* <Button className="float-right font-weight-bold" id={classes.submit_btn}>Είσοδος</Button> */}

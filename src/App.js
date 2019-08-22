@@ -10,6 +10,7 @@ import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
 import Newauction from './Newauction';
 import Header from './Header';
+import UserData from './UserData';
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -96,6 +97,7 @@ class App extends React.Component {
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/items" exact component={Newauction}/>
+				<Route path="/userdata" exact component = {UserData} />
 				{/* additional dynamic routes: /items/{id} */}
 				<Redirect to="/"/>
 			</Switch>

@@ -18,34 +18,31 @@ class Welcome extends React.Component{
     render(){
         return(
             <div>
-                <body className="App-body">
-                    <Row className="d-flex justify-content-center">
+                <Row className="d-flex justify-content-center">
+                    <p>
                         Hello dear 
                         {' ' + (getUserInfoField("username") ? getUserInfoField("username") : "guest")}
                         , welcome to JustBidIt
-                    </Row>
-                    <br/>
-                    <Row className="d-flex justify-content-center">
-                        <Col className="d-flex justify-content-end">
-                            <Button color="grey" onClick={() => this.redirectHandler("/signup")}>
-                                Sign up
-                            </Button>
-                        </Col>
-                        <Col className="d-flex justify-content-start">
-                            <Button color="grey" onClick={() => this.redirectHandler("/login")}>
-                                Sign in
-                            </Button>
-                        </Col>                        
-                    </Row>
-                    <br/>
-                    <Row >
-                        <Col className="d-flex justify-content-center">
-                            <Button color="grey" onClick={() => this.redirectHandler("/search")}>
-                                Search
-                            </Button>
-                        </Col>
-                    </Row>     
-                </body>
+                    </p>
+                </Row>
+                <br/>
+                <Row className="d-flex justify-content-around">
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/signup")}>
+                            Sign up
+                        </Button>
+                    </Col>
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/login")}>
+                            Login
+                        </Button>
+                    </Col> 
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/search")}>
+                            Search
+                        </Button>
+                    </Col>
+                </Row>     
             </div>
         )
     }

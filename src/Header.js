@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import Logo from './bid.svg';
+import logo from './bid.png';
 import {Navbar}from 'reactstrap';
 
 class Header extends React.Component {
@@ -70,7 +70,7 @@ class Header extends React.Component {
         <Navbar className="bg-light justify-content-between">
             <div className="d-flex justify-content-between">
                 <a href="/home">
-                <img source={Logo} style={{width: 50, height: 50}}/>
+                    <img src={logo} style={{width: 50, height: 50} } className="img-fluid img-thumbnail"/>
                 </a>
             </div>
             { this.props.access === "granted" ? (

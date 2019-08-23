@@ -23,7 +23,7 @@ class Login extends React.Component{
         const p = this.password.current.value;
 
         $.ajax({
-            url: "https://localhost:8443/app/api/login",
+            url: "http://localhost:8765/app/api/login",
             dataType: 'json',
             type: 'POST',
             data: {

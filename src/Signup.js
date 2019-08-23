@@ -7,6 +7,10 @@ class Signup extends React.Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            
+        }
         this.firstname = React.createRef();
         this.lastname = React.createRef();
         this.email = React.createRef();
@@ -41,7 +45,7 @@ class Signup extends React.Component{
 
         $.ajax({
 
-            url: "https://localhost:8443/app/api/signup",
+            url: "http://localhost:8765/app/api/signup",
             dataType : 'json',
             type: 'POST',
             data: {

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 import './Signup.css';
 import $ from 'jquery';
-
 class Signup extends React.Component{
 
     constructor(props) {
@@ -20,6 +19,9 @@ class Signup extends React.Component{
         this.password1 = React.createRef();
     }
 
+    redirectHandler = (url) => {
+        this.props.history.push(url);
+    }
 
     submitHandler = (event) => {
         event.preventDefault();
@@ -146,9 +148,11 @@ render(){
 
                                         <br/>
                                         <br/>
-                                    <Button onClick={this.submitHandler}>
+
+                                    <Button  onClick={this.submitHandler}>
                                         Submit
                                     </Button>
+
                                 </Form>
                             </CardBody>
                         </Card>

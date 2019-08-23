@@ -27,12 +27,12 @@ class Welcome extends React.Component{
                     <br/>
                     <Row className="d-flex justify-content-center">
                         <Col className="d-flex justify-content-end">
-                            <Button color="info" onClick={() => this.redirectHandler("/signup")}>
+                            <Button color="grey" onClick={() => this.redirectHandler("/signup")}>
                                 Sign up
                             </Button>
                         </Col>
                         <Col className="d-flex justify-content-start">
-                            <Button color="info" onClick={() => this.redirectHandler("/login")}>
+                            <Button color="grey" onClick={() => this.redirectHandler("/login")}>
                                 Sign in
                             </Button>
                         </Col>                        
@@ -40,7 +40,7 @@ class Welcome extends React.Component{
                     <br/>
                     <Row >
                         <Col className="d-flex justify-content-center">
-                            <Button color="info" onClick={() => this.redirectHandler("/search")}>
+                            <Button color="grey" onClick={() => this.redirectHandler("/search")}>
                                 Search
                             </Button>
                         </Col>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import Logo from "./resourses/icons/bid.png";
+import Logo from './bid.svg';
 import {Navbar}from 'reactstrap';
 
  class Header extends React.Component {
@@ -35,9 +35,7 @@ import {Navbar}from 'reactstrap';
              <Navbar className="bg-light justify-content-between">
              <div className="d-flex justify-content-between">
                  <a href="Home.js">
-                 <img style={{width: 50, height: 50}}
-                     source={Logo} alt="website logo"
-                 />
+                 <img source={Logo} style={{width: 50, height: 50}}/>
                  </a>
              </div>
                          <div  className="dropdown" style = {{width:"200px"}} >

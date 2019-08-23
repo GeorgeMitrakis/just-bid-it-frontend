@@ -11,6 +11,7 @@ import UnderConstruction from './UnderConstruction';
 import Newauction from './Newauction';
 import Header from './Header';
 import UserData from './UserData';
+import NotFound from './NotFound';
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -67,7 +68,7 @@ class App extends React.Component {
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
-				<Redirect to="/"/>
+				<Route component={NotFound}/>
 			</Switch>
 		)
 	}
@@ -82,7 +83,7 @@ class App extends React.Component {
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
-				<Redirect to="/"/>
+				<Route component={NotFound}/>
 			</Switch>
 		)
 	}
@@ -99,7 +100,7 @@ class App extends React.Component {
 				<Route path="/items" exact component={Newauction}/>
 				<Route path="/userdata" exact component = {UserData} />
 				{/* additional dynamic routes: /items/{id} */}
-				<Redirect to="/"/>
+				<Route component={NotFound}/>
 			</Switch>
 		)
 	}
@@ -123,7 +124,7 @@ class App extends React.Component {
 
 		return (
 			<div className="App">
-				<Header/>
+				<Header role={this.state.role} access={this.state.access}/>
                 <Row className="justify-content-center">
                     <h1>JUST BID IT</h1>
                 </Row>

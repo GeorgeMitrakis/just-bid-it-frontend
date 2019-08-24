@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Row, Col, Button } from 'reactstrap';
 import  './Home.css';
 
 const imgUrls = [
@@ -22,6 +23,9 @@ class Home extends React.Component{
 
         this.nextSlide = this.nextSlide.bind(this);
         this.previousSlide = this.previousSlide.bind(this);
+    }
+    redirectHandler = (url) => {
+        this.props.history.push(url);
     }
 
     previousSlide () {
@@ -50,12 +54,30 @@ class Home extends React.Component{
         return(
             <div>
                 Home Page with some carousel
-
-            <div className="carousel">
-                <Arrow direction="left" clickFunction={ this.previousSlide } glyph="&#9664;" />
-                <ImageSlide url={ imgUrls[this.state.currentImageIndex] } />
-                <Arrow direction="right" clickFunction={ this.nextSlide } glyph="&#9654;"/>
-            </div>
+                <br/>
+                <Row className="d-flex justify-content-around">
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/signup")}>
+                            Sign up
+                        </Button>
+                    </Col>
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/login")}>
+                            Login
+                        </Button>
+                    </Col> 
+                    <Col>
+                        <Button  onClick={() => this.redirectHandler("/search")}>
+                            Search
+                        </Button>
+                    </Col>
+                </Row>  
+                <br/>
+                <div className="carousel">
+                    <Arrow direction="left" clickFunction={ this.previousSlide } glyph="&#9664;" />
+                    <ImageSlide url={ imgUrls[this.state.currentImageIndex] } />
+                    <Arrow direction="right" clickFunction={ this.nextSlide } glyph="&#9654;"/>
+                </div>
             </div>
         )
     }

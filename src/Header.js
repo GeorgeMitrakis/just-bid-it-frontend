@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import logo from './bid.png';
 import {Navbar}from 'reactstrap';
+import { getUserInfo } from './Utility';
 
 class Header extends React.Component {
 
@@ -31,6 +32,13 @@ class Header extends React.Component {
 
     }
 
+    unregisteredUserOptions = () => {
+        return(
+            <ul>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        );
+    }
     commonUserOptions = () =>{
         return(
             <ul>
@@ -54,8 +62,11 @@ class Header extends React.Component {
     }
 
     userOptions = () =>{
-        if(this.props.role === "common user"){
+        if(this.props.role === "common user" && this.props.access === "granted"){
             return this.commonUserOptions();
+        }
+        else if(this.props.role === "common user"){
+            return this.unregisteredUserOptions();
         }
         else if(this.props.role === "administrator"){
             return this.adminOptions();
@@ -73,7 +84,7 @@ class Header extends React.Component {
                     <img src={logo} style={{width: 50, height: 50} } className="img-fluid img-thumbnail"/>
                 </a>
             </div>
-            { this.props.access === "granted" ? (
+            { getUserInfo() ? (
                 <div  className="dropdown" style = {{width:"200px"}} >
                     <div className="button" onClick={this.showDropdownMenu}> Profile </div>
                     { this.state.displayMenu ? (

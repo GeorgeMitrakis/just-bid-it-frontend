@@ -41,7 +41,7 @@ class Signup extends React.Component{
 
         $.ajax({
 
-            url: "https://localhost:8443/app/api/signup",
+            url: "http://localhost:8765/app/api/signup",
             dataType : 'json',
             type: 'POST',
             data: {
@@ -59,7 +59,7 @@ class Signup extends React.Component{
         })
         .then(json => {
             console.log(json)
-            this.props.logInHandler(json.result.value);
+            this.props.logInHandler(json.result);
         })
         .fail(err=>{
             console.log(err)
@@ -83,7 +83,7 @@ render(){
                             </CardHeader>
                             <CardBody>
                                 <p className="small text-muted">Register to use our services</p>
-                                <Form>
+                                <Form onSubmit={this.submitHandler}>
                                         <br/>
                                         <Row>
                                             <Col> First Name </Col>
@@ -149,7 +149,7 @@ render(){
                                         <br/>
                                         <br/>
 
-                                    <Button  onClick={this.submitHandler}>
+                                    <Button type="submit">
                                         Submit
                                     </Button>
 

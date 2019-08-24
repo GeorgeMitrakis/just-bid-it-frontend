@@ -62,7 +62,7 @@ class Newauction extends React.Component {
         }
 
         $.ajax({
-            url: "https://localhost:8443/app/api/items",
+            url: "http://localhost:8765/app/api/items",
             dataType : 'json',
             type: 'POST',
             data: requestBody

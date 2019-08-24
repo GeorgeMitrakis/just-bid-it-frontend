@@ -2,41 +2,9 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { getUserInfoField } from './Utility';
 import './UserData.css'
+import {Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 
 class UserData extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = { //state is by default an object
-            user: [
-                { name: '', age: 21, email: 'wasif@email.com' },
-                { name: 'Ali', age: 19, email: 'ali@email.com' },
-                { name: 'Saad', age: 16, email: 'saad@email.com' },
-                { name: 'Asad', age: 25, email: 'asad@email.com' }
-
-            ]
-        }
-    }
-
-    renderTableHeader() {
-        let header = Object.keys(this.state.user[0])
-        return header.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>
-        })
-    }
-
-    renderTableData() {
-        return this.state.user.map((student, index) => {
-            const { id, name, age, email } = student //destructuring
-            return (
-                <tr key={id}>
-                    <td>{name}</td>
-                    <td>{age}</td>
-                    <td>{email}</td>
-                </tr>
-            )
-        })
-    }
-
 
 
     render() {
@@ -45,19 +13,59 @@ class UserData extends React.Component{
 
             <div>
 
-                <h3> Thank you for your sign up , !</h3>
+                <h3> Thank you for your sign up ,Username!</h3>
                 <h4> Confrirmation pending...</h4>
                     <h1 id='title'></h1>
-                    <table id='students'>
-                        <tbody>
-                        <tr>{this.renderTableHeader()}</tr>
-                        {this.renderTableData()}
-                        </tbody>
-                    </table>
+
+                <Container fluid id="content">
+                    <Col>
+                        <Row className="mb-3"/>
+                        <Row className="justify-content-center">
+                            {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}
+                            <Col className="align-self-center" xs="auto">
+                                <Card id="usertable">
+                                    <CardHeader>
+                                     This is your information card
+                                    </CardHeader>
+                                    <CardBody>
+                                        <br/>
+                                        <Row>
+                                            <Col> First Name </Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col> Last Name </Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col> Email </Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col> Country </Col>
+                                        </Row>
+                                        <br/>
+                                          <Row>
+                                        <Col>Location</Col>
+                                         </Row>
+                                         <br/>
+                                        <Row>
+                                            <Col>Phone number</Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col>Tax registration number</Col>
+                                        </Row>
+                                        <br/>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Container>
 
 
             </div>
-
         )
     }
 

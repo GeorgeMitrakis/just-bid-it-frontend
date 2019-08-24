@@ -85,10 +85,10 @@ class Login extends React.Component{
                                             </Row>
                                             <br/>
                                             <Row>
-                                                <Col>Password:</Col>  
-                                                <Col><input type="password" name="password" ref={this.password}/></Col>   
-                                            </Row>  
-                                            <br/>   
+                                            <Col>Password:</Col>
+                                            <Col><input type="password" name="password" ref={this.password}/></Col>
+                        </Row>
+                        <br/>
                                             <br/>                                       
                                             <Row className="justify-content-center">
                                                 <Button type="submit">

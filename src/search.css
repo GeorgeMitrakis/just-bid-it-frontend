@@ -1,0 +1,16 @@
+#app {
+    padding: 100px;
+    font-family: 'Avenir LT Std', sans-serif;
+}
+
+.form-control {
+    font-size: 2rem;
+    padding: 25px 15px;
+}
+.filter-list {
+
+    height: 40vmin;
+    padding-top: 5vh;
+
+
+}

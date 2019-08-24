@@ -9,11 +9,11 @@ import Logout from './Logout';
 import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
 import MyAuctions from './MyAuctions';
-//import Newauction from './Newauction';
+import Newauction from './Newauction';
 import Header from './Header';
-//import UserData from './UserData';
+import UserData from './UserData';
 import NotFound from './NotFound';
-//import search from "./search";
+import Search from "./Search";
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -65,7 +65,7 @@ class App extends React.Component {
 				<Route path="/items" exact component={MyAuctions}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route path="/messages" exact component={UnderConstruction}/>
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
@@ -83,7 +83,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -96,7 +96,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
@@ -110,11 +110,12 @@ class App extends React.Component {
 			<Switch>
 				<Route path={["/", "/welcome"]} exact component={Welcome}/>
 				<Route path="/home" exact component={Home}/>
-				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
-				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
+				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
-				{/* <Route path="/items" exact component={MyAuctions}/> */}
+				<Route path="/search" exact component={Search}/>
+				<Route path="/items" exact component={Newauction}/>
+				{/* to be removed */}
+				<Route path="/userdata" exact component = {UserData} />
 				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -125,14 +126,11 @@ class App extends React.Component {
 		if(!this.state.access || this.state.role === "guest"){
 			return this.guestRoutes();
 		}
-		else if(this.state.role === "common user" && this.state.access === "granted"){
-			return this.commonUserRoutes();
-		}
-		else if(this.state.role === "common user"){
-			return this.unregisteredUserRoutes();
-		}
 		else if(this.state.role === "administrator"){
 			return this.adminRoutes();
+		}
+		else if(this.state.role === "common user" && this.state.access === "granted"){
+			return this.commonUserRoutes();
 		}
 		else{
 			return this.guestRoutes();

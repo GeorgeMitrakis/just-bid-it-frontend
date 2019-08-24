@@ -13,7 +13,7 @@ import Newauction from './Newauction';
 import Header from './Header';
 import UserData from './UserData';
 import NotFound from './NotFound';
-import search from "./search";
+import Search from "./Search";
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -65,7 +65,7 @@ class App extends React.Component {
 				<Route path="/items" exact component={UnderConstruction}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route path="/messages" exact component={UnderConstruction}/>
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
@@ -83,7 +83,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -96,7 +96,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
@@ -112,7 +112,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
-				<Route path="/search" exact component={UnderConstruction}/>
+				<Route path="/search" exact component={Search}/>
 				<Route path="/items" exact component={Newauction}/>
 				{/* to be removed */}
 				<Route path="/userdata" exact component = {UserData} />

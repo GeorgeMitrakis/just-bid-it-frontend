@@ -40,7 +40,7 @@ class UserData extends React.Component{
                                         </Row>
                                         <br/>
                                           <Row>
-                                        <Col>Location</Col>
+                                              <Col>Location</Col>
                                          </Row>
                                          <br/>
                                         <Row>

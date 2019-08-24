@@ -6,11 +6,8 @@ import {Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap"
 
 class UserData extends React.Component{
 
-
     render() {
         return(
-
-
             <div>
 
                 <h3> Thank you for your sign up ,Username!</h3>
@@ -28,7 +25,6 @@ class UserData extends React.Component{
                                      This is your information card
                                     </CardHeader>
                                     <CardBody>
-                                        <br/>
                                         <Row>
                                             <Col> First Name </Col>
                                         </Row>

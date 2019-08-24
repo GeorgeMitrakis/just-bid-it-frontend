@@ -75,6 +75,20 @@ class App extends React.Component {
 		)
 	}
 
+	unregisteredUserRoutes = () => {
+		//routes of registered common user with granted access
+		return(
+			<Switch>
+				<Route path={["/", "/welcome"]} exact component={Welcome}/>
+				<Route path="/home" exact component={Home}/>
+				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
+				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
+				<Route path="/search" exact component={UnderConstruction}/>
+				<Route component={NotFound}/>
+			</Switch>
+		)
+	}
+
 	adminRoutes = () => {
 		return(
 			<Switch>
@@ -100,9 +114,7 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
-				<Route path="/items" exact component={Newauction}/>
-				{/* to be removed */}
-				<Route path="/userdata" exact component = {UserData} />
+				{/* <Route path="/items" exact component={Newauction}/> */}
 				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -113,11 +125,14 @@ class App extends React.Component {
 		if(!this.state.access || this.state.role === "guest"){
 			return this.guestRoutes();
 		}
-		else if(this.state.role === "administrator"){
-			return this.adminRoutes();
-		}
 		else if(this.state.role === "common user" && this.state.access === "granted"){
 			return this.commonUserRoutes();
+		}
+		else if(this.state.role === "common user"){
+			return this.unregisteredUserRoutes();
+		}
+		else if(this.state.role === "administrator"){
+			return this.adminRoutes();
 		}
 		else{
 			return this.guestRoutes();

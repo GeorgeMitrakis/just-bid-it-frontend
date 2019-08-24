@@ -5,18 +5,12 @@ import './UserData.css'
 import {Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 
 class UserData extends React.Component{
-
-
     render() {
         return(
-
-
             <div>
-
                 <h3> Thank you for your sign up ,Username!</h3>
                 <h4> Confrirmation pending...</h4>
                     <h1 id='title'></h1>
-
                 <Container fluid id="content">
                     <Col>
                         <Row className="mb-3"/>

@@ -12,26 +12,26 @@ class MyAuctions extends React.Component{
         }
     }
 
-    componentDidMount(){
-        console.log("WARNING [MyAuctions.js]");
-        console.log("-----------------------");
-        console.log("sending request with dummy userId");
-        console.log("-----------------------");
+    // componentDidMount(){
+    //     console.log("WARNING [MyAuctions.js]");
+    //     console.log("-----------------------");
+    //     console.log("sending request with dummy userId");
+    //     console.log("-----------------------");
 
-        $.ajax({
-            url: "http://localhost:8765/app/api/items",
-            dataType : 'json',
-            type: 'GET',
-            data: {userId:9}
-        })
-        .then(json => {
-            console.log(json) 
-            this.setState({items:json.results})           
-        })
-        .fail(err=>{
-            console.log(err);
-        })
-    }
+    //     $.ajax({
+    //         url: "http://localhost:8765/app/api/items",
+    //         dataType : 'json',
+    //         type: 'GET',
+    //         data: {userId:9}
+    //     })
+    //     .then(json => {
+    //         console.log(json) 
+    //         this.setState({items:json.results})           
+    //     })
+    //     .fail(err=>{
+    //         console.log(err);
+    //     })
+    // }
     render(){
         return(
             <Container className="mt-3">

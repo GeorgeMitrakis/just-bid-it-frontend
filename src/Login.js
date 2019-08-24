@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter , Redirect} from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
 import './Login.css';
 //import { getUserInfoField } from './Utility';
@@ -51,12 +51,16 @@ class Login extends React.Component{
     // }
 
     render(){
-        if(this.props.role !== "guest"){
+        if(this.props.role !== "guest" && this.props.access !=="granted"){
             return(
                 <div>
-                    User is a {' '+this.props.role+' '} and has {' '+this.props.access+' '} access request
                     <UserData/>
                 </div>
+            );
+        }
+        else if(this.props.role !== "guest" && this.props.access ==="granted"){
+            return(
+                <Redirect to="/home"/>
             );
         }
         else{

@@ -36,10 +36,10 @@ class Newauction extends React.Component {
         console.log("sending request with dummy userId");
         console.log("-----------------------");
 
-        let categories = [];
-        this.state.categoryList.map((elem, index) =>{
-            return categories.push(elem.category);
-        })
+        // let categories = [];
+        // this.state.categoryList.map((elem, index) =>{
+        //     return categories.push(elem.category);
+        // })
         // console.log(categories);
 
         let requestBody = {
@@ -78,7 +78,7 @@ class Newauction extends React.Component {
     inputChangeHandler(field, event){
         // console.log(field);
         //event.persist();
-        // console.log(event);
+        console.log(event);
         let v = event.target.value;
         this.setState(
             produce(draft=>{

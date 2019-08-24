@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 import './Signup.css';
 import $ from 'jquery';
-import { getUserInfo } from './Utility';
-import UserData from './UserData';
+// import { getUserInfo } from './Utility';
+// import UserData from './UserData';
 class Signup extends React.Component{
 
     constructor(props) {

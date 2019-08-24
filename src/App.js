@@ -9,11 +9,11 @@ import Logout from './Logout';
 import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
 import MyAuctions from './MyAuctions';
-import Newauction from './Newauction';
+//import Newauction from './Newauction';
 import Header from './Header';
-import UserData from './UserData';
+//import UserData from './UserData';
 import NotFound from './NotFound';
-import search from "./search";
+//import search from "./search";
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -62,7 +62,7 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/items" exact component={UnderConstruction}/>
+				<Route path="/items" exact component={MyAuctions}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={UnderConstruction}/>
@@ -114,7 +114,7 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
-				{/* <Route path="/items" exact component={Newauction}/> */}
+				{/* <Route path="/items" exact component={MyAuctions}/> */}
 				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>

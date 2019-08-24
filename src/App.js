@@ -8,6 +8,7 @@ import Home from './Home';
 import Logout from './Logout';
 import Welcome from './Welcome';
 import UnderConstruction from './UnderConstruction';
+import MyAuctions from './MyAuctions';
 import Newauction from './Newauction';
 import Header from './Header';
 import UserData from './UserData';
@@ -68,7 +69,6 @@ class App extends React.Component {
 				<Route path="/messages" exact component={UnderConstruction}/>
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
-				<Route path= "/searchbar" exact component = {search}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -84,8 +84,6 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
-				<Route path= "/searchbar" exact component = {search}/>
-
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -102,10 +100,9 @@ class App extends React.Component {
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/items" exact component={Newauction}/>
+				{/* to be removed */}
 				<Route path="/userdata" exact component = {UserData} />
-				<Route path= "/searchbar" exact component = {search}/>
-
-				{/* additional dynamic routes: /items/{id} */}
+				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>
 		)

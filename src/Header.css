@@ -1,3 +1,7 @@
+.navbar-style{
+    background-color: peachpuff;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -5,9 +9,9 @@ ul {
     overflow: hidden;
 }
 
-li {
+/* li {
     float: left;
-}
+} */
 
 li a {
     display: block;
@@ -55,10 +59,12 @@ li:hover {
     color: white;
 }
 .button{
-    padding:12px;
+    padding:5px;
     border-radius:5px;
     font-weight:bold;
-    color:grey;
+    color:black;
+    border: 1px solid;
+    border-color: black;
 }
 .button:before{
     content:"";
@@ -66,7 +72,7 @@ li:hover {
     width:0px;
     height:0px;
     border: 10px solid;
-    border-color: white transparent transparent transparent;
+    border-color: black transparent transparent transparent;
     right:6px;
     top:18px;
 }

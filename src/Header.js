@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import logo from './bid.png';
 import {Navbar}from 'reactstrap';
-import { getUserInfo } from './Utility';
+import { getUserInfo, getUserInfoField } from './Utility';
 
 class Header extends React.Component {
 
@@ -78,28 +78,31 @@ class Header extends React.Component {
 
     render() {
         return (
-        <Navbar className="bg-light justify-content-between">
-            <div className="d-flex justify-content-between">
-                <a href="/home">
-                    <img src={logo} style={{width: 50, height: 50} } className="img-fluid img-thumbnail"/>
-                </a>
-            </div>
-            { getUserInfo() ? (
-                <div  className="dropdown" style = {{width:"200px"}} >
-                    <div className="button" onClick={this.showDropdownMenu}> Profile </div>
-                    { this.state.displayMenu ? (
-                        <div>
-                            {this.userOptions()}
+        <div className="navbar-style">
+            <Navbar className="bg-light d-flex justify-content-between">
+                <div className="d-flex justify-content-between">
+                    <a href="/home">
+                        <img src={logo} style={{width: 50, height: 50} } className="img-fluid img-thumbnail"/>
+                    </a>
+                </div>
+                { getUserInfo() ? (
+                    <div>
+                        Welcome dear {" "+getUserInfoField("username")+" "}
+                        <div className="dropdown" style = {{width:"150px"}} >
+                            <div className="button" onClick={this.showDropdownMenu}> Profile </div>
+                            { this.state.displayMenu ? (
+                                <div>
+                                    {this.userOptions()}
+                                </div>
+                                ):
+                                null
+                            }
                         </div>
-                        ):
-                        null
-                    }
-                </div>):
-                null
-            }
-
-
+                    </div>):
+                    null
+                }
             </Navbar>
+        </div>
         );
     }
 }

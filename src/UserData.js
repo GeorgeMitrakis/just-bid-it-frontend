@@ -2,14 +2,14 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { getUserInfoField } from './Utility';
 import './UserData.css'
-import {Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
+import {Card, CardBody, CardHeader, Col, Container,  Row, Button} from "reactstrap";
 
 class UserData extends React.Component{
     render() {
         return(
-            <div>
-                <h3> Thank you for your sign up ,Username!</h3>
-                <h4> Confrirmation pending...</h4>
+            <div className="mt-2">
+                <h3> Thank you for your sign up request, {' '+getUserInfoField("username")+' '}!</h3>
+                <p> An administrator will review your request and grant you access to the site. </p>
                     <h1 id='title'></h1>
                 <Container fluid id="content">
                     <Col>
@@ -19,41 +19,58 @@ class UserData extends React.Component{
                             <Col className="align-self-center" xs="auto">
                                 <Card id="usertable">
                                     <CardHeader>
-                                     This is your information card
+                                     User information card
                                     </CardHeader>
                                     <CardBody>
-                                        <br/>
                                         <Row>
-                                            <Col> First Name </Col>
+                                            <Col> Userame: </Col>
+                                            <Col> {getUserInfoField("username")}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col> Last Name </Col>
+                                            <Col> First Name: </Col>
+                                            <Col> {getUserInfoField("firstname")}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col> Email </Col>
+                                            <Col> Last Name: </Col>
+                                            <Col> {getUserInfoField("lastname")}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col> Country </Col>
+                                            <Col> Email: </Col>
+                                            <Col> {getUserInfoField("email")}</Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col> Country: </Col>
+                                            <Col> {getUserInfoField("country")}</Col>
                                         </Row>
                                         <br/>
                                           <Row>
-                                              <Col>Location</Col>
+                                            <Col>Location:</Col>
+                                            <Col> {getUserInfoField("location")}</Col>
                                          </Row>
                                          <br/>
                                         <Row>
-                                            <Col>Phone number</Col>
+                                            <Col>Phone number:</Col>
+                                            <Col> {getUserInfoField("phoneNumber")}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col>Tax registration number</Col>
+                                            <Col>Tax registration number:</Col>
+                                            <Col> {getUserInfoField("taxRegistrationNumber")}</Col>
                                         </Row>
-                                        <br/>
                                     </CardBody>
                                 </Card>
                             </Col>
+                        </Row>
+                        <br/>
+                        <br/>
+                        <Row className="justify-content-center">
+                            <Button color="link" onClick={()=>this.props.history.goBack()}>
+                                Go Back
+                            </Button>
                         </Row>
                     </Col>
                 </Container>

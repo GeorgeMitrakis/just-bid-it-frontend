@@ -70,7 +70,7 @@ class Header extends React.Component {
         <Navbar className="bg-light justify-content-between">
             <div className="d-flex justify-content-between">
                 <a href="/home">
-                <img source={Logo} style={{width: 50, height: 50}}/>
+                <img src={Logo} style={{width: 50, height: 50}}/>
                 </a>
             </div>
             { this.props.access === "granted" ? (

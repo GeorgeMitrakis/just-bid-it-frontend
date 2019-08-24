@@ -16,6 +16,8 @@
     "react-responsive-carousel": "^3.1.50",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-search-box": "^2.0.1",
+    "react-search-field": "^1.0.0",
     "react-simple-dropdown": "^3.2.3",
     "reactstrap": "^8.0.1"
   },

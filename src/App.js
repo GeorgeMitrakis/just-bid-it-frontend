@@ -12,6 +12,7 @@ import Newauction from './Newauction';
 import Header from './Header';
 import UserData from './UserData';
 import NotFound from './NotFound';
+import search from "./search";
 
 import { getUserInfoField } from './Utility';
 import {Row} from "reactstrap";
@@ -67,6 +68,7 @@ class App extends React.Component {
 				<Route path="/messages" exact component={UnderConstruction}/>
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
+				<Route path= "/searchbar" exact component = {search}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -82,6 +84,8 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
+				<Route path= "/searchbar" exact component = {search}/>
+
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
 			</Switch>
@@ -99,6 +103,8 @@ class App extends React.Component {
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/items" exact component={Newauction}/>
 				<Route path="/userdata" exact component = {UserData} />
+				<Route path= "/searchbar" exact component = {search}/>
+
 				{/* additional dynamic routes: /items/{id} */}
 				<Route component={NotFound}/>
 			</Switch>

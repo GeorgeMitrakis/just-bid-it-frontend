@@ -7,6 +7,10 @@ class Signup extends React.Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            
+        }
         this.firstname = React.createRef();
         this.lastname = React.createRef();
         this.email = React.createRef();

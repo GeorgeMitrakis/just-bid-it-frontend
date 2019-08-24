@@ -98,8 +98,9 @@ class App extends React.Component {
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/items" exact component={Newauction}/>
+				{/* to be removed */}
 				<Route path="/userdata" exact component = {UserData} />
-				{/* additional dynamic routes: /items/{id} */}
+				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>
 		)

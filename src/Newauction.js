@@ -31,41 +31,47 @@ class Newauction extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         // console.log(this.state);
+        console.log("WARNING [Newauction.js]");
+        console.log("-----------------------");
+        console.log("sending request with dummy userId");
+        console.log("-----------------------");
 
         let categories = [];
         this.state.categoryList.map((elem, index) =>{
-            categories.push(elem.category);
+            return categories.push(elem.category);
         })
         // console.log(categories);
 
+        let requestBody = {
+            userId: 9,
+            name: this.state.name,
+            categories: this.state.categoryList,
+            location: this.state.location,
+            country: this.state.country,
+            buy_price: this.state.buyPrice,
+            first_bid: this.state.firstBid,
+            end: this.state.ends,
+            description: this.state.description
+        }
+
+        if(this.state.latitude !== '' && this.state.longitude !==''){
+            requestBody.concat({
+                latitude:  this.state.latitude,
+                longitude: this.state.longitude
+            })
+        }
+
         $.ajax({
             url: "https://localhost:8443/app/api/items",
-            dataType : 'raw',
+            dataType : 'json',
             type: 'POST',
-            data: {
-                userId: 9,
-                name: this.state.name,
-                categories: categories,
-                location: this.state.location,
-                latitude:  this.state.latitude,
-                longitude: this.state.longitude,
-                country: this.state.country,
-                buy_price: this.state.buyPrice,
-                first_bid: this.state.firstBid,
-                end: this.state.ends,
-                description: this.state.description
-            }
+            data: requestBody
         })
         .then(msg => {
-            console.log(JSON.parse(msg.responseText))            
+            console.log(msg)            
         })
         .fail(err=>{
-            if(err.status === 200){
-                console.log(JSON.parse(JSON.stringify(err.responseText)));
-            }
-            else{
-                console.log(err);
-            }
+            console.log(err);
         })
     }
 

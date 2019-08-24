@@ -75,6 +75,20 @@ class App extends React.Component {
 		)
 	}
 
+	unregisteredUserRoutes = () => {
+		//routes of registered common user with granted access
+		return(
+			<Switch>
+				<Route path={["/", "/welcome"]} exact component={Welcome}/>
+				<Route path="/home" exact component={Home}/>
+				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
+				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
+				<Route path="/search" exact component={UnderConstruction}/>
+				<Route component={NotFound}/>
+			</Switch>
+		)
+	}
+
 	adminRoutes = () => {
 		return(
 			<Switch>
@@ -97,7 +111,6 @@ class App extends React.Component {
 				<Route path={["/", "/welcome"]} exact component={Welcome}/>
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
-				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={UnderConstruction}/>
 				<Route path="/items" exact component={Newauction}/>

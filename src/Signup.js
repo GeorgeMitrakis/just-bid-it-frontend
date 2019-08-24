@@ -3,14 +3,12 @@ import { withRouter } from 'react-router-dom';
 import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 import './Signup.css';
 import $ from 'jquery';
+import { getUserInfo } from './Utility';
+import UserData from './UserData';
 class Signup extends React.Component{
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            
-        }
         this.firstname = React.createRef();
         this.lastname = React.createRef();
         this.email = React.createRef();
@@ -63,7 +61,8 @@ class Signup extends React.Component{
         })
         .then(json => {
             console.log(json)
-            this.props.logInHandler(json.result.value);
+            this.props.logInHandler(json.result);
+            this.props.history.replace("/login");
         })
         .fail(err=>{
             console.log(err)
@@ -87,7 +86,7 @@ render(){
                             </CardHeader>
                             <CardBody>
                                 <p className="small text-muted">Register to use our services</p>
-                                <Form>
+                                <Form onSubmit={this.submitHandler}>
                                         <br/>
                                         <Row>
                                             <Col> First Name </Col>
@@ -153,7 +152,7 @@ render(){
                                         <br/>
                                         <br/>
 
-                                    <Button  onClick={this.submitHandler}>
+                                    <Button type="submit">
                                         Submit
                                     </Button>
 

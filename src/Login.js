@@ -4,6 +4,7 @@ import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 're
 import './Login.css';
 //import { getUserInfoField } from './Utility';
 import { getUserInfo } from './Utility';
+import UserData from './UserData';
 
 import $ from 'jquery';
 
@@ -54,6 +55,7 @@ class Login extends React.Component{
             return(
                 <div>
                     User is a {' '+this.props.role+' '} and has {' '+this.props.access+' '} access request
+                    <UserData/>
                 </div>
             );
         }

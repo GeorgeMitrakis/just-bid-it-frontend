@@ -1,8 +1,8 @@
- import React from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col,Row} from "reactstrap";
+import {Col,Row, Form} from "reactstrap";
 import './search.css';
- import produce from 'immer';
+import produce from 'immer';
 
 
 
@@ -15,9 +15,11 @@ class Search extends React.Component {
             categoryvalue : ''
 
         }
+        this.inputChangedHandler = this.inputChangedHandler.bind(this);
     }
 
     inputChangedHandler(event) {
+        event.persist();
         event.preventDefault();
         console.log(event);
         let v = event.target.value;
@@ -25,13 +27,17 @@ class Search extends React.Component {
             produce(draft=>{
                 draft.categoryvalue= v;
             })
-        )    }
+    )}
 
+    submitHandler = (event) => {
+        event.preventDefault();
+        console.log(event);
+    } 
     render() {
 
         return (
             <div className="filter-list">
-                <form>
+                <Form onSubmit={this.submitHandler}>
                    <Row>
                        <Col xs="6" sm="4"></Col>
                        <fieldset>
@@ -43,7 +49,7 @@ class Search extends React.Component {
                        <button type="submit" className="btn float-right">SEARCH</button>
 
                    </Row>
-                </form>
+                </Form>
             </div>
         );
     }

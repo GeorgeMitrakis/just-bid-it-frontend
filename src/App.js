@@ -63,6 +63,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/items" exact component={MyAuctions}/>
+				<Route path="/items/new" exact component={Newauction}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={Search}/>
@@ -113,7 +114,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/items" exact component={Newauction}/>
+				<Route path="/items" exact component={MyAuctions}/>
 				{/* to be removed */}
 				<Route path="/userdata" exact component = {UserData} />
 				{/* to be removed */}

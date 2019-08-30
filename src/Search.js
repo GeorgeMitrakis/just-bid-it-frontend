@@ -11,11 +11,6 @@ import './Popup.scss'
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.items = [
-            'mary',
-            'tum',
-            'john',
-        ];
 
         this.state = {
             query : '',
@@ -28,13 +23,6 @@ class Search extends React.Component {
        // this.inputChangedHandler = this.inputChangedHandler.bind(this);
     }
 
-    showPopup() {
-        this.setState({ isPopupOpen: true });
-    }
-
-    hidePopup() {
-        this.setState({ isPopupOpen: false });
-    }
     categoryInputChangedHandler(event) {
         event.persist();
         event.preventDefault();
@@ -68,37 +56,16 @@ class Search extends React.Component {
 
     }
 
+    categorySelectHandler = (value) => {
+        this.setState({categoryvalue:value});
+    }
+
     submitHandler = (event) => {
         event.preventDefault();
         console.log(event);
     }
 
-
-    onTextChange = (e) => {
-        const value = e.target.value;
-        let suggestions  = [];
-        if(value.length > 0) {
-            const regex = new RegExp(`^$(value)` , 'i');
-            suggestions = this.items.sort().filter(v => regex.test(v));
-        }
-
-        this.setState(() => ({suggestions}));
-    }
-    rendersugg(){
-        const {suggestions} = this.state;
-        if (suggestions.length === 0)
-        {
-            return null;
-        }
-        return (
-            <ul>
-                {suggestions.map((item) => <li>{item}</li>)}
-            </ul>
-        );
-    }
-
     render() {
-
         return (
             <div className="filter-list">
                 <Form onSubmit={this.submitHandler}>
@@ -116,7 +83,7 @@ class Search extends React.Component {
                            <div className="search-container">
                                <div className="content">
                                     <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.categoryInputChangedHandler(event)}/>
-                                   < Popup isOpen = {this.state.isPopupOpen} categories = {this.state.categories}/>
+                                   < Popup isOpen = {this.state.isPopupOpen} categories = {this.state.categories} select={this.categorySelectHandler}/>
                                </div>
                            </div>
                        </div>

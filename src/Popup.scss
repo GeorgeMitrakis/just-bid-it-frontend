@@ -34,7 +34,6 @@ $result-text-color: #424444;
 //Popup
 .popup {
     width: inherit;
-    min-height: 5em;
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -47,7 +46,7 @@ $result-text-color: #424444;
   
     .container {
       .content {
-        height: 100%;
+  
         .item {
           height: 33px;
           display: flex;
@@ -66,6 +65,17 @@ $result-text-color: #424444;
             background-color: #aacbe06e;
           }
         }
+      }
+      .footer {
+        position: absolute;
+        font-size: 13px;
+        bottom: 3px;
+        width: 99%;
+        left: 0px;
+        display: flex;
+        border-top: 1px solid $solid-color;
+        padding: 2px 3px;
+        color: $base-color;
       }
     }
   }

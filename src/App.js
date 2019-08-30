@@ -132,6 +132,9 @@ class App extends React.Component {
 		}
 		else if(this.state.role === "common user" && this.state.access === "granted"){
 			return this.commonUserRoutes();
+
+		}else if(this.state.role === "common user" && this.state.access !== "granted"){
+			return this.unregisteredUserRoutes();
 		}
 		else{
 			return this.guestRoutes();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardBody, CardText} from "reactstrap";
-import "./Popup.scss";
+import "./Searchbar.scss";
 import './search.css';
 import $ from "jquery";
 import {getUserInfo, getUserInfoField} from "./Utility";

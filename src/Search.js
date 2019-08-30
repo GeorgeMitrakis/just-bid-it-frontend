@@ -5,6 +5,8 @@ import './search.css';
 import produce from 'immer';
  import $ from "jquery";
 import Popup from './Popup';
+import './Popup.scss'
+
 
 
 
@@ -102,7 +104,7 @@ class Search extends React.Component {
         return (
             <div className="filter-list">
                 <Form onSubmit={this.submitHandler}>
-                   <Row className="d-flex justify-content-center">
+                   <Row className="d-flex justify-content-center align-items-start">
 
                        <div className="search">
                            <div className="search-container">
@@ -122,7 +124,7 @@ class Search extends React.Component {
                            </div>
                        </div>
                        <div>
-                                    <button type="submit" className="btn float-right">SEARCH</button>
+                            <button type="submit" className="btn float-right">SEARCH</button>
                        </div>
                    </Row>
                 </Form>

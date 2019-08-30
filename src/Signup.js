@@ -101,7 +101,7 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col>Email </Col>
-                                            <Col><input type="email" placeholder="example@example.com" name="email" ref={this.email}/></Col>
+                                            <Col><input type="email" name="email" ref={this.email}/></Col>
 
                                         </Row>
                                         <br/>

@@ -1,25 +1,41 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col,Row, Form} from "reactstrap";
+import {Col,Row, Form } from "reactstrap";
 import './search.css';
- import produce from 'immer';
+import produce from 'immer';
  import $ from "jquery";
+import Popup from './Popup';
 
 
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
+        this.items = [
+            'mary',
+            'tum',
+            'john',
+        ];
+
         this.state = {
+            query : '',
             categories : [],
             searchterm : '',
-            categoryvalue : ''
-
+            categoryvalue : '',
+            suggestions : [] ,
+            isPopupOpen : false
         }
-        this.inputChangedHandler = this.inputChangedHandler.bind(this);
+       // this.inputChangedHandler = this.inputChangedHandler.bind(this);
     }
 
-    inputChangedHandler(event) {
+    showPopup() {
+        this.setState({ isPopupOpen: true });
+    }
+
+    hidePopup() {
+        this.setState({ isPopupOpen: false });
+    }
+    categoryInputChangedHandler(event) {
         event.persist();
         event.preventDefault();
         console.log(event.target.value);
@@ -27,6 +43,10 @@ class Search extends React.Component {
         this.setState(
             produce(draft=>{
                 draft.categoryvalue= v;
+                if(v!== ''){
+                    draft.isPopupOpen = true;
+                }else
+                    draft.isPopupOpen = false;
             })
         )
         $.ajax({
@@ -34,11 +54,13 @@ class Search extends React.Component {
             dataType: 'json',
             type: 'GET',
             data: {
-               category: this.state.categoryvalue
+               category: v
             }
+
         })
             .then(json => {
                 console.log(json)
+                this.setState({categories:json.categories})
             })
             .fail(err=>{
                 console.log(err)
@@ -49,25 +71,64 @@ class Search extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         console.log(event);
-    } 
+    }
+
+
+    onTextChange = (e) => {
+        const value = e.target.value;
+        let suggestions  = [];
+        if(value.length > 0) {
+            const regex = new RegExp(`^$(value)` , 'i');
+            suggestions = this.items.sort().filter(v => regex.test(v));
+        }
+
+        this.setState(() => ({suggestions}));
+    }
+    rendersugg(){
+        const {suggestions} = this.state;
+        if (suggestions.length === 0)
+        {
+            return null;
+        }
+        return (
+            <ul>
+                {suggestions.map((item) => <li>{item}</li>)}
+            </ul>
+        );
+    }
+
     render() {
 
         return (
             <div className="filter-list">
                 <Form onSubmit={this.submitHandler}>
-                   <Row>
-                       <Col xs="6" sm="4"></Col>
-                       <fieldset>
-                        <input type="text" className="form-control form-control-lg" placeholder="Enter your text here.." />
-                    </fieldset>
-                    <fieldset>
-                        <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.inputChangedHandler(event)}/>
-                    </fieldset>
-                       <button type="submit" className="btn float-right">SEARCH</button>
+                   <Row className="d-flex justify-content-center">
 
+                       <div className="search">
+                           <div className="search-container">
+                               <div className="content">
+
+                                   <input type="text" className="form-control form-control-lg" placeholder="Enter your text here.." />
+                               </div>
+                           </div>
+                       </div>
+                       <div className="search">
+                           <div className="search-container">
+                               <div className="content">
+
+                                    <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.categoryInputChangedHandler(event)}/>
+                                   < Popup isOpen = {this.state.isPopupOpen} categories = {this.state.categories}/>
+                               </div>
+                           </div>
+                       </div>
+                       <div>
+                                    <button type="submit" className="btn float-right">SEARCH</button>
+                       </div>
                    </Row>
                 </Form>
+
             </div>
+
         );
     }
 

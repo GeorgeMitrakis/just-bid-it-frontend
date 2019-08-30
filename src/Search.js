@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col,Row, Form } from "reactstrap";
+import {Col,Row, Form, Button } from "reactstrap";
 import './search.css';
 import produce from 'immer';
  import $ from "jquery";
 import Popup from './Popup';
-import './Popup.scss'
+import './Searchbar.scss'
 
 
 
@@ -90,8 +90,8 @@ class Search extends React.Component {
                                </div>
                            </div>
                        </div>
-                       <div>
-                            <button type="submit" className="btn float-right">SEARCH</button>
+                       <div className="mt-1">
+                            <Button type="submit">SEARCH</Button>
                        </div>
                    </Row>
                 </Form>

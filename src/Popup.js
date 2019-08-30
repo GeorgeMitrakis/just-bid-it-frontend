@@ -1,5 +1,5 @@
 import React from 'react';
-import './Popup.scss'
+import './Searchbar.scss'
 
 const Popup = (props) => {
     if (!props.isOpen) return null;

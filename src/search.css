@@ -8,8 +8,6 @@
     padding: 25px 15px;
 }
 .filter-list {
-
-    height: 40vmin;
     padding-top: 5vh;
 }
 .ul {
@@ -20,4 +18,8 @@
     margin-left: 10;
     margin-right: 0;
     padding-left: 30px;
+}
+
+.btn {    
+    align-items: center;
 }

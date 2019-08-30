@@ -20,7 +20,8 @@
     "react-search-box": "^2.0.1",
     "react-search-field": "^1.0.0",
     "react-simple-dropdown": "^3.2.3",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "typescript": "^3.6.2"
   },
   "scripts": {
     "start": "react-scripts start",

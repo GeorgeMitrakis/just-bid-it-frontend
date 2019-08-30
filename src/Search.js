@@ -6,7 +6,7 @@ import produce from 'immer';
  import $ from "jquery";
 import Popup from './Popup';
 import './Searchbar.scss'
-
+import res from './response.json';
 
 
 
@@ -86,11 +86,12 @@ class Search extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         console.log(event);
+        console.log(res);
     }
 
     render() {
         return (
-            <div className="filter-list"
+            <Col className="filter-list"
                 onClick={(event)=>this.outsideClickHandler(event)}
             >
                 <Form onSubmit={this.submitHandler}>
@@ -110,7 +111,14 @@ class Search extends React.Component {
                                     className="content" 
                                     ref={this.popupRef}
                                 >
-                                    <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.categoryInputChangedHandler(event)}/>
+                                    <input 
+                                        type="text" 
+                                        className="form-control form-control-lg" 
+                                        placeholder="Categories" 
+                                        value={this.state.categoryvalue} 
+                                        onChange={(event)=> this.categoryInputChangedHandler(event)}
+                                        onClick={()=>{ if(!this.state.isPopupOpen) this.showPopup()}}
+                                    />
                                     <Popup 
                                         isOpen={this.state.isPopupOpen} 
                                         categories = {this.state.categories} 
@@ -125,7 +133,7 @@ class Search extends React.Component {
                    </Row>
                 </Form>
 
-            </div>
+            </Col>
 
         );
     }

@@ -143,7 +143,7 @@ class Newauction extends React.Component {
                                                                 onChange={(event)=>this.changeCategoryHandler(index, event)}
                                                             /> 
                                                             <Button
-                                                                color="danger"
+                                                                color="muted"
                                                                 type="button"
                                                                 className="small pt-0 pb-0 pl-1 pr-1"
                                                                 onClick={()=>this.removeCategoryHandler(index)}
@@ -154,7 +154,7 @@ class Newauction extends React.Component {
                                                 ))}
                                                 <Row className="d-flex justify-content-center mt-1">
                                                     <Button
-                                                        color="success"
+                                                        color="muted"
                                                         type="button"
                                                         className="small pt-0 pb-0 pl-1 pr-1"
                                                         onClick={this.addCategoryHandler}
@@ -179,7 +179,7 @@ class Newauction extends React.Component {
                                                     
                                                 </Row>
                                                 <Row className="justify-content-center">
-                                                    <Button color="secondary">Open Map</Button>
+                                                    <Button color="muted">Open Map</Button>
                                                 </Row>
                                             </Col>
                                         </Row>

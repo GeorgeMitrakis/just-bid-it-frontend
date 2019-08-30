@@ -7,7 +7,7 @@ import produce from 'immer';
 import Popup from './Popup';
 import './Searchbar.scss'
 import res from './response.json';
-
+import AuctionItem from './AuctionItem';
 
 
 class Search extends React.Component {
@@ -22,7 +22,8 @@ class Search extends React.Component {
             searchterm : '',
             categoryvalue : '',
             suggestions : [] ,
-            isPopupOpen : false
+            isPopupOpen : false,
+            response : res
         }
        // this.inputChangedHandler = this.inputChangedHandler.bind(this);
     }
@@ -90,6 +91,9 @@ class Search extends React.Component {
     }
 
     render() {
+        let results = this.state.response.items.map((item,index)=>
+            <AuctionItem item = {item} key = {index} />
+            );
         return (
             <Col className="filter-list"
                 onClick={(event)=>this.outsideClickHandler(event)}
@@ -132,8 +136,16 @@ class Search extends React.Component {
                        </div>
                    </Row>
                 </Form>
+                    <Col> {
+                        results
+                    }
+
+
+                    </Col>
 
             </Col>
+
+
 
         );
     }

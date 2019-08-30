@@ -5,7 +5,11 @@ import './search.css';
 import produce from 'immer';
  import $ from "jquery";
 import Popup from './Popup';
-import './Popup.scss'
+import './Popup.scss';
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle } from 'reactstrap';
+import res from './response';
+import AuctionItem from './AuctionItem';
 
 
 class Search extends React.Component {
@@ -18,7 +22,8 @@ class Search extends React.Component {
             searchterm : '',
             categoryvalue : '',
             suggestions : [] ,
-            isPopupOpen : false
+            isPopupOpen : false,
+            response : res
         }
        // this.inputChangedHandler = this.inputChangedHandler.bind(this);
     }
@@ -63,9 +68,13 @@ class Search extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         console.log(event);
+        console.log(res);
     }
 
     render() {
+        let results = this.state.response.items.map((item,index)=>
+            <AuctionItem item = {item} key = {index} />
+            );
         return (
             <div className="filter-list">
                 <Form onSubmit={this.submitHandler}>
@@ -92,8 +101,16 @@ class Search extends React.Component {
                        </div>
                    </Row>
                 </Form>
+                    <Col> {
+                        results
+                    }
+
+
+                    </Col>
 
             </div>
+
+
 
         );
     }

@@ -6,8 +6,6 @@ import produce from 'immer';
  import $ from "jquery";
 import Popup from './Popup';
 
-
-
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -115,7 +113,6 @@ class Search extends React.Component {
                        <div className="search">
                            <div className="search-container">
                                <div className="content">
-
                                     <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.categoryInputChangedHandler(event)}/>
                                    < Popup isOpen = {this.state.isPopupOpen} categories = {this.state.categories}/>
                                </div>

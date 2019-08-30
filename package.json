@@ -6,6 +6,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-bootstrap-dropdown-menu": "^1.1.15",
     "react-date-picker": "^7.8.1",

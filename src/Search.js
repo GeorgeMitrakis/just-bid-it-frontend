@@ -14,6 +14,8 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
 
+        this.popupRef = React.createRef();
+
         this.state = {
             query : '',
             categories : [],
@@ -23,6 +25,24 @@ class Search extends React.Component {
             isPopupOpen : false
         }
        // this.inputChangedHandler = this.inputChangedHandler.bind(this);
+    }
+
+    outsideClickHandler(event){
+        if(this.popupRef.current.contains(event.target)){
+            return;
+        }
+
+        if(!this.isPopupOpen){
+            this.hidePopup();
+        }
+    }
+
+    showPopup() {
+        this.setState({ isPopupOpen: true });
+    }
+    
+    hidePopup() {
+        this.setState({ isPopupOpen: false });
     }
 
     categoryInputChangedHandler(event) {
@@ -48,18 +68,19 @@ class Search extends React.Component {
             }
 
         })
-            .then(json => {
-                console.log(json)
-                this.setState({categories:json.categories})
-            })
-            .fail(err=>{
-                console.log(err)
-            })
+        .then(json => {
+            //console.log(json)
+            this.setState({categories:json.categories})
+        })
+        .fail(err=>{
+            console.log(err)
+        })
 
     }
 
     categorySelectHandler = (value) => {
         this.setState({categoryvalue:value});
+        this.hidePopup();
     }
 
     submitHandler = (event) => {
@@ -69,7 +90,9 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div className="filter-list">
+            <div className="filter-list"
+                onClick={(event)=>this.outsideClickHandler(event)}
+            >
                 <Form onSubmit={this.submitHandler}>
                    <Row className="d-flex justify-content-center align-items-start">
 
@@ -83,10 +106,16 @@ class Search extends React.Component {
                        </div>
                        <div className="search">
                            <div className="search-container">
-                               <div className="content">
-
+                               <div 
+                                    className="content" 
+                                    ref={this.popupRef}
+                                >
                                     <input type= "text" className="form-control form-control-lg" placeholder="Categories" value={this.state.categoryvalue} onChange={(event)=> this.categoryInputChangedHandler(event)}/>
-                                   < Popup isOpen = {this.state.isPopupOpen} categories = {this.state.categories} select={this.categorySelectHandler}/>
+                                    <Popup 
+                                        isOpen={this.state.isPopupOpen} 
+                                        categories = {this.state.categories} 
+                                        select={this.categorySelectHandler} 
+                                    />
                                </div>
                            </div>
                        </div>

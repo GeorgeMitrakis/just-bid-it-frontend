@@ -10,7 +10,7 @@ const Popup = (props) => {
                     {props.categories.size!==0 &&
                     props.categories.map((category, idx) => {
                         return (
-                            <div className="category" key={idx}>
+                            <div className="item" key={idx}>
                                 {category}
                             </div>
                         );

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Searchbar.scss'
 
-const Popup = (props) => {
+const AutoCompletePopup = (props) => {
     if (!props.isOpen) return null;
     return (
         <div className="popup">
@@ -22,4 +22,4 @@ const Popup = (props) => {
     );
 }
 
-export default Popup;
+export default AutoCompletePopup;

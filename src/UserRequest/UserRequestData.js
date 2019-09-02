@@ -1,16 +1,16 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { getUserInfoField } from './Utility';
-import './UserData.css'
+import { getUserInfoField } from '../Utility/Utility';
+import './UserRequestData.css'
 import {Card, CardBody, CardHeader, Col, Container,  Row, Button} from "reactstrap";
 
-class UserData extends React.Component{
+class UserRequestData extends React.Component{
     render() {
         return(
             <div className="mt-2">
                 <h3> Thank you for your sign up request, {' '+getUserInfoField("username")+' '}!</h3>
                 <p> An administrator will review your request and grant you access to the site. </p>
-                    <h1 id='title'></h1>
+                    {/* <h1 id='title'></h1> */}
                 <Container fluid id="content">
                     <Col>
                         <Row className="mb-3"/>
@@ -82,4 +82,4 @@ class UserData extends React.Component{
 
 
 }
-export default withRouter(UserData);
+export default withRouter(UserRequestData);

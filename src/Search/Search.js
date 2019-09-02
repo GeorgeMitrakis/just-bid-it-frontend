@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Col,Row, Form, Button } from "reactstrap";
-import './search.css';
+import './Search.css';
 import produce from 'immer';
  import $ from "jquery";
-import Popup from './Popup';
+import AutoCompletePopup from './AutoCompletePopup';
 import './Searchbar.scss'
-import res from './response.json';
-import AuctionItem from './AuctionItem';
+import res from '../response.json';
+import SearchResultItem from './SearchResultItem';
 
 
 class Search extends React.Component {
@@ -92,7 +92,7 @@ class Search extends React.Component {
 
     render() {
         let results = this.state.response.items.map((item,index)=>
-            <AuctionItem item = {item} key = {index} />
+            <SearchResultItem item = {item} key = {index} />
             );
         return (
             <Col className="filter-list"
@@ -123,7 +123,7 @@ class Search extends React.Component {
                                         onChange={(event)=> this.categoryInputChangedHandler(event)}
                                         onClick={()=>{ if(!this.state.isPopupOpen) this.showPopup()}}
                                     />
-                                    <Popup 
+                                    <AutoCompletePopup 
                                         isOpen={this.state.isPopupOpen} 
                                         categories = {this.state.categories} 
                                         select={this.categorySelectHandler} 

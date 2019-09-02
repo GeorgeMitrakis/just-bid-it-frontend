@@ -3,8 +3,8 @@ import { withRouter , Redirect} from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
 import './Login.css';
 //import { getUserInfoField } from './Utility';
-import { getUserInfo } from './Utility';
-import UserData from './UserData';
+import { getUserInfo } from '../Utility/Utility';
+import UserRequestData from '../UserRequest/UserRequestData';
 
 import $ from 'jquery';
 
@@ -54,7 +54,7 @@ class Login extends React.Component{
         if(this.props.role !== "guest" && this.props.access !=="granted"){
             return(
                 <div>
-                    <UserData/>
+                    <UserRequestData/>
                 </div>
             );
         }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import { Row, Col, Button } from 'reactstrap';
-import { getUserInfoField } from './Utility';
+import { getUserInfoField } from '../Utility/Utility';
 //import { getUserInfo } from './Utility';
 
 

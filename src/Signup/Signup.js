@@ -4,7 +4,6 @@ import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "rea
 import './Signup.css';
 import $ from 'jquery';
 // import { getUserInfo } from './Utility';
-// import UserData from './UserData';
 class Signup extends React.Component{
 
     constructor(props) {

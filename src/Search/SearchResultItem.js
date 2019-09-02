@@ -1,11 +1,11 @@
 import React from 'react';
 import {Card, CardBody, CardText} from "reactstrap";
 import "./Searchbar.scss";
-import './search.css';
+import './Search.css';
 import $ from "jquery";
-import {getUserInfo, getUserInfoField} from "./Utility";
+import {getUserInfoField} from "../Utility/Utility";
 import Row from "reactstrap/es/Row";
-class AuctionItem extends React.Component{
+class SearchResultItem extends React.Component{
 
     constructor(props){
 
@@ -25,7 +25,7 @@ class AuctionItem extends React.Component{
     }
 
     bidHandler(){
-        console.log("gay");
+        console.log("creep");
         $.ajax({
             url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/bid",
             dataType: 'json',
@@ -73,4 +73,4 @@ class AuctionItem extends React.Component{
     }
 }
 
-export default AuctionItem;
+export default SearchResultItem;

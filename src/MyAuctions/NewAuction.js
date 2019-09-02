@@ -4,12 +4,12 @@ import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 're
 import produce from 'immer';
 //import DatePicker from 'react-datepicker';
 //import { getUserInfo } from './Utility';
-import './Newauction.css'
+import './NewAuction.css'
 
 import $ from 'jquery';
 
 
-class Newauction extends React.Component {
+class NewAuction extends React.Component {
     constructor(props){
         super(props);
         
@@ -229,4 +229,4 @@ class Newauction extends React.Component {
         )
     }
 }
-export default withRouter(Newauction);
+export default withRouter(NewAuction);

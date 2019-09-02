@@ -36,13 +36,34 @@ class SearchResultItem extends React.Component{
             }
 
         })
-            .then(json => {
-                console.log(json)
-            })
-            .fail(err=>{
-                console.log(err)
-            })
+        .then(json => {
+            console.log(json)
+        })
+        .fail(err=>{
+            console.log(err)
+        })
 
+    }
+
+    buyHandler(){
+        console.log("creep");
+        console.log(this.props.item);
+        console.log( getUserInfoField("id"));
+        $.ajax({
+            url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/buy",
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                bidder_id: getUserInfoField("id")
+            }
+
+        })
+        .then(json => {
+            console.log(json)
+        })
+        .fail(err=>{
+            console.log(err)
+        })
     }
 
 
@@ -52,17 +73,19 @@ class SearchResultItem extends React.Component{
                 <Col>
                     <br/>
                     <Row className="d-flex justify-content-between">
-                    {this.props.item.name } by {this.props.item.sellerId}
+                        {this.props.item.name } by {this.props.item.sellerId}
                     </Row>
                     <br/>
-                    <Row className="d-flex justify-content-between">
-                    Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30) $ <input type="text" readOnly value={this.props.item.buyPrice}/>
-                    <button type="submit">BUY</button>
+                        <Row className="d-flex justify-content-between">
+                        Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30) $ 
+                        <input type="text" readOnly value={this.props.item.buyPrice}/>
+                        <button type="submit" onClick={()=>this.buyHandler()}>BUY</button>
                     </Row>
                     <br/>
-                    <Row className="d-flex justify-content-between">
-                    Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) $ <input type="text" value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
-                    <button type="submit" onClick={()=>this.bidHandler()} > BID</button>
+                        <Row className="d-flex justify-content-between">
+                        Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) $ 
+                        <input type="text" value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
+                        <button type="submit" onClick={()=>this.bidHandler()} > BID</button>
                     </Row>
                     <br/>
                 </Col>

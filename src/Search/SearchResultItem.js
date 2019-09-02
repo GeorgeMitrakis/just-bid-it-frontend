@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardBody, CardText} from "reactstrap";
+import {Card, CardBody, CardText, Col} from "reactstrap";
 import "./Searchbar.scss";
 import './Search.css';
 import $ from "jquery";
@@ -49,25 +49,23 @@ class SearchResultItem extends React.Component{
     render() {
         return(
             <Card className="p-0 bidcard">
-                <CardBody className="d-flex justify-content-start">
-                    <CardText>
-                        <Row className="d-flex justify-content-between">
-                        {this.props.item.name } by {this.props.item.sellerId}
-                        </Row>
-                        <br/>
-                        <Row className="d-flex justify-content-between">
-                        Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30) $ <input type="text" readOnly value={this.props.item.buyPrice}/>
-                        <button type="submit">BUY</button>
-                        </Row>
-                        <br/>
-                        <Row className="d-flex justify-content-between">
-                        Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) $ <input type="text" value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
-                        <button type="submit" onClick={()=>this.bidHandler()} > BID</button>
-                        </Row>
-                        <br/>
-                    </CardText>
-
-                </CardBody>
+                <Col>
+                    <br/>
+                    <Row className="d-flex justify-content-between">
+                    {this.props.item.name } by {this.props.item.sellerId}
+                    </Row>
+                    <br/>
+                    <Row className="d-flex justify-content-between">
+                    Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30) $ <input type="text" readOnly value={this.props.item.buyPrice}/>
+                    <button type="submit">BUY</button>
+                    </Row>
+                    <br/>
+                    <Row className="d-flex justify-content-between">
+                    Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) $ <input type="text" value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
+                    <button type="submit" onClick={()=>this.bidHandler()} > BID</button>
+                    </Row>
+                    <br/>
+                </Col>
             </Card>
         );
     }

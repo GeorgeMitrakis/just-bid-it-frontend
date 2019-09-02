@@ -158,7 +158,7 @@ class Search extends React.Component {
                 //onClick={(event)=>this.outsideClickHandler(event)}
             >
                 <Form onSubmit={this.submitHandler}>
-                   <Row className="d-flex justify-content-center align-items-start">
+                   <Row className="d-flex justify-content-center align-items-start" >
 
                        <div className="search">
                            <div className="search-container">
@@ -184,6 +184,7 @@ class Search extends React.Component {
                                         type="text" 
                                         className="form-control form-control-lg" 
                                         placeholder="Category, eg. 'Shoes'" 
+                                        style={{ marginBottom:" 7px"}}
                                         value={this.state.categoryvalue} 
                                         onChange={(event)=> this.categoryInputChangedHandler(event)}
                                         onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}

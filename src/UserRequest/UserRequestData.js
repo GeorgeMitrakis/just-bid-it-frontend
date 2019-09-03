@@ -11,6 +11,21 @@ class UserRequestData extends React.Component{
                 <h3> Thank you for your sign up request, {' '+getUserInfoField("username")+' '}!</h3>
                 <p> An administrator will review your request and grant you access to the site. </p>
                     {/* <h1 id='title'></h1> */}
+                <Col>
+                    <Row className="mb-3"/>
+                    <Row className="justify-content-center">
+                <Card>
+                    <CardBody>
+                        <h4>This user is not yet active.</h4>
+                        <p>Accept his/her registration request? </p>
+                        <div className="d-flex justify-content-around">
+                        <Button type="submit">Decline</Button>
+                        <Button type="submit">Accept</Button>
+                        </div>
+                    </CardBody>
+                </Card>
+                    </Row>
+                </Col>
                 <Container fluid id="content">
                     <Col>
                         <Row className="mb-3"/>

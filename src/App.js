@@ -14,6 +14,7 @@ import Header from './Header/Header';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
 import Search from "./Search/Search";
+import UsersView from "./UsersView/UsersView";
 
 import { getUserInfoField } from './Utility/Utility';
 import {Row} from "reactstrap";
@@ -99,6 +100,7 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" exact component={UnderConstruction}/>
+				<Route path = "/usersview" exact component = {UsersView}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
 			</Switch>

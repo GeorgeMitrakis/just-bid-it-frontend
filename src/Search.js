@@ -118,7 +118,8 @@ class Search extends React.Component {
                                     <input 
                                         type="text" 
                                         className="form-control form-control-lg" 
-                                        placeholder="Categories" 
+                                        placeholder="Categories"
+                                        // style={{clear:'both'}}
                                         value={this.state.categoryvalue} 
                                         onChange={(event)=> this.categoryInputChangedHandler(event)}
                                         onClick={()=>{ if(!this.state.isPopupOpen) this.showPopup()}}

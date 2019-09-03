@@ -99,8 +99,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/admin/users" exact component={UnderConstruction}/>
-				<Route path = "/usersview" exact component = {UsersView}/>
+				<Route path="/admin/users" exact component={UsersView}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
 				<Route component={NotFound}/>
 			</Switch>

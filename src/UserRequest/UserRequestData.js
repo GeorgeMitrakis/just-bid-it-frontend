@@ -1,10 +1,14 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 import { getUserInfoField } from '../Utility/Utility';
-import './UserRequestData.css'
+import './UserRequestData.css';
 import {Card, CardBody, CardHeader, Col, Container,  Row, Button} from "reactstrap";
+import $ from "jquery";
+import {createSuper} from "typescript/lib/tsserverlibrary";
+
 
 class UserRequestData extends React.Component{
+
     render() {
         return(
             <div className="mt-2">
@@ -19,8 +23,8 @@ class UserRequestData extends React.Component{
                         <h4>This user is not yet active.</h4>
                         <p>Accept his/her registration request? </p>
                         <div className="d-flex justify-content-around">
-                        <Button type="submit">Decline</Button>
-                        <Button type="submit">Accept</Button>
+                        <Button type="submit" >Decline</Button>
+                        <Button type="submit" >Accept</Button>
                         </div>
                     </CardBody>
                 </Card>

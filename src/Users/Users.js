@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, BrowserRouter as Router, Route } from 'react-router-dom';
+import { withRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UsersView from './UsersView';
 import UserRequestData from '../UserRequest/UserRequestData';
 
@@ -17,8 +17,8 @@ class Users extends React.Component{
 
     render(){
         return(
-            <div>
-                <Router>
+            <Router>
+                <Switch>
                     {this.state.users.map((user,index) =>{
                             return(
                                 <Route
@@ -29,10 +29,13 @@ class Users extends React.Component{
                                 />
                             )
                         })
-                    }
-                </Router>
-                <UsersView users={this.addUsersHandler}/>
-            </div>
+                    }    
+                    <Route 
+                        path="/admin/users"
+                        render={()=>(<UsersView users={this.addUsersHandler}/>)}
+                    />                    
+                </Switch>
+            </Router>       
         )
     }
 

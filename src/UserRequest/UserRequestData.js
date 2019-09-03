@@ -12,6 +12,10 @@ class UserRequestData extends React.Component{
         super(props);
     }
 
+    componentDidMount(){
+        console.log(this.props);
+    }
+
     submitHandler1(event){
         event.preventDefault();
         console.log("sign up successful!!");
@@ -55,7 +59,7 @@ class UserRequestData extends React.Component{
     render() {
         return(
             <div className="mt-2">
-                <h3> Thank you for your sign up request, {' '+getUserInfoField("username")+' '}!</h3>
+                <h3> Thank you for your sign up request, {' '+this.props.user.username+' '}!</h3>
                 <p> An administrator will review your request and grant you access to the site. </p>
                     {/* <h1 id='title'></h1> */}
                 <Col>
@@ -66,8 +70,8 @@ class UserRequestData extends React.Component{
                         <h4>This user is not yet active.</h4>
                         <p>Accept his/her registration request? </p>
                         <div className="d-flex justify-content-around">
-                        <Button type="submit" onClick = {(event)=>this.submitHandler(event)}>Decline</Button>
-                        <Button type="submit" onClick = {(event)=>this.submitHandler1(event)}>Accept</Button>
+                            <Button type="submit" onClick = {(event)=>this.submitHandler(event)}>Decline</Button>
+                            <Button type="submit" onClick = {(event)=>this.submitHandler1(event)}>Accept</Button>
                         </div>
                     </CardBody>
                 </Card>
@@ -85,43 +89,43 @@ class UserRequestData extends React.Component{
                                     </CardHeader>
                                     <CardBody>
                                         <Row>
-                                            <Col> Userame: </Col>
-                                            <Col> {getUserInfoField("username")}</Col>
+                                            <Col> Username: </Col>
+                                            <Col> {this.props.user.username}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> First Name: </Col>
-                                            <Col> {getUserInfoField("firstname")}</Col>
+                                            <Col> {this.props.user.firstname}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name: </Col>
-                                            <Col> {getUserInfoField("lastname")}</Col>
+                                            <Col> {this.props.user.lastname}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Email: </Col>
-                                            <Col> {getUserInfoField("email")}</Col>
+                                            <Col> {this.props.user.email}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Country: </Col>
-                                            <Col> {getUserInfoField("country")}</Col>
+                                            <Col> {this.props.user.country}</Col>
                                         </Row>
                                         <br/>
                                           <Row>
                                             <Col>Location:</Col>
-                                            <Col> {getUserInfoField("location")}</Col>
+                                            <Col> {this.props.user.location}</Col>
                                          </Row>
                                          <br/>
                                         <Row>
                                             <Col>Phone number:</Col>
-                                            <Col> {getUserInfoField("phoneNumber")}</Col>
+                                            <Col> {this.props.user.phoneNumber}</Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Tax registration number:</Col>
-                                            <Col> {getUserInfoField("taxRegistrationNumber")}</Col>
+                                            <Col> {this.props.user.taxRegistrationNumber}</Col>
                                         </Row>
                                     </CardBody>
                                 </Card>

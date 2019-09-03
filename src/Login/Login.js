@@ -51,10 +51,11 @@ class Login extends React.Component{
     // }
 
     render(){
+        let user = getUserInfo();
         if(this.props.role !== "guest" && this.props.access !=="granted"){
             return(
                 <div>
-                    <UserRequestData/>
+                    <UserRequestData user={user}/>
                 </div>
             );
         }

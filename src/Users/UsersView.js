@@ -1,6 +1,7 @@
 import React from 'react';
-import { withRouter , Redirect} from 'react-router-dom';
+import { withRouter , Redirect, BrowserRouter as Router, Route} from 'react-router-dom';
 import {Table} from 'reactstrap';
+import UserRequestData from '../UserRequest/UserRequestData';
 import $ from "jquery";
 
 
@@ -23,15 +24,16 @@ class UsersView extends React.Component{
             type: 'GET'
 
         })
-            .then(json => {
-                console.log("Search Ajax success!");
-                console.log(json)
-                this.setState({users:json.users})
-                 console.log("Search Ajax end");
-            })
-            .fail(err=>{
-                console.log(err)
-            })
+        .then(json => {
+            console.log("Search Ajax success!");
+            console.log(json)
+            this.setState({users:json.users})
+            this.props.users(json.users);
+            console.log("Search Ajax end");
+        })
+        .fail(err=>{
+            console.log(err)
+        })
     }
 
 
@@ -53,7 +55,9 @@ class UsersView extends React.Component{
                     {this.state.users.map((user,index) =>{
                         return(<tr key={index}>
                             <td>{user.id}</td>
-                            <td>{user.username}</td>
+                            <td>
+                                <a href={"/admin/users/"+user.username} >{user.username}</a>
+                            </td>
                             <td>{user.access}</td>
                             <td>{user.sellerRating}</td>
                             <td>{user.bidderRating}</td>

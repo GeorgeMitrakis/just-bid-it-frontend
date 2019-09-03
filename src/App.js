@@ -1,21 +1,21 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 //import logo from './logo.svg';
 import './App.css';
-import Login from './Login';
-import Signup from './Signup';
-import Home from './Home';
-import Logout from './Logout';
-import Welcome from './Welcome';
+import Login from './Login/Login';
+import Signup from './Signup/Signup';
+import Home from './Home/Home';
+import Logout from './Logout/Logout';
+import Welcome from './Welcome/Welcome';
 import UnderConstruction from './UnderConstruction';
-import MyAuctions from './MyAuctions';
-import Newauction from './Newauction';
-import Header from './Header';
-import UserData from './UserData';
+import MyAuctions from './MyAuctions/MyAuctions';
+import NewAuction from './MyAuctions/NewAuction';
+import Header from './Header/Header';
+//import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
-import Search from "./Search";
+import Search from "./Search/Search";
 
-import { getUserInfoField } from './Utility';
+import { getUserInfoField } from './Utility/Utility';
 import {Row} from "reactstrap";
 //import { getUserInfo } from './Utility';
 
@@ -63,7 +63,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/items" exact component={MyAuctions}/>
-				<Route path="/items/new" exact component={Newauction}/>
+				<Route path="/items/new" exact component={NewAuction}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={Search}/>
@@ -114,10 +114,6 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/items" exact component={MyAuctions}/>
-				{/* to be removed */}
-				<Route path="/userdata" exact component = {UserData} />
-				{/* to be removed */}
 				<Route component={NotFound}/>
 			</Switch>
 		)

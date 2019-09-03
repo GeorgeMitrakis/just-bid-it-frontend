@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.css';
-import logo from './bid.png';
+import logo from '../images/bid1.jpg';
 import {Navbar}from 'reactstrap';
-import { getUserInfo, getUserInfoField } from './Utility';
+import { getUserInfo, getUserInfoField } from '../Utility/Utility';
 
 class Header extends React.Component {
 
@@ -82,7 +82,7 @@ class Header extends React.Component {
             <Navbar className="bg-light d-flex justify-content-between">
                 <div className="d-flex justify-content-between">
                     <a href="/home">
-                        <img src={logo} style={{width: 50, height: 50} } className="img-fluid img-thumbnail"/>
+                        <img src={logo} style={{width: 100, height: 62} } className="img-fluid img-thumbnail"/>
                     </a>
                 </div>
                 { getUserInfo() ? (

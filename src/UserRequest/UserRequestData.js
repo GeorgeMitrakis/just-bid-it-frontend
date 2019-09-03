@@ -23,7 +23,7 @@ class UserRequestData extends React.Component{
         $.ajax({
             url: "http://localhost:8765/app/api/admin/users/whatever/accept",
             dataType: 'json',
-            type: 'PUT'
+            type: 'POST'
 
         })
             .then(json => {
@@ -43,7 +43,7 @@ class UserRequestData extends React.Component{
         $.ajax({
             url: "http://localhost:8765/app/api/admin/users/whatever/decline",
             dataType: 'json',
-            type: 'PUT'
+            type: 'POST'
 
         })
             .then(json => {

@@ -21,7 +21,7 @@ class UserRequestData extends React.Component{
         console.log("sign up successful!!");
 
         $.ajax({
-            url: "http://localhost:8765/app/api/admin/users/whatever/accept",
+            url: "http://localhost:8765/app/api/admin/users/"+this.props.user.username+"/accept",
             dataType: 'json',
             type: 'POST'
 
@@ -41,7 +41,7 @@ class UserRequestData extends React.Component{
         console.log("sign up successful!!");
 
         $.ajax({
-            url: "http://localhost:8765/app/api/admin/users/whatever/decline",
+            url: "http://localhost:8765/app/api/admin/users/"+this.props.user.username+"/decline",
             dataType: 'json',
             type: 'POST'
 
@@ -56,25 +56,44 @@ class UserRequestData extends React.Component{
                 console.log(err)
             })
     }
+
+    userMessage = (role, access) =>{
+        if(role ==="common user" && access === "pending"){
+            return(
+                <>
+                <h3> Thank you for your sign up request, {' '+this.props.user.username+' '}!</h3>
+                <p> An administrator will review your request and grant you access to the site. </p>
+                </>
+            )
+        }
+        else if(role ==="common user" && access === "denied"){
+            return(
+                <>
+                <h3> Dear, {' '+this.props.user.username+' '}!</h3>
+                <p> Your registration request to the site has been declined. </p>
+                </>
+            )
+        }
+    }
+
     render() {
         return(
             <div className="mt-2">
-                <h3> Thank you for your sign up request, {' '+this.props.user.username+' '}!</h3>
-                <p> An administrator will review your request and grant you access to the site. </p>
-                    {/* <h1 id='title'></h1> */}
+                {this.userMessage(getUserInfoField("role"), this.props.user.access)}    {/* <h1 id='title'></h1> */}
                 <Col>
                     <Row className="mb-3"/>
                     <Row className="justify-content-center">
-                <Card>
-                    <CardBody>
-                        <h4>This user is not yet active.</h4>
-                        <p>Accept his/her registration request? </p>
-                        <div className="d-flex justify-content-around">
-                            <Button type="submit" onClick = {(event)=>this.submitHandler(event)}>Decline</Button>
-                            <Button type="submit" onClick = {(event)=>this.submitHandler1(event)}>Accept</Button>
-                        </div>
-                    </CardBody>
-                </Card>
+                    {getUserInfoField("role") === "administrator" ?
+                    (<Card>
+                        <CardBody>
+                            <h4>This user is not yet active.</h4>
+                            <p>Accept his/her registration request? </p>
+                            <div className="d-flex justify-content-around">
+                                <Button type="submit" onClick = {(event)=>this.submitHandler(event)}>Decline</Button>
+                                <Button type="submit" onClick = {(event)=>this.submitHandler1(event)}>Accept</Button>
+                            </div>
+                        </CardBody>
+                    </Card>):null}
                     </Row>
                 </Col>
                 <Container fluid id="content">

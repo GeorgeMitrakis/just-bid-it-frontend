@@ -19,28 +19,28 @@ class OwnerAuctionItem extends React.Component {
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
     }
-    showItems(){
-        $.ajax({
-            url: "http://localhost:8765/app/api/items/"+this.props.item.id+"",
-            dataType: 'json',
-            type: 'GET',
-            data: {
-                bidder_id: getUserInfoField("id"),
-                amount: this.state.bid
-            }
-
-        })
-            .then(json => {
-                console.log("Ajax success!");
-                console.log(json)
-                this.setState({items:json.items})
-                this.props.items.id(json.items);
-                console.log("Search Ajax end");
-            })
-            .fail(err=>{
-                console.log(err)
-            })
-    }
+    // showItems(){
+    //     $.ajax({
+    //         url: "http://localhost:8765/app/api/items/"+this.props.item.id+"",
+    //         dataType: 'json',
+    //         type: 'GET',
+    //         data: {
+    //             bidder_id: getUserInfoField("id"),
+    //             amount: this.state.bid
+    //         }
+    //
+    //     })
+    //         .then(json => {
+    //             console.log("Ajax success!");
+    //             console.log(json)
+    //             this.setState({items:json.items})
+    //             this.props.items.id(json.items);
+    //             console.log("Search Ajax end");
+    //         })
+    //         .fail(err=>{
+    //             console.log(err)
+    //         })
+    // }
 
     render() {
         return(
@@ -49,8 +49,7 @@ class OwnerAuctionItem extends React.Component {
                     <br/>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                         Auction/Item name by {" "+getUserInfoField("username")+" "}
-                        {/*{this.props.item.name } by {this.props.item.sellerId}*/}
+                            {this.props.item.name}
                         </Col>
                         <button type ="submit">EDIT</button>
                         <button type ="submit">DELETE</button>
@@ -58,7 +57,7 @@ class OwnerAuctionItem extends React.Component {
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                        Status: Running/Completed/Auctioned/Bought/Cancelled etc.
+                        Status: {this.props.item.running.toString()}
                         </Col>
                     </Row>
                     <br/>
@@ -70,11 +69,12 @@ class OwnerAuctionItem extends React.Component {
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-between" >
-                        {/*<input type="text" readOnly value={this.props.item.buyPrice}/>*/}
-                        aaaaaaaaa
-                        Bids :
-                        aaaaaaaaaaaaaa
-                        {/*Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) $*/}
+                                Buy Price :${this.props.item.buyPrice}
+                        </Col>
+                            <Col className="d-flex justify-content-between" >
+                                Bids : {this.props.item.numberOfBids} </Col>
+                        <Col className="d-flex justify-content-between" >
+                        Highest Bid :$ {this.props.item.currentBid} by bidder (bidder review: 3/5) $
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-lg-end">

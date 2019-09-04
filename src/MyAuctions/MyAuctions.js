@@ -50,13 +50,6 @@ class MyAuctions extends React.Component{
                     <Row className="mb-3 d-flex justify-content-center">
                         <Button onClick={()=>this.props.history.push("/items/new")}>Create new auction</Button>
                     </Row>
-                    {/*{this.state.items.length === 0 ?*/}
-                    {/*    (<p className="mt-5">loading...</p>):                            */}
-                    {/*    this.state.items.map((item, index) => {*/}
-                    {/*    return(*/}
-                    {/*        <Row className="d-flex justify-content-center" key={index} item={item}>{item.name}</Row>*/}
-                    {/*    );*/}
-                    {/*})}*/}
                 </Col>
                 <Col>
                     {

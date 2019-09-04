@@ -2,6 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Button, Container} from 'reactstrap';
 import $ from 'jquery';
+import AuctionDetails from "./OwnerAuctionItem";
+import Card from "reactstrap/es/Card";
+import CardHeader from "reactstrap/es/CardHeader";
+import CardBody from "reactstrap/es/CardBody";
+import CardTitle from "reactstrap/es/CardTitle";
+import {getUserInfoField} from "../Utility/Utility";
 
 class MyAuctions extends React.Component{
     constructor(props){
@@ -34,18 +40,32 @@ class MyAuctions extends React.Component{
     }
     render(){
         return(
+
             <Container className="mt-3">
                 <Col>
+                    <Row className= "d-flex justify-content-center">
+                        <h4>Dear {" "+getUserInfoField("username")+" "} , here you can edit or delete your auctions, or create new ones!</h4>
+                    </Row>
+                    <br/>
                     <Row className="mb-3 d-flex justify-content-center">
                         <Button onClick={()=>this.props.history.push("/items/new")}>Create new auction</Button>
                     </Row>
-                    {this.state.items.length === 0 ?
-                        (<p className="mt-5">loading...</p>):                            
-                        this.state.items.map((item, index) => {
-                        return(
-                            <Row className="d-flex justify-content-center" key={index} item={item}>{item.name}</Row>
-                        );
-                    })}
+                    {/*{this.state.items.length === 0 ?*/}
+                    {/*    (<p className="mt-5">loading...</p>):                            */}
+                    {/*    this.state.items.map((item, index) => {*/}
+                    {/*    return(*/}
+                    {/*        <Row className="d-flex justify-content-center" key={index} item={item}>{item.name}</Row>*/}
+                    {/*    );*/}
+                    {/*})}*/}
+                </Col>
+                <Col>
+                    {
+                        this.state.items.length!==0 ?(
+                                this.state.items.map((item,index)=>
+                                    <AuctionDetails item = {item} key = {index} />)
+                            ):
+                            <div className="mt-5"><p>Sorry, no results could match your search.</p></div>
+                    }
                 </Col>
             </Container>
         )

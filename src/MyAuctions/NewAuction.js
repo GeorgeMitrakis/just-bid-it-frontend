@@ -5,6 +5,7 @@ import produce from 'immer';
 //import DatePicker from 'react-datepicker';
 //import { getUserInfo } from './Utility';
 import './NewAuction.css'
+import Popup from "reactjs-popup";
 
 import $ from 'jquery';
 
@@ -178,8 +179,14 @@ class NewAuction extends React.Component {
                                                     <Col><input type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
                                                     
                                                 </Row>
+                                                <br/>
                                                 <Row className="justify-content-center">
-                                                    <Button color="muted">Open Map</Button>
+
+                                                    <Popup trigger={<Button outline color="secondary">Open Map</Button>} position="right center">
+                                                        <div>Popup content here !!
+
+                                                        </div>
+                                                    </Popup>
                                                 </Row>
                                             </Col>
                                         </Row>
@@ -204,7 +211,7 @@ class NewAuction extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Ends</Col>
-                                            <Col><input type="datetime-local" name="ends" value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
+                                            <Col><input type="datetime-local"  name="ends" value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>

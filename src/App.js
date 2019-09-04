@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
 //import logo from './logo.svg';
 import './App.css';
 import Login from './Login/Login';
@@ -15,11 +15,10 @@ import Header from './Header/Header';
 import NotFound from './NotFound';
 import Search from "./Search/Search";
 import Users from "./Users/Users";
-
+import OwnerAuctionItem from "./MyAuctions/OwnerAuctionItem";
 import { getUserInfoField } from './Utility/Utility';
 import {Row} from "reactstrap";
 //import { getUserInfo } from './Utility';
-
 class App extends React.Component {
 	constructor(props){
 		super(props);
@@ -65,6 +64,7 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/items" exact component={MyAuctions}/>
 				<Route path="/items/new" exact component={NewAuction}/>
+				<Route path="/ownerauctionitem" exact component = {OwnerAuctionItem}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={Search}/>

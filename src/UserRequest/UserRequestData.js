@@ -5,18 +5,28 @@ import './UserRequestData.css';
 import {Card, CardBody, CardHeader, Col, Container,  Row, Button} from "reactstrap";
 import $ from "jquery";
 import {createSuper} from "typescript/lib/tsserverlibrary";
+import { Alert } from 'reactstrap';
+import { useAlert } from "react-alert";
 
 
 class UserRequestData extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            visible: true
+        };
+        this.onDismiss = this.onDismiss.bind(this);
     }
-
+    onDismiss() {
+        this.setState({ visible: false });
+    }
     componentDidMount(){
         console.log(this.props);
+
     }
 
     submitHandler1(event){
+
         event.preventDefault();
         console.log("sign up successful!!");
 
@@ -37,8 +47,16 @@ class UserRequestData extends React.Component{
             })
     }
     submitHandler(event){
+
         event.preventDefault();
-        console.log("sign up successful!!");
+        // return(
+        //     <Col className="d-flex justify-content-center">
+        //         <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+        //             Action successful!
+        //         </Alert>
+        //     </Col>
+        // )
+        console.log("successful!!");
 
         $.ajax({
             url: "http://localhost:8765/app/api/admin/users/"+this.props.user.username+"/decline",
@@ -55,6 +73,8 @@ class UserRequestData extends React.Component{
             .fail(err=>{
                 console.log(err)
             })
+
+
     }
 
     userMessage = (role, access) =>{
@@ -75,6 +95,17 @@ class UserRequestData extends React.Component{
             )
         }
     }
+    userAlert = (access) =>{
+        if(access === "denied" || access ==="accepted"){
+        return(
+            <Col className="d-flex justify-content-center">
+                <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+                    Action successful!
+                </Alert>
+            </Col>
+        )}
+
+}
 
     render() {
         return(
@@ -89,12 +120,19 @@ class UserRequestData extends React.Component{
                             <h4>This user is not yet active.</h4>
                             <p>Accept his/her registration request? </p>
                             <div className="d-flex justify-content-around">
-                                <Button type="submit" onClick = {(event)=>this.submitHandler(event)}>Decline</Button>
-                                <Button type="submit" onClick = {(event)=>this.submitHandler1(event)}>Accept</Button>
+                                <Button type="submit" onClick = {(event)=>this.submitHandler(event)} >Decline</Button>
+                                <Button type="submit" onClick = {(event)=>this.submitHandler1(event)} >Accept</Button>
                             </div>
+                            {this.userAlert(this.props.user.access)}
                         </CardBody>
                     </Card>):null}
                     </Row>
+                    {/*<br/>*/}
+                    {/*<Col className="d-flex justify-content-center">*/}
+                    {/*<Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>*/}
+                    {/*    Action successful!*/}
+                    {/*</Alert>*/}
+                    {/*</Col>*/}
                 </Col>
                 <Container fluid id="content">
                     <Col>

@@ -15,7 +15,9 @@ class SearchBar extends React.Component{
         this.state = {
             searchterm : '',
             categoryvalue : '',
-            isPopupOpen : false
+            isCategoryPopupOpen : false,
+            isLocationPopupOpen: false,
+            locationvalue : ''
 
 
         }
@@ -34,13 +36,17 @@ class SearchBar extends React.Component{
 
         if(field === "categoryvalue"){
             this.categoriesGet(v);
+        }else if(field === "locationvalue"){
+            this.locationGet(v);
         }
+
     }
+
 
     categoriesGet(value){
         if(value===''){
             this.setState({categories:[]});
-            this.hidePopup();
+            this.hideCategoryPopup();
             return;
         }
 
@@ -57,36 +63,78 @@ class SearchBar extends React.Component{
             console.log("Ajax success!");
             console.log(json)
             this.setState({categories:json.categories})
-            this.showPopup();
+            this.showCategoryPopup();
             console.log("Ajax end");
         })
         .fail(err=>{
             console.log(err)
         })
     }
+    locationGet(value){
+        if(value===''){
+            this.setState({locations:[]});
+            this.hideLocationPopup();
+            return;
+        }
+
+        $.ajax({
+            url: "http://localhost:8765/app/api/locations",
+            dataType: 'json',
+            type: 'GET',
+            data: {
+                location: value
+            }
+
+        })
+            .then(json => {
+                console.log("Ajax success!");
+                console.log(json)
+                this.setState({locations:json.locations})
+                this.showLocationPopup();
+                console.log("Ajax end");
+            })
+            .fail(err=>{
+                console.log(err)
+            })
+    }
     
     categorySelectHandler(value){
         //console.log("categorySelectHandler start");
         //console.log(this.state);
         this.setState({categoryvalue:value});
-        this.hidePopup();
+        this.hideCategoryPopup();
+        //console.log(this.state);
+        //console.log("categorySelectHandler end");
+    }
+    locationSelectHandler(value){
+        //console.log("categorySelectHandler start");
+        //console.log(this.state);
+        this.setState({locationvalue:value});
+        this.hideLocationPopup();
         //console.log(this.state);
         //console.log("categorySelectHandler end");
     }
 
-    showPopup() {
-        this.setState({ isPopupOpen: true });
+    showCategoryPopup() {
+        this.setState({ isCategoryPopupOpen: true });
     }
     
-    hidePopup() {
-        this.setState({ isPopupOpen: false });
+    hideCategoryPopup() {
+        this.setState({ isCategoryPopupOpen: false });
+    }
+    showLocationPopup() {
+        this.setState({ isLocationPopupOpen: true });
+    }
+
+    hideLocationPopup() {
+        this.setState({ isLocationPopupOpen: false });
     }
 
     submitHandler = (event) => {
         event.persist();
         event.preventDefault();
         //console.log(event);
-        this.props.searchHandler(this.state.searchterm, this.state.categoryvalue);
+        this.props.searchHandler(this.state.searchterm, this.state.categoryvalue,this.state.locationvalue,20);
     }
 
     render(){
@@ -122,13 +170,13 @@ class SearchBar extends React.Component{
                                 style={{ marginBottom:" 7px"}}
                                 value={this.state.categoryvalue} 
                                 onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
-                                onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}
+                                onClick={() => {if(this.state.categoryvalue!==''){ this.showCategoryPopup()}}}
                             />
                             
                             <AutoCompletePopup 
-                                isOpen={this.state.isPopupOpen}
-                                categories = {this.state.categories} 
-                                select={(value) => this.categorySelectHandler(value)} 
+                                isOpen={this.state.isCategoryPopupOpen}
+                                items = {this.state.categories}
+                                select={(value) => this.categorySelectHandler(value)}
                             />
                         </div>
                     </div>
@@ -144,16 +192,16 @@ class SearchBar extends React.Component{
                                 className="form-control form-control-lg"
                                 placeholder="Location, eg. 'Athens'"
                                 style={{ marginBottom:" 7px"}}
-                                // value={this.state.categoryvalue}
-                                // onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
-                                // onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}
+                                value={this.state.locationvalue}
+                                onChange={(event)=> this.inputChangedHandler(event, "locationvalue")}
+                                onClick={() => {if(this.state.locationvalue!==''){ this.showLocationPopup()}}}
                             />
 
-                            {/*<AutoCompletePopup*/}
-                            {/*    isOpen={this.state.isPopupOpen}*/}
-                            {/*    categories = {this.state.categories}*/}
-                            {/*    select={(value) => this.categorySelectHandler(value)}*/}
-                            {/*/>*/}
+                            <AutoCompletePopup
+                                isOpen={this.state.isLocationPopupOpen}
+                                items = {this.state.locations}
+                                select={(value) => this.locationSelectHandler(value)}
+                            />
                         </div>
                     </div>
                 </div>

@@ -8,15 +8,15 @@ const AutoCompletePopup = (props) => {
             <div className="popup">
                 <div className="container">
                     <div className="content">
-                        {props.categories.length!==0 &&
-                        props.categories.map((category, idx) => {
+                        {props.items.length!==0 &&
+                        props.items.map((item, idx) => {
                             return (
-                                <div className="item" key={idx} onClick={()=>props.select(category)}>
-                                    {category}
+                                <div className="item" key={idx} onClick={()=>props.select(item)}>
+                                    {item}
                                 </div>
                             );
                         })}
-                        {props.categories.length===0 && <div className="warning">category not found...</div>}
+                        {props.items.length===0 && <div className="warning">category not found...</div>}
                     </div>
                 </div>
             </div>

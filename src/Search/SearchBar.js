@@ -95,42 +95,42 @@ class SearchBar extends React.Component{
                     <div className="search-container">
                         <div className="content">
                             <input 
-                                 type="text" 
-                                 className="form-control form-control-lg" 
-                                 placeholder="Search for auction..." 
-                                 value={this.state.searchterm} 
-                                 onChange={(event)=> this.inputChangedHandler(event, "searchterm")}
-                                 
-                             />
+                                type="text" 
+                                className="form-control form-control-lg" 
+                                placeholder="Search for auction..." 
+                                value={this.state.searchterm} 
+                                onChange={(event)=> this.inputChangedHandler(event, "searchterm")}
+                                
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="search">
                     <div className="search-container">
                         <div 
-                             className="content" 
-                             //ref={this.popupRef}
-                         >
-                             <input 
-                                 type="text" 
-                                 className="form-control form-control-lg" 
-                                 placeholder="Category, eg. 'Shoes'" 
-                                 style={{ marginBottom:" 7px"}}
-                                 value={this.state.categoryvalue} 
-                                 onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
-                                 onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}
-                             />
-                             
-                             <AutoCompletePopup 
-                                 isOpen={this.state.isPopupOpen}
-                                 categories = {this.state.categories} 
-                                 select={(value) => this.categorySelectHandler(value)} 
-                             />
+                            className="content" 
+                            //ref={this.popupRef}
+                        >
+                            <input 
+                                type="text" 
+                                className="form-control form-control-lg" 
+                                placeholder="Category, eg. 'Shoes'" 
+                                style={{ marginBottom:" 7px"}}
+                                value={this.state.categoryvalue} 
+                                onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
+                                onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}
+                            />
+                            
+                            <AutoCompletePopup 
+                                isOpen={this.state.isPopupOpen}
+                                categories = {this.state.categories} 
+                                select={(value) => this.categorySelectHandler(value)} 
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="mt-1">
-                     <Button type="submit">SEARCH</Button>
+                    <Button type="submit">SEARCH</Button>
                 </div>
             </Row>
          </Form>

@@ -1,0 +1,35 @@
+.bidcard {
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+}
+
+.row{
+    display: flex;
+    padding-left: 3vw;  
+    padding-right: 3vw;    
+    justify-content: space-between;
+}
+
+.row .item-text-area{
+    align-content: center;
+}
+
+.row .pair input{  
+    width:5vw;
+}
+
+.buy{
+    background-color: lightgray;
+}
+
+.bid{
+
+}
+
+.row .pair button{
+    width:45px;
+}

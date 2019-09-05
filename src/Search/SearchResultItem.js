@@ -3,6 +3,7 @@ import {Card, CardBody, CardText, Col, Row, Button} from "reactstrap";
 import './SearchResultItem.css';
 import $ from "jquery";
 import {getUserInfoField} from "../Utility/Utility";
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class SearchResultItem extends React.Component{
 
@@ -79,6 +80,7 @@ class SearchResultItem extends React.Component{
 
     render() {
         return(
+           <div>
             <Card className="bidcard">
                 <Col>
                     <br/>
@@ -117,6 +119,7 @@ class SearchResultItem extends React.Component{
                     <br/>
                 </Col>
             </Card>
+           </div>
         );
     }
 }

@@ -15,7 +15,11 @@ $result-text-color: #424444;
       font-size: 27px;
       color: $base-color;
     }
-  
+
+  .page{
+    margin-right: 40vw;
+
+  }
     .content {
       input {
         font-family: 'Avenir LT Std', sans-serif;
@@ -23,12 +27,17 @@ $result-text-color: #424444;
         outline: 0;
         color: $base-color;
         transition: all, 200ms ease-in-out;
+        width: 15vw;
         &::placeholder {
           color: $base-color;
         }
         &:focus {
           box-shadow: 0px 0px 19px 3.1px $hover-input-color;
         }
+
+        }
+      .buycontainer{
+        width: 8vw;
       }
     }
   }

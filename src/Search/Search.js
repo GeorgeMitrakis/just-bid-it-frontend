@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col } from "reactstrap";
+import {Col, Pagination, PaginationItem, PaginationLink, Row} from "reactstrap";
 import './Search.css';
 import $ from "jquery";
 import SearchResultItem from './SearchResultItem';
@@ -22,6 +22,7 @@ class Search extends React.Component {
     componentDidMount(){
         this.searchItems(this.state.searchterm, this.state.categoryvalue);
     }
+
 
     searchItems(searchterm, categoryvalue){
         $.ajax({
@@ -68,6 +69,46 @@ class Search extends React.Component {
                 //onClick={(event)=>this.outsideClickHandler(event)}
             >
                <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
+
+                        <Pagination aria-label="Page navigation example">
+                            <PaginationItem>
+                                <PaginationLink first href="#" />
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink previous href="#" />
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink href="#">
+                                    1
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink href="#">
+                                    2
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink href="#">
+                                    3
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink href="#">
+                                    4
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink href="#">
+                                    5
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink next href="#" />
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink last href="#" />
+                            </PaginationItem>
+                        </Pagination>
                <Col> 
                 {
                     this.state.items.length!==0 ?(
@@ -79,8 +120,6 @@ class Search extends React.Component {
                 </Col>
 
             </Col>
-
-
 
         );
     }

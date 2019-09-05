@@ -15,7 +15,7 @@
 }
 
 .row .item-text-area{
-    align-content: center;
+    align-content: baseline;
 }
 
 .row .pair input{  

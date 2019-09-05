@@ -78,23 +78,22 @@ class SearchResultItem extends React.Component{
 
 
     render() {
-        // let nextBid;
-        // if(this.state.bid){
-        //     nextBid = parseFloat(this.state.bid);
-        // } 
-        // else{
-        //     nextBid = parseFloat(this.props.currentBid)+0.5;
-        // }
         return(
             <Card className="bidcard">
                 <Col>
                     <br/>
                     <Row>
                         <h4>
-                            {this.props.item.name } by {this.props.item.sellerId}
+                            {this.props.item.name }
                         </h4>
                     </Row>
                     <hr/>
+                    <br/>
+                    <Row>
+                        <span className="item-text-area">
+                            by {this.props.item.sellerId}
+                        </span>
+                    </Row>
                     <br/>
                     <Row>
                         <span className="item-text-area">

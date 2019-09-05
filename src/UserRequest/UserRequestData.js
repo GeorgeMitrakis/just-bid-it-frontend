@@ -13,7 +13,8 @@ class UserRequestData extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            visible: true
+            visible: false,
+            options: (this.props.user.access === "pending")
         };
         this.onDismiss = this.onDismiss.bind(this);
     }
@@ -25,8 +26,7 @@ class UserRequestData extends React.Component{
 
     }
 
-    submitHandler1(event){
-
+    allowHandler(event){
         event.preventDefault();
         console.log("sign up successful!!");
 
@@ -38,24 +38,18 @@ class UserRequestData extends React.Component{
         })
             .then(json => {
                 console.log(" Ajax success!");
-                // console.log(json);
+                console.log(json);
                 // this.setState({users:json.users})
+                this.setState({visible:true, options:false});
                 console.log(" Ajax end");
             })
             .fail(err=>{
                 console.log(err)
             })
     }
-    submitHandler(event){
 
+    banHandler(event){
         event.preventDefault();
-        // return(
-        //     <Col className="d-flex justify-content-center">
-        //         <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
-        //             Action successful!
-        //         </Alert>
-        //     </Col>
-        // )
         console.log("successful!!");
 
         $.ajax({
@@ -66,8 +60,9 @@ class UserRequestData extends React.Component{
         })
             .then(json => {
                 console.log(" Ajax success!");
-                // console.log(json);
+                console.log(json);
                 // this.setState({users:json.users})
+                this.setState({visible:true, options:false});
                 console.log(" Ajax end");
             })
             .fail(err=>{
@@ -95,8 +90,8 @@ class UserRequestData extends React.Component{
             )
         }
     }
-    userAlert = (access) =>{
-        if(access === "denied" || access ==="accepted"){
+    adminAlert = () =>{
+        if(getUserInfoField("role") === "administrator"){
         return(
             <Col className="d-flex justify-content-center">
                 <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
@@ -105,7 +100,23 @@ class UserRequestData extends React.Component{
             </Col>
         )}
 
-}
+    }
+
+    optionsCard = () =>{
+        if(this.state.options){
+            return(
+                <Card>
+                    <CardBody>
+                        <h4>This user is not yet active.</h4>
+                        <p>Accept his/her registration request? </p>
+                        <div className="d-flex justify-content-around">
+                            <Button type="submit" onClick = {(event)=>this.banHandler(event)} >Decline</Button>
+                            <Button type="submit" onClick = {(event)=>this.allowHandler(event)} >Accept</Button>
+                        </div>
+                    </CardBody>
+                </Card>);
+        }
+    }
 
     render() {
         return(
@@ -113,20 +124,18 @@ class UserRequestData extends React.Component{
                 {this.userMessage(getUserInfoField("role"), this.props.user.access)}    {/* <h1 id='title'></h1> */}
                 <Col>
                     <Row className="mb-3"/>
-                    <Row className="justify-content-center">
                     {getUserInfoField("role") === "administrator" ?
-                    (<Card>
-                        <CardBody>
-                            <h4>This user is not yet active.</h4>
-                            <p>Accept his/her registration request? </p>
-                            <div className="d-flex justify-content-around">
-                                <Button type="submit" onClick = {(event)=>this.submitHandler(event)} >Decline</Button>
-                                <Button type="submit" onClick = {(event)=>this.submitHandler1(event)} >Accept</Button>
-                            </div>
-                            {this.userAlert(this.props.user.access)}
-                        </CardBody>
-                    </Card>):null}
+                    (
+                    <>
+                    <Row className="d-flex justify-content-center">
+                        <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+                            Action successful!
+                        </Alert>
                     </Row>
+                    <Row className="d-flex justify-content-center">                    
+                        {this.optionsCard()}
+                    </Row>
+                    </>):null}
                     {/*<br/>*/}
                     {/*<Col className="d-flex justify-content-center">*/}
                     {/*<Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>*/}

@@ -38,12 +38,13 @@ $result-text-color: #424444;
         }
       .buycontainer{
         width: 8vw;
+        margin-bottom: 7px;
       }
     }
   }
   
 //Popup
-.popup-parent{
+.popupParent{
   position: relative; 
   width: inherit; 
   height: 0;

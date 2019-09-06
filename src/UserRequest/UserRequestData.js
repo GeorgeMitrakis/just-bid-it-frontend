@@ -1,10 +1,9 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 import { getUserInfoField } from '../Utility/Utility';
-import './UserRequestData.css';
+//import styles from './UserRequestData.module.css';
 import {Card, CardBody, CardHeader, Col, Container,  Row, Button} from "reactstrap";
 import $ from "jquery";
-import {createSuper} from "typescript/lib/tsserverlibrary";
 import { Alert } from 'reactstrap';
 //import { useAlert } from "react-alert";
 

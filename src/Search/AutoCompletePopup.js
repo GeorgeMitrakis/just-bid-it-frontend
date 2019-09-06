@@ -1,17 +1,21 @@
 import React from 'react';
-import './Searchbar.scss'
+import styles from './Searchbar.module.scss';
 
 const AutoCompletePopup = (props) => {
     if (!props.isOpen) return null;
     return (
-        <div className="popup-parent">
-            <div className="popup">
-                <div className="container">
-                    <div className="content">
+        <div className={styles.popupParent}>
+            <div className={styles.popup}>
+                <div className={styles.container}>
+                    <div className={styles.content}>
                         {props.items.length!==0 &&
                         props.items.map((item, idx) => {
                             return (
-                                <div className="item" key={idx} onClick={()=>props.select(item)}>
+                                <div 
+                                    className={styles.item}
+                                    key={idx}
+                                    onClick={()=>props.select(item)}
+                                >
                                     {item}
                                 </div>
                             );

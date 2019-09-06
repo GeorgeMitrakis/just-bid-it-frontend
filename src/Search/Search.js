@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col, Pagination, PaginationItem, PaginationLink, Row} from "reactstrap";
-import './Search.css';
+import {Col, Pagination, PaginationItem, PaginationLink, Container} from "reactstrap";
+import styles from './Search.module.css';
 import $ from "jquery";
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
@@ -67,7 +67,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <Col className="filter-list"
+            <Container className={styles.searchpage}
                 //onClick={(event)=>this.outsideClickHandler(event)}
             >
                <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
@@ -121,7 +121,7 @@ class Search extends React.Component {
                 }
                 </Col>
 
-            </Col>
+            </Container>
 
         );
     }

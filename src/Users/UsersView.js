@@ -1,7 +1,7 @@
 import React from 'react';
-import { withRouter , Redirect, BrowserRouter as Router, Route} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import {Table} from 'reactstrap';
-import UserRequestData from '../UserRequest/UserRequestData';
+//import styles from './UsersView.module.css';
 import $ from "jquery";
 
 

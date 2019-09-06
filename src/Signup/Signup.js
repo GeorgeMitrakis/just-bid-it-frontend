@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
-import './Signup.css';
+import {content} from './Signup.module.css';
 import $ from 'jquery';
 // import { getUserInfo } from './Utility';
 class Signup extends React.Component{
@@ -73,7 +73,7 @@ class Signup extends React.Component{
 
 render(){
     return(
-        <Container fluid id="content">
+        <Container fluid id={content}>
             <Col>
                 <Row className="mb-3"/>
                 <Row className="justify-content-center">

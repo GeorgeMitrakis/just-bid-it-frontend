@@ -7,18 +7,18 @@
 
 }
 
-.row{
+.infoRow{
     display: flex;
     padding-left: 3vw;  
     padding-right: 3vw;    
     justify-content: space-between;
 }
 
-.row .item-text-area{
+.itemTextArea{
     align-content: baseline;
 }
 
-.row .pair input{  
+.pairInput{  
     width:5vw;
 }
 
@@ -30,6 +30,6 @@
 
 }
 
-.row .pair button{
+.pairButton{
     width:45px;
 }

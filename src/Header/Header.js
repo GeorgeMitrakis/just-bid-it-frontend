@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import styles from './Header.module.css';
 import logo from '../images/bid1.jpg';
 import {Navbar}from 'reactstrap';
 import { getUserInfo, getUserInfoField } from '../Utility/Utility';
@@ -34,29 +34,29 @@ class Header extends React.Component {
 
     unregisteredUserOptions = () => {
         return(
-            <ul>
-                <li><a href="/logout">Logout</a></li>
+            <ul className={styles.ul}>
+                <li className={styles.li}><a  className={styles.a} href="/logout">Logout</a></li>
             </ul>
         );
     }
     commonUserOptions = () =>{
         return(
-            <ul>
-                <li><a href="/bids">My Bids</a></li>
-                <li><a href="/items">My Auctions</a></li>
-                <li><a href="/messages">Messages</a></li>
-                <li><a href="/logout">Logout</a></li>
+            <ul className={styles.ul}>
+                <li className={styles.li}><a  className={styles.a} href="/bids">My Bids</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/items">My Auctions</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/messages">Messages</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/logout">Logout</a></li>
             </ul>
         );
     }
 
     adminOptions = () =>{
         return(
-            <ul>
-                <li><a href="/admin/users">Users</a></li>
-                <li><a href="#">Export items in XML</a></li>
-                <li><a href="#">Export items in JSON</a></li>
-                <li><a href="/logout">Logout</a></li>
+            <ul className={styles.ul}>
+                <li className={styles.li}><a  className={styles.a} href="/admin/users">Users</a></li>
+                <li className={styles.li}><a  className={styles.a} href="#">Export items in XML</a></li>
+                <li className={styles.li}><a  className={styles.a} href="#">Export items in JSON</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/logout">Logout</a></li>
             </ul>
         );
     }
@@ -78,18 +78,18 @@ class Header extends React.Component {
 
     render() {
         return (
-        <div className="navbar-style">
+        <div className={styles.navbarStyle}>
             <Navbar className="bg-light d-flex justify-content-between">
                 <div className="d-flex justify-content-between">
-                    <a href="/home">
+                    <a  className={styles.a} href="/home">
                         <img src={logo} style={{width: 100, height: 62} } className="img-fluid img-thumbnail"/>
                     </a>
                 </div>
                 { getUserInfo() ? (
                     <div>
                         Welcome dear {" "+getUserInfoField("username")+" "}
-                        <div className="dropdown" style = {{width:"150px"}} >
-                            <div className="button" onClick={this.showDropdownMenu}> Profile </div>
+                        <div className={"dropdown "+styles.dropdown} >
+                            <div className={styles.button} onClick={this.showDropdownMenu}> Profile </div>
                             { this.state.displayMenu ? (
                                 <div>
                                     {this.userOptions()}

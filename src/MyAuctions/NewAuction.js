@@ -4,7 +4,7 @@ import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 're
 import produce from 'immer';
 //import DatePicker from 'react-datepicker';
 //import { getUserInfo } from './Utility';
-import './NewAuction.css'
+//import styles from './NewAuction.module.css'
 import Popup from "reactjs-popup";
 
 import $ from 'jquery';

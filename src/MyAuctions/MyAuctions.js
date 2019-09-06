@@ -3,10 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { Row, Col, Button, Container} from 'reactstrap';
 import $ from 'jquery';
 import AuctionDetails from "./OwnerAuctionItem";
-import Card from "reactstrap/es/Card";
-import CardHeader from "reactstrap/es/CardHeader";
-import CardBody from "reactstrap/es/CardBody";
-import CardTitle from "reactstrap/es/CardTitle";
 import {getUserInfoField} from "../Utility/Utility";
 
 class MyAuctions extends React.Component{

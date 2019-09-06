@@ -1,12 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import {Col,Row, Form, Button } from "reactstrap";
+import {Row, Form, Button } from "reactstrap";
 import AutoCompletePopup from './AutoCompletePopup';
 import produce from 'immer';
 import $ from "jquery";
-import './Searchbar.scss'
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import styles from './Searchbar.module.scss';
 
 class SearchBar extends React.Component{
     constructor(props){
@@ -143,9 +142,9 @@ class SearchBar extends React.Component{
             <Form onSubmit={this.submitHandler}>
             <Row className="d-flex justify-content-center align-items-start" >
 
-                <div className="search">
+                <div className={styles.search}>
                     <div className="search-container">
-                        <div className="content">
+                        <div className={styles.content}>
                             <input 
                                 type="text" 
                                 className="form-control form-control-lg" 
@@ -157,10 +156,10 @@ class SearchBar extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div className="search">
+                <div className={styles.search}>
                     <div className="search-container">
                         <div 
-                            className="content" 
+                             className={styles.content}
                             //ref={this.popupRef}
                         >
                             <input 
@@ -181,10 +180,10 @@ class SearchBar extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div className="search">
+                <div className={styles.search}>
                     <div className="search-container">
                         <div
-                            className="content"
+                             className={styles.content}
                             //ref={this.popupRef}
                         >
                             <input
@@ -205,16 +204,15 @@ class SearchBar extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div className="search ">
+                <div className={styles.search}>
                     <div className="search-container">
                         <div
-                            className="content"
+                             className={styles.content}
                         >
                             <input
                                 type="text"
-                                className="form-control form-control-lg buycontainer"
+                                className={"form-control form-control-lg "+styles.buycontainer}
                                 placeholder="Price"
-                                style={{ marginBottom:" 7px" }}
                                 // value={this.state.categoryvalue}
                                 // onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
                                 // onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}

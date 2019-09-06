@@ -1,9 +1,8 @@
 import React from 'react';
-import {Card, CardBody, CardText, Col, Row, Button} from "reactstrap";
-import './SearchResultItem.css';
+import {Card,  Col, Row} from "reactstrap";
+import {bidcard, infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
 import $ from "jquery";
 import {getUserInfoField} from "../Utility/Utility";
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class SearchResultItem extends React.Component{
 
@@ -81,39 +80,39 @@ class SearchResultItem extends React.Component{
     render() {
         return(
            <div>
-            <Card className="bidcard">
+            <Card className={bidcard}>
                 <Col>
                     <br/>
-                    <Row>
+                    <Row className={infoRow}>
                         <h4>
                             {this.props.item.name }
                         </h4>
                     </Row>
                     <hr/>
                     <br/>
-                    <Row>
-                        <span className="item-text-area">
+                    <Row className={infoRow}>
+                        <span className={itemTextArea}>
                             by {this.props.item.sellerId}
                         </span>
                     </Row>
                     <br/>
-                    <Row>
-                        <span className="item-text-area">
+                    <Row className={infoRow}>
+                        <span className={itemTextArea}>
                             Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30)
                         </span>
-                        <span className="pair">
-                            {"$"+" "}<input className="buy" type="number" step="0.5" readOnly value={this.props.item.buyPrice}/>
-                            <button type="submit" onClick={()=>this.buyHandler()}>Buy</button>
+                        <span>
+                            {"$ "}<input className={buy+" "+pairInput} type="number" step="0.5" readOnly value={this.props.item.buyPrice}/>
+                            <button className={pairButton} type="submit" onClick={()=>this.buyHandler()}>Buy</button>
                         </span>
                     </Row>
                     <br/>
-                    <Row>
-                        <span  className="item-text-area">
+                    <Row className={infoRow}>
+                        <span  className={itemTextArea}>
                             Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) 
                         </span>
-                        <span className="pair">
-                            {"$"+" "}<input className="bid" type="number" step="0.5" min={this.props.item.currentBid+0.5} value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
-                            <button type="submit" onClick={()=>this.bidHandler()} > Bid</button>
+                        <span>
+                            {"$ "}<input className={bid+" "+ pairInput} type="number" step="0.5" min={this.props.item.currentBid+0.5} value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
+                            <button className={pairButton} type="submit" onClick={()=>this.bidHandler()} > Bid</button>
                         </span>
                     </Row>
                     <br/>

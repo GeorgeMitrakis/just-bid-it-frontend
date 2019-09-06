@@ -1,13 +1,8 @@
 import React from 'react';
-import {Card, Col} from "reactstrap";
-import Row from "reactstrap/es/Row";
+import {Card, Col, Row} from "reactstrap";
 import { withRouter } from 'react-router-dom';
-import $ from "jquery";
-import {getUserInfoField} from "../Utility/Utility";
 import { Collapse, Button, CardBody} from 'reactstrap';
-import { CardImg, CardText,  CardLink,
-    CardTitle, CardSubtitle } from 'reactstrap';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { CardText, Nav, NavItem, NavLink } from 'reactstrap';
 class OwnerAuctionItem extends React.Component {
     constructor(props) {
 

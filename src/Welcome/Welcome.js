@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 //import logo from './logo.svg';
 import { Row, Col, Button } from 'reactstrap';
 import { getUserInfoField } from '../Utility/Utility';
+import styles from './Welcome.module.css';
 //import { getUserInfo } from './Utility';
 import {Carousel,CarouselItem,CarouselControl,CarouselIndicators,CarouselCaption} from 'reactstrap';
 const items = [

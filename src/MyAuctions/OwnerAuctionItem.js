@@ -1,10 +1,12 @@
 import React from 'react';
 import {Card, Col, Row} from "reactstrap";
-import { withRouter } from 'react-router-dom';
-import { Collapse, Button, CardBody} from 'reactstrap';
-import { CardText, Nav, NavItem, NavLink } from 'reactstrap';
+import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
+import { Collapse, Button, CardText, 
+    Nav, NavItem, NavLink, TabContent, TabPane, CardTitle } from 'reactstrap';
 import classnames from 'classnames';
-import { TabContent, TabPane, CardTitle } from 'reactstrap';
+import AuctionForm from "./AuctionForm";
+import styles from './OwnerAuctionItem.module.css';
+import $ from 'jquery';
 
 
 class OwnerAuctionItem extends React.Component {
@@ -21,8 +23,8 @@ class OwnerAuctionItem extends React.Component {
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
     }
-    togglefunc(tab)
-    {
+    
+    togglefunc(tab){
 
         if (this.state.activeTab !== tab) {
             this.setState({
@@ -30,45 +32,29 @@ class OwnerAuctionItem extends React.Component {
             });
         }
     }
-    // showItems(){
-    //     $.ajax({
-    //         url: "http://localhost:8765/app/api/items/"+this.props.item.id+"",
-    //         dataType: 'json',
-    //         type: 'GET',
-    //         data: {
-    //             bidder_id: getUserInfoField("id"),
-    //             amount: this.state.bid
-    //         }
-    //
-    //     })
-    //         .then(json => {
-    //             console.log("Ajax success!");
-    //             console.log(json)
-    //             this.setState({items:json.items})
-    //             this.props.items.id(json.items);
-    //             console.log("Search Ajax end");
-    //         })
-    //         .fail(err=>{
-    //             console.log(err)
-    //         })
-    // }
 
     render() {
         return(
-            <Card className="p-0 bidcard">
+            <Card className={styles.bidcard}>
                 <Col>
                     <br/>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            {this.props.item.name}
+                            <h4>{this.props.item.name}</h4>
                         </Col>
-                        <button type ="submit">EDIT</button>
-                        <button type ="submit">DELETE</button>
+                        <button 
+                            type ="submit"
+                            onClick={()=>this.props.history.push("/items/"+this.props.item.id)}
+                        >
+                            Edit
+                        </button>
+                        <button type ="submit">Delete</button>
                     </Row>
+                    <hr/>
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                        Status: {this.props.item.running.toString()}
+                        Auction Status: {(this.props.item.running) ? "running" : "completed"}
                         </Col>
                     </Row>
                     <br/>

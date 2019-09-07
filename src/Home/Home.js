@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import  './Home.css';
+import $ from 'jquery';
 
 // const imgUrls = [
 //     "https://cmeimg-a.akamaihd.net/640/clsd/getty/c64f76dc20c246ca88ee180fe4b4b781",
@@ -24,6 +25,22 @@ class Home extends React.Component{
         // this.nextSlide = this.nextSlide.bind(this);
         // this.previousSlide = this.previousSlide.bind(this);
     }
+
+    componentDidMount(){
+        $.ajax({
+            url: "http://localhost:8765/app/api/hello",
+            dataType: 'json',
+            type: 'PUT',
+            data: {}
+        })
+        .then(json => {
+            console.log(json)
+        })
+        .fail(err=>{
+            console.log(err)
+        })
+    }
+
     redirectHandler = (url) => {
         this.props.history.push(url);
     }

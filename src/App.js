@@ -10,6 +10,7 @@ import Welcome from './Welcome/Welcome';
 import UnderConstruction from './UnderConstruction';
 import MyAuctions from './MyAuctions/MyAuctions';
 import NewAuction from './MyAuctions/NewAuction';
+import AuctionsRoutes from './MyAuctions/AuctionsRoutes';
 import Header from './Header/Header';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
@@ -18,6 +19,8 @@ import Users from "./Users/Users";
 import OwnerAuctionItem from "./MyAuctions/OwnerAuctionItem";
 import { getUserInfoField } from './Utility/Utility';
 import {Row} from "reactstrap";
+
+
 //import { getUserInfo } from './Utility';
 class App extends React.Component {
 	constructor(props){
@@ -62,8 +65,8 @@ class App extends React.Component {
 				<Route path="/home" exact component={Home}/>
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
-				<Route path="/items" exact component={MyAuctions}/>
 				<Route path="/items/new" exact component={NewAuction}/>
+				<Route path="/items" exact component={AuctionsRoutes}/>
 				<Route path="/ownerauctionitem" exact component = {OwnerAuctionItem}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>

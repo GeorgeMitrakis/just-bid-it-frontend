@@ -1,8 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter,Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Row, Col, Button, Container} from 'reactstrap';
 import $ from 'jquery';
-import AuctionDetails from "./OwnerAuctionItem";
+import OwnerAuctionItem from "./OwnerAuctionItem";
+import AuctionForm from "./AuctionForm";
 import {getUserInfoField} from "../Utility/Utility";
 
 class MyAuctions extends React.Component{
@@ -28,15 +29,17 @@ class MyAuctions extends React.Component{
         })
         .then(json => {
             console.log(json) 
-            this.setState({items:json.results})           
+            console.log(json.results); 
+            this.setState({items:json.results})
+            this.props.items(json.results);           
         })
         .fail(err=>{
             console.log(err);
         })
     }
+
     render(){
         return(
-
             <Container className="mt-3">
                 <Col>
                     <Row className= "d-flex justify-content-center">
@@ -48,13 +51,13 @@ class MyAuctions extends React.Component{
                     </Row>
                 </Col>
                 <Col>
-                    {
-                        this.state.items.length!==0 ?(
-                                this.state.items.map((item,index)=>
-                                    <AuctionDetails item = {item} key = {index} />)
-                            ):
-                            <div className="mt-5"><p>Sorry, no results could match your search.</p></div>
-                    }
+                {
+                    this.state.items.length!==0 ?(
+                        this.state.items.map((item,index)=>
+                            <OwnerAuctionItem item = {item} key = {index} />)
+                    ):
+                    <div className="mt-5"><p>Sorry, no results could match your search.</p></div>
+                }
                 </Col>
             </Container>
         )

@@ -133,11 +133,11 @@ class SearchBar extends React.Component{
         event.persist();
         event.preventDefault();
         //console.log(event);
-        console.log("[SearchBar.js] Submit Handler start");
-        console.log("searchterm: "+this.state.searchterm);
-        console.log("categoryvalue: "+this.state.categoryvalue);
-        console.log("locationvalue: "+this.state.locationvalue);
-        console.log("pricevalue: "+this.state.pricevalue);
+        // console.log("[SearchBar.js] Submit Handler start");
+        // console.log("searchterm: "+this.state.searchterm);
+        // console.log("categoryvalue: "+this.state.categoryvalue);
+        // console.log("locationvalue: "+this.state.locationvalue);
+        // console.log("pricevalue: "+this.state.pricevalue);
 
         let data={};
         if(this.state.searchterm!==''){
@@ -160,7 +160,6 @@ class SearchBar extends React.Component{
 
     render(){
         return(
-            <div>
             <Form onSubmit={this.submitHandler}>
             <Row className="d-flex justify-content-center align-items-start" >
 
@@ -207,7 +206,7 @@ class SearchBar extends React.Component{
                         <div
                              className={styles.content}
                             //ref={this.popupRef}
-                        >
+                            >
                             <input
                                 type="text"
                                 className="form-control form-control-lg"
@@ -247,8 +246,6 @@ class SearchBar extends React.Component{
                 </div>
             </Row>
          </Form>
-
-            </div>
         )
     }
 }

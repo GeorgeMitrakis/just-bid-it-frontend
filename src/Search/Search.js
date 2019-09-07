@@ -20,25 +20,22 @@ class Search extends React.Component {
     }
 
     componentDidMount(){
-        this.searchItems(this.state.searchterm, this.state.categoryvalue, this.state.locationvalue, this.state.maxprice);
+        let data = {};
+        this.searchItems(data);
     }
 
 
-    searchItems(searchterm, categoryvalue ,locationvalue ,maxprice){
+    searchItems(data){
         $.ajax({
             url: "http://localhost:8765/app/api/search",
             dataType: 'json',
             type: 'GET',
-            data: {
-                term: searchterm,
-                category: categoryvalue,
-                location : locationvalue,
-                price : maxprice
-            }
+            data: data
 
         })
         .then(json => {
             console.log("Search Ajax success!");
+            console.log("Searched for: "+JSON.stringify(data));
             console.log(json)
             this.setState({items:json.items})
             console.log("Search Ajax end");

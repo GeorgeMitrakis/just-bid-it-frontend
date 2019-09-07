@@ -116,6 +116,18 @@ class SearchResultItem extends React.Component{
                         </span>
                     </Row>
                     <br/>
+                    <Row className={infoRow}>
+                        <span  className={itemTextArea}>
+                            Location : {this.props.item.location}
+                        </span>
+                    </Row>
+                    <br/>
+                    <Row className={infoRow}>
+                        <span  className={itemTextArea}>
+                            Description : {this.props.item.description}
+                        </span>
+                    </Row>
+                    <br/>
                 </Col>
             </Card>
            </div>

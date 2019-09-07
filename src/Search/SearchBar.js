@@ -16,8 +16,8 @@ class SearchBar extends React.Component{
             categoryvalue : '',
             isCategoryPopupOpen : false,
             isLocationPopupOpen: false,
-            locationvalue : ''
-
+            locationvalue : '',
+            pricevalue: ''
 
         }
     }    
@@ -133,7 +133,29 @@ class SearchBar extends React.Component{
         event.persist();
         event.preventDefault();
         //console.log(event);
-        this.props.searchHandler(this.state.searchterm, this.state.categoryvalue,this.state.locationvalue,20);
+        console.log("[SearchBar.js] Submit Handler start");
+        console.log("searchterm: "+this.state.searchterm);
+        console.log("categoryvalue: "+this.state.categoryvalue);
+        console.log("locationvalue: "+this.state.locationvalue);
+        console.log("pricevalue: "+this.state.pricevalue);
+
+        let data={};
+        if(this.state.searchterm!==''){
+            data = { ...data, term: this.state.searchterm}
+        }
+        if(this.state.categoryvalue!==''){
+            data = { ...data, category: this.state.categoryvalue}
+        }
+        if(this.state.locationvalue!==''){
+            data = { ...data, location: this.state.locationvalue}
+        }
+        if(this.state.pricevalue!==''){
+            data = { ...data, price: this.state.pricevalue}
+        }
+
+        console.log(data);
+        console.log("[SearchBar.js] Submit Handler end");
+        this.props.searchHandler(data);
     }
 
     render(){
@@ -210,12 +232,12 @@ class SearchBar extends React.Component{
                              className={styles.content}
                         >
                             <input
-                                type="text"
+                                type="number"
                                 className={"form-control form-control-lg "+styles.buycontainer}
                                 placeholder="Price"
-                                // value={this.state.categoryvalue}
-                                // onChange={(event)=> this.inputChangedHandler(event, "categoryvalue")}
-                                // onClick={() => {if(this.state.categoryvalue!==''){ this.showPopup()}}}
+                                value={this.state.pricevalue}
+                                min={0}
+                                onChange={(event)=> this.inputChangedHandler(event, "pricevalue")}
                             />
                         </div>
                     </div>

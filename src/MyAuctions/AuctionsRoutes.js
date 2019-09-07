@@ -42,7 +42,7 @@ class AuctionRoutes extends React.Component{
                             return(
                                 <Route
                                     key={index}
-                                    path={"/items/"+item.id}
+                                    path={"/items/"+item.id+"/edit"}
                                     exact
                                     render={()=>(<AuctionForm item={item} requestHandler={this.editHandler}/>)}
                                 />
@@ -51,6 +51,7 @@ class AuctionRoutes extends React.Component{
                     }
                     <Route 
                         path="/items/new"
+                        exact
                         render={()=>(<NewAuction />)}
                     />     
                     <Route 

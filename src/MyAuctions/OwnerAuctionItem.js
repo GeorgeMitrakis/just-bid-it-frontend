@@ -44,7 +44,7 @@ class OwnerAuctionItem extends React.Component {
                         </Col>
                         <button 
                             type ="submit"
-                            onClick={()=>this.props.history.push("/items/"+this.props.item.id)}
+                            onClick={()=>this.props.history.push("/items/"+this.props.item.id+"/edit")}
                         >
                             Edit
                         </button>

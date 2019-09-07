@@ -9,7 +9,7 @@ class Logout extends Component {
 
     componentDidMount() {
         this.props.logOutHandler();
-        this.props.history.goBack();
+        this.props.history.replace("/welcome");
     }
 
 }

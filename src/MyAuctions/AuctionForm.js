@@ -148,7 +148,8 @@ class AuctionForm extends React.Component {
                         <Col className="d-flex align-self-center" xs="auto">
                             <Card id="newauction_form">
                                 <CardHeader>
-                                    NEW AUCTION FORM
+                                {(this.props.item === null || this.props.item === undefined)? 
+                                            "Create New Auction":"Edit auction"}
                                 </CardHeader>
                                 <CardBody>
                                     <p className="small text-muted">Here you can make a new auction</p>

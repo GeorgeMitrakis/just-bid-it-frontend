@@ -72,7 +72,7 @@ class Search extends React.Component {
             >
                <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
 
-                        <Pagination aria-label="Page navigation example">
+                        <Pagination className="d-flex justify-content-center">
                             <PaginationItem>
                                 <PaginationLink first href="#" />
                             </PaginationItem>

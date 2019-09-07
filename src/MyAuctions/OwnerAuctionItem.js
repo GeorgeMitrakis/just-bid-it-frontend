@@ -3,16 +3,32 @@ import {Card, Col, Row} from "reactstrap";
 import { withRouter } from 'react-router-dom';
 import { Collapse, Button, CardBody} from 'reactstrap';
 import { CardText, Nav, NavItem, NavLink } from 'reactstrap';
+import classnames from 'classnames';
+import { TabContent, TabPane, CardTitle } from 'reactstrap';
+
+
 class OwnerAuctionItem extends React.Component {
     constructor(props) {
 
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false };
+        this.state = {
+            collapse: false ,
+            activeTab: '1'
+        };
 
     }
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
+    }
+    togglefunc(tab)
+    {
+
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
     }
     // showItems(){
     //     $.ajax({
@@ -75,28 +91,90 @@ class OwnerAuctionItem extends React.Component {
                     <Row className="d-flex justify-content-lg-end">
                     <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                     <Collapse isOpen={this.state.collapse}>
-                        <Card>
-                            <CardBody>
-                                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    <Row className="d-flex justify-content-center">
-                                        <Nav tabs>
-                                            <NavItem>
-                                                <NavLink href="#" active>Link</NavLink>
-                                            </NavItem>
-                                            <NavItem>
-                                                <NavLink href="#">active</NavLink>
-                                            </NavItem>
-                                            <NavItem>
-                                                <NavLink disabled href="#">Disabled Link</NavLink>
-                                            </NavItem>
-                                        </Nav>
-                                    </Row>
-
-
-                                </CardText>
-
-                            </CardBody>
-                        </Card>
+                        <>
+                        <Nav tabs>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '1' })}
+                                    onClick={() => { this.togglefunc('1'); }}
+                                >
+                                    Auction details
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '2' })}
+                                    onClick={() => { this.togglefunc('2'); }}
+                                >
+                                    Location
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '3' })}
+                                    onClick={() => { this.togglefunc('3'); }}
+                                >
+                                    Bids
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
+                        <TabContent activeTab={this.state.activeTab}>
+                            <TabPane tabId="1">
+                                <Row>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special lalalala</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special iaiaiaiat</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                            </TabPane>
+                            <TabPane tabId="2">
+                                <Row>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special Title Treatment</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special Title Treatment</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                            </TabPane>
+                            <TabPane tabId="3">
+                                <Row>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special treatment</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                    <Col sm="6">
+                                        <Card body>
+                                            <CardTitle>Special iaiaiaiat</CardTitle>
+                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                            <Button>Go somewhere</Button>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                            </TabPane>
+                        </TabContent>
+                        </>
                     </Collapse>
                     </Row>
                 </Col>

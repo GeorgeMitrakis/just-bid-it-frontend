@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col,PaginationItem, PaginationLink, Container} from "reactstrap";
+import {Col, Container} from "reactstrap";
 import styles from './Search.module.css';
 import $ from "jquery";
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
-import { Pagination } from 'semantic-ui-react';
+import { Pagination, Container as Cont } from 'semantic-ui-react';
+
 
 class Search extends React.Component {
     constructor(props) {
@@ -75,72 +76,19 @@ class Search extends React.Component {
                 //onClick={(event)=>this.outsideClickHandler(event)}
             >
                <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
-               {/*<div>*/}
 
-               {/* <Pagination*/}
-               {/*     activePage={this.state.activePage}*/}
-               {/*     itemsCountPerPage={10}*/}
-               {/*     totalItemsCount={450}*/}
-               {/*     pageRangeDisplayed={2}*/}
-               {/*     onChange={this.handlePageChange}*/}
-               {/* />*/}
-               {/*</div>*/}
+                <Cont>
                 <Pagination
-                    boundaryRange={0}
-                    defaultActivePage={1}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    siblingRange={1}
-                    totalPages={10}
+                boundaryRange={0}
+                defaultActivePage={1}
+                ellipsisItem={null}
+                firstItem={null}
+                lastItem={null}
+                siblingRange={1}
+                totalPages={10}
                 />
-                        {/*<Pagination className="d-flex justify-content-center"*/}
-                        {/*           */}
-                        {/*>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink first href="#" />*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink previous href="#" />*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            1*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            2*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            3*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            4*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            5*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink href="#">*/}
-                        {/*            6*/}
-                        {/*        </PaginationLink>*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink next href="#" />*/}
-                        {/*    </PaginationItem>*/}
-                        {/*    <PaginationItem>*/}
-                        {/*        <PaginationLink last href="#" />*/}
-                        {/*    </PnaginationItem>*/}
-                        {/*</Pagination>*/}
-               <Col> 
+                </Cont>
+                <Col>
                 {
                     this.state.items.length!==0 ?(
                     this.state.items.map((item,index)=>

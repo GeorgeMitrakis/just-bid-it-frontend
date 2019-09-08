@@ -8,9 +8,9 @@ import Home from './Home/Home';
 import Logout from './Logout/Logout';
 import Welcome from './Welcome/Welcome';
 import UnderConstruction from './UnderConstruction';
-import MyAuctions from './MyAuctions/MyAuctions';
+import AuctionsList from './MyAuctions/AuctionsList';
 import NewAuction from './MyAuctions/NewAuction';
-import AuctionsRoutes from './MyAuctions/AuctionsRoutes';
+import AuctionsPage from './MyAuctions/AuctionsPage';
 import Header from './Header/Header';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
@@ -66,7 +66,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/items/new" exact component={NewAuction}/>
-				<Route path="/items" component={AuctionsRoutes}/>
+				<Route path="/items" component={AuctionsPage}/>
 				<Route path="/ownerauctionitem" exact component = {OwnerAuctionItem}/>
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>

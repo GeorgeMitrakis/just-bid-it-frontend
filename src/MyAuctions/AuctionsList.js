@@ -6,36 +6,9 @@ import OwnerAuctionItem from "./OwnerAuctionItem";
 import AuctionForm from "./AuctionForm";
 import {getUserInfoField} from "../Utility/Utility";
 
-class MyAuctions extends React.Component{
+class AuctionsList extends React.Component{
     constructor(props){
         super(props);
-
-        this.state = {
-            items:[]
-        }
-    }
-
-    componentDidMount(){
-        console.log("WARNING [MyAuctions.js]");
-        console.log("-----------------------");
-        console.log("sending request with dummy userId");
-        console.log("-----------------------");
-
-        $.ajax({
-            url: "http://localhost:8765/app/api/items",
-            dataType : 'json',
-            type: 'GET',
-            data: {userId:9}
-        })
-        .then(json => {
-            console.log(json) 
-            console.log(json.results); 
-            this.setState({items:json.results})
-            this.props.items(json.results);           
-        })
-        .fail(err=>{
-            console.log(err);
-        })
     }
 
     render(){
@@ -52,9 +25,9 @@ class MyAuctions extends React.Component{
                 </Col>
                 <Col>
                 {
-                    this.state.items.length!==0 ?(
-                        this.state.items.map((item,index)=>
-                            <OwnerAuctionItem item = {item} key = {index} />)
+                    this.props.items.length!==0 ?(
+                        this.props.items.map((item,index)=>
+                            <OwnerAuctionItem item = {item} key = {index} deleteHandler={this.props.deleteHandler} />)
                     ):
                     <div className="mt-5"><p>Sorry, no results could match your search.</p></div>
                 }
@@ -64,4 +37,4 @@ class MyAuctions extends React.Component{
     }
 }
 
-export default withRouter(MyAuctions);
+export default withRouter(AuctionsList);

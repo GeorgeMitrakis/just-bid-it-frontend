@@ -65,12 +65,15 @@ class OwnerAuctionItem extends React.Component {
                             <h4>{this.props.item.name}</h4>
                         </Col>
                         <button 
-                            type ="submit"
                             onClick={()=>this.props.history.push("/items/"+this.props.item.id+"/edit")}
                         >
                             Edit
                         </button>
-                        <button type ="submit">Delete</button>
+                        <button 
+                            onClick={()=>this.props.deleteHandler(this.props.item)}
+                        >
+                            Delete
+                        </button>
                     </Row>
                     <hr/>
                     <br/>

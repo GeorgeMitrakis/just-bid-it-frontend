@@ -82,6 +82,10 @@ render(){
     return(
         <Container fluid id={content}>
             <Col>
+                <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                    Invalid inputs <br/>
+                    Check fields again
+                </Alert>
                 <Row className="mb-3"/>
                 <Row className="justify-content-center">
                     {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}

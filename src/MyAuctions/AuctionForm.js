@@ -15,6 +15,7 @@ class AuctionForm extends React.Component {
     constructor(props){
         super(props);
 
+
         let name= '';
         let categoryList = [{category: ''}];
         let location ='';
@@ -161,7 +162,7 @@ class AuctionForm extends React.Component {
                                     <Form onSubmit={this.submitHandler}>
                                         <Row>
                                             <Col> Name </Col>
-                                            <Col> <input type="text" name="bid_name" value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
+                                            <Col> <input type="text" name="bid_name" required value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
@@ -174,6 +175,7 @@ class AuctionForm extends React.Component {
                                                             <input 
                                                                 type="text" 
                                                                 name="category"
+                                                                required
                                                                 value={category.category}
                                                                 onChange={(event)=>this.changeCategoryHandler(index, event)}
                                                             /> 
@@ -202,15 +204,15 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location" value={this.state.location} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
+                                            <Col> <input type="text" name="location" required value={this.state.location} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
-                                                    <Col><input type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
+                                                    <Col><input type="text" required placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
+                                                    <Col><input type="text" required placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
                                                     
                                                 </Row>
                                                 <br/>
@@ -227,31 +229,31 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country" value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
+                                            <Col><input type="text" name="country" required value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
                                         </Row>
                                         <br/>
 
                                         <Row>
                                             <Col>Buy Price</Col>
-                                            <Col><input type="text" name="buy_price" value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
+                                            <Col><input type="text" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>First Bid</Col>
-                                            <Col><input type="text" name="first_bid" value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
+                                            <Col><input type="text" name="first_bid" required  value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Ends</Col>
-                                            <Col><input type="datetime-local"  name="ends" value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
+                                            <Col><input type="datetime-local"  name="ends" required value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
 
                                             <Col>Description</Col>
-                                            <Col><textarea type="text" name="description" value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
+                                            <Col><textarea type="text" name="description" required value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
 
                                         </Row>
                                         <br/>

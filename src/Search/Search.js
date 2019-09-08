@@ -17,20 +17,13 @@ class Search extends React.Component {
         this.state = {
             limit: 10,
             activePage: 1,
-            items : []
+            items : [],
+            requestValues:{}
         }
-        //this.inputChangedHandler = this.inputChangedHandler.bind(this);
-        //this.togglePopup = this.togglePopup.bind(this);
-        // this.handlePageChange = this.handlePageChange.bind(this);
-
     }
-    // handlePageChange(pageNumber) {
-    //     console.log(`active page is ${pageNumber}`);
-    //     this.setState({activePage: pageNumber});
-    // }
 
-    handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
-    handleInputChange = (e, { name, value }) => this.setState({ [name]: value })
+    handlePaginationChange = (e, { activePage }) => this.setState({ activePage }, ()=>this.searchItems(this.state.requestValues))
+    handleInputChange = (e, { name, value }) => this.setState({ [name]: value },()=>this.searchItems(this.state.requestValues))
 
 
     componentDidMount(){
@@ -39,7 +32,14 @@ class Search extends React.Component {
     }
 
 
+    searchHandler(data){
+        this.setState({requestValues: data}, ()=>this.searchItems(data));
+    }
+
     searchItems(data){
+
+        data = Object.assign(data, {page_number:this.state.activePage}, {page_size: this.state.limit});
+
         $.ajax({
             url: "http://localhost:8765/app/api/search",
             dataType: 'json',
@@ -81,21 +81,20 @@ class Search extends React.Component {
             <Container className={styles.searchpage}
                 //onClick={(event)=>this.outsideClickHandler(event)}
             >
-               <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
+               <SearchBar searchHandler={(data)=>this.searchHandler(data)}/>
 
                 <Cont>
                 <Row className="d-flex justify-content-center">
                 <Pagination
-                activePage={this.state.activePage}
-                onPageChange={this.handlePaginationChange}
-                boundaryRange={0}
-                defaultActivePage={1}
-                ellipsisItem={null}
-                firstItem={null}
-                lastItem={null}
-                siblingRange={1}
-                totalPages={10}
-
+                    activePage={this.state.activePage}
+                    onPageChange={this.handlePaginationChange}
+                    boundaryRange={0}
+                    defaultActivePage={1}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    siblingRange={1}
+                    totalPages={10}
                 />
                 <br/>
                     <Form.Input

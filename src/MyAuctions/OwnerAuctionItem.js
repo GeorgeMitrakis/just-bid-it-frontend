@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Col, Row} from "reactstrap";
+import {Card, Col, Row, Table} from "reactstrap";
 import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
 import { Collapse, Button, CardText, 
     Nav, NavItem, NavLink, TabContent, TabPane, CardTitle } from 'reactstrap';
@@ -32,6 +32,28 @@ class OwnerAuctionItem extends React.Component {
             });
         }
     }
+    // componentDidMount(){
+    //     this.showUsers();
+    // }
+    //
+    // showUsers(){
+    //     $.ajax({
+    //         url: "http://localhost:8765/app/api/items",
+    //         dataType: 'json',
+    //         type: 'GET'
+    //
+    //     })
+    //         .then(json => {
+    //             console.log("Ajax success!");
+    //             console.log(json)
+    //             this.setState({users:json.users})
+    //             this.props.users(json.users);
+    //             console.log("Search Ajax end");
+    //         })
+    //         .fail(err=>{
+    //             console.log(err)
+    //         })
+    // }
 
     render() {
         return(
@@ -76,6 +98,8 @@ class OwnerAuctionItem extends React.Component {
                     </Row>
                     <Row className="d-flex justify-content-lg-end">
                     <Button outline color="secondary" onClick={this.toggle}>Details</Button>
+                    </Row>
+                    <Row>
                     <Collapse isOpen={this.state.collapse}>
                         <>
                         <Nav tabs>
@@ -107,20 +131,26 @@ class OwnerAuctionItem extends React.Component {
                         <TabContent activeTab={this.state.activeTab}>
                             <TabPane tabId="1">
                                 <Row>
-                                    <Col sm="6">
+                                    <Col sm="12">
                                         <Card body>
-                                            <CardTitle>Special lalalala</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
+                                            <Col className="d-flex justify-content-start">
+                                            <CardTitle>Description: {this.props.item.description}</CardTitle>
+                                            </Col>
+                                            <Col className="d-flex justify-content-start">
+                                            <CardText>Categories: {this.props.item.categories}</CardText>
+                                            </Col>
+                                            <Col className="d-flex justify-content-start">
+                                            <CardText> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </CardText>
+                                            </Col>
+                                            <Col className="d-flex justify-content-start">
+                                            <CardText>Started: {this.props.item.start}</CardText>
+                                            </Col>
+                                            <Col className="d-flex justify-content-start">
+                                            <CardText>Ends: {this.props.item.end}</CardText>
+                                            </Col>
                                         </Card>
                                     </Col>
-                                    <Col sm="6">
-                                        <Card body>
-                                            <CardTitle>Special iaiaiaiat</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
-                                        </Card>
-                                    </Col>
+
                                 </Row>
                             </TabPane>
                             <TabPane tabId="2">
@@ -142,22 +172,36 @@ class OwnerAuctionItem extends React.Component {
                                 </Row>
                             </TabPane>
                             <TabPane tabId="3">
-                                <Row>
-                                    <Col sm="6">
-                                        <Card body>
-                                            <CardTitle>Special treatment</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
-                                        </Card>
-                                    </Col>
-                                    <Col sm="6">
-                                        <Card body>
-                                            <CardTitle>Special iaiaiaiat</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
-                                        </Card>
-                                    </Col>
-                                </Row>
+                                <div>
+                                    <Table className="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th className="hidden">Bid id</th>
+                                            <th>Bidder</th>
+                                            <th>Amount($)</th>
+                                            <th>Time</th>
+                                            <th>Bidder rating</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {   this.props.item.bids!== null ?(
+                                            this.props.item.bids.map((item,index) =>{
+                                            return(<tr key={index}>
+                                                <td>{item.id}</td>
+                                                <td>{item.bidder}</td>
+                                                <td>{item.amount}</td>
+                                                <td>{item.time}</td>
+                                                <td>{item.bidderRating}</td>
+                                            </tr>)
+                                        }) ):
+                                            <div> - </div>
+                                        }
+
+                                        </tbody>
+
+                                    </Table>
+                                </div>
                             </TabPane>
                         </TabContent>
                         </>

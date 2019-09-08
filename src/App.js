@@ -12,6 +12,7 @@ import AuctionsList from './MyAuctions/AuctionsList';
 import NewAuction from './MyAuctions/NewAuction';
 import AuctionsPage from './MyAuctions/AuctionsPage';
 import Header from './Header/Header';
+import Map from './Map';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
 import Search from "./Search/Search";
@@ -74,6 +75,7 @@ class App extends React.Component {
 				<Route path="/messages" exact component={UnderConstruction}/>
 				<Route path="/messages/sent" exact component={UnderConstruction}/>
 				<Route path="/messages/received" exact component={UnderConstruction}/>
+				<Route path="/map" exact component={Map}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>
 			</Switch>

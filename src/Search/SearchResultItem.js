@@ -151,12 +151,12 @@ class SearchResultItem extends React.Component{
                         </span>
                     </Row>
                     <br/>
-                    <Row className={infoRow}>
-                        <span  className={itemTextArea}>
-                            Description : {this.props.item.description}
-                        </span>
-                    </Row>
-                    <br/>
+                    {/*<Row className={infoRow}>*/}
+                    {/*    <span  className={itemTextArea}>*/}
+                    {/*        Description : {this.props.item.description}*/}
+                    {/*    </span>*/}
+                    {/*</Row>*/}
+                    {/*<br/>*/}
                     <Row className="d-flex justify-content-lg-end">
                         <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                     </Row>

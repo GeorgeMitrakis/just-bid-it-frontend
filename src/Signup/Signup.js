@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
+import {Alert, Button, Card, CardBody, CardHeader, Col, Container, Form, Row} from "reactstrap";
 import {content} from './Signup.module.css';
 import $ from 'jquery';
 // import { getUserInfo } from './Utility';
@@ -18,8 +18,14 @@ class Signup extends React.Component{
         this.username = React.createRef();
         this.password = React.createRef();
         this.password1 = React.createRef();
+        this.state ={
+            visible: false
+        };
+        this.onDismiss = this.onDismiss.bind(this);
     }
-
+    onDismiss() {
+        this.setState({ visible: false });
+    }
     redirectHandler = (url) => {
         this.props.history.push(url);
     }
@@ -64,6 +70,7 @@ class Signup extends React.Component{
             this.props.history.replace("/login");
         })
         .fail(err=>{
+            this.setState({visible:true, options:false});
             console.log(err)
         })
 
@@ -79,6 +86,10 @@ render(){
                 <Row className="justify-content-center">
                     {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}
                     <Col className="align-self-center" xs="auto">
+                        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                           Invalid inputs <br/>
+                           Check fields again
+                        </Alert>
                         <Card id="signup_form">
                             <CardHeader>
                                 REGISTRATION FORM
@@ -89,43 +100,43 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col> First Name </Col>
-                                            <Col> <input type="text" name="firstname" ref={this.firstname}/> </Col>
+                                            <Col> <input type="text" name="firstname" required ref={this.firstname}/> </Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name </Col>
-                                            <Col> <input type="text" name="lastname" ref={this.lastname}/> </Col>
+                                            <Col> <input type="text" name="lastname" required ref={this.lastname}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Email </Col>
-                                            <Col><input type="email" name="email" ref={this.email}/></Col>
+                                            <Col><input type="email" name="email" required ref={this.email}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country" ref={this.country}/> </Col>
+                                            <Col><input type="text" name="country" required ref={this.country}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
 
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location" ref={this.location}/></Col>
+                                            <Col> <input type="text" name="location" required ref={this.location}/></Col>
                                         </Row>
                                         <br/>
 
                                         <Row>
 
                                         <Col>Phone number</Col>
-                                        <Col><input type="text" name="phone_number" ref={this.phonenumber}/></Col>
+                                        <Col><input type="text" name="phone_number" required ref={this.phonenumber}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Tax registration number</Col>
-                                            <Col><input type="text" name="tax_registration_number" ref={this.taxregristrationnumber}/></Col>
+                                            <Col><input type="text" name="tax_registration_number" required ref={this.taxregristrationnumber}/></Col>
 
                                         </Row>
                                         <br/>
@@ -133,19 +144,19 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col>Username</Col>
-                                            <Col><input type="text" name="username" ref={this.username}/></Col>
+                                            <Col><input type="text" name="username" required ref={this.username}/></Col>
 
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Password</Col>
-                                            <Col><input type="password" name="password" ref={this.password}/></Col>
+                                            <Col><input type="password" name="password" required ref={this.password}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Confirm password</Col>
-                                            <Col><input type="password" name="password1" ref={this.password1}/></Col>
+                                            <Col><input type="password" name="password1" required ref={this.password1}/></Col>
                                         </Row>
 
                                         <br/>

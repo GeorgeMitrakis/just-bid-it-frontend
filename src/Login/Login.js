@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter , Redirect} from 'react-router-dom';
-import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
+import {Row, Col, Card, CardBody, CardHeader, Form, Button, Container, Alert} from 'reactstrap';
 //import styles from './Login.module.css';
 //import { getUserInfoField } from './Utility';
 import { getUserInfo } from '../Utility/Utility';
@@ -14,8 +14,14 @@ class Login extends React.Component{
         super(props);
         this.username = React.createRef();
         this.password = React.createRef();
-    }    
-    
+        this.state ={
+            visible: false
+        };
+        this.onDismiss = this.onDismiss.bind(this);
+    }
+    onDismiss() {
+        this.setState({ visible: false });
+    }
     submitHandler = (event) => {
         event.preventDefault();
         //this.props.history.replace("/welcome");
@@ -37,6 +43,7 @@ class Login extends React.Component{
             this.props.logInHandler(json.result.value);
         })
         .fail(err=>{
+            this.setState({visible:true, options:false});
             console.log(err)
         })
     }
@@ -68,6 +75,11 @@ class Login extends React.Component{
             return(
                 <Container fluid id="content">
                     <Col>
+                        <Row className="d-flex justify-content-center">
+                            <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                                Incorrect username or password!
+                            </Alert>
+                        </Row>
                         <Row className="mb-3"/>
                         <Row className="justify-content-center">
                             {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}

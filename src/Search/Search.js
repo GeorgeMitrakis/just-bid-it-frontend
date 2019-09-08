@@ -5,7 +5,8 @@ import styles from './Search.module.css';
 import $ from "jquery";
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
-import { Pagination, Container as Cont } from 'semantic-ui-react';
+import { Pagination,Form, Container as Cont } from 'semantic-ui-react';
+import Row from "reactstrap/es/Row";
 
 
 class Search extends React.Component {
@@ -20,13 +21,18 @@ class Search extends React.Component {
         }
         //this.inputChangedHandler = this.inputChangedHandler.bind(this);
         //this.togglePopup = this.togglePopup.bind(this);
-        this.handlePageChange = this.handlePageChange.bind(this);
+        // this.handlePageChange = this.handlePageChange.bind(this);
 
     }
-    handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
-        this.setState({activePage: pageNumber});
-    }
+    // handlePageChange(pageNumber) {
+    //     console.log(`active page is ${pageNumber}`);
+    //     this.setState({activePage: pageNumber});
+    // }
+
+    handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
+    handleInputChange = (e, { name, value }) => this.setState({ [name]: value })
+
+
     componentDidMount(){
         let data = {};
         this.searchItems(data);
@@ -78,7 +84,10 @@ class Search extends React.Component {
                <SearchBar searchHandler={(s,c)=>this.searchItems(s,c)}/>
 
                 <Cont>
+                <Row className="d-flex justify-content-center">
                 <Pagination
+                activePage={this.state.activePage}
+                onPageChange={this.handlePaginationChange}
                 boundaryRange={0}
                 defaultActivePage={1}
                 ellipsisItem={null}
@@ -86,7 +95,17 @@ class Search extends React.Component {
                 lastItem={null}
                 siblingRange={1}
                 totalPages={10}
+
                 />
+                <br/>
+                    <Form.Input
+                        name = 'activePage'
+                        min={1}
+                        onChange={this.handleInputChange}
+                        type='number'
+                        value={this.state.activePage}
+                    />
+                </Row>
                 </Cont>
                 <Col>
                 {

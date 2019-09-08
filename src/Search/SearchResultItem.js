@@ -1,5 +1,19 @@
 import React from 'react';
-import {Card,  Col, Row} from "reactstrap";
+import classnames from 'classnames';
+import {
+    Button,
+    Card,
+    CardText,
+    CardTitle,
+    Col,
+    Collapse,
+    Nav,
+    NavItem,
+    NavLink,
+    Row,
+    TabContent, Table,
+    TabPane
+} from "reactstrap";
 import {bidcard, infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
 import $ from "jquery";
 import {getUserInfoField} from "../Utility/Utility";
@@ -9,8 +23,11 @@ class SearchResultItem extends React.Component{
     constructor(props){
 
         super(props);
+        this.toggle = this.toggle.bind(this);
         this.state = {
-            bid : this.props.item.currentBid + 0.5
+            bid : this.props.item.currentBid + 0.5 ,
+            collapse: false ,
+            activeTab: '1'
         }
     }
 
@@ -19,6 +36,18 @@ class SearchResultItem extends React.Component{
     //     this.setState({bid : this.props.currentBid + 0.5 });
     // }
 
+    toggle() {
+        this.setState(state => ({ collapse: !state.collapse }));
+    }
+
+    togglefunc(tab){
+
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
+    }
     inputChangeHandler(event) {
         event.persist();
         event.preventDefault();
@@ -128,7 +157,78 @@ class SearchResultItem extends React.Component{
                         </span>
                     </Row>
                     <br/>
+                    <Row className="d-flex justify-content-lg-end">
+                        <Button outline color="secondary" onClick={this.toggle}>Details</Button>
+                    </Row>
+                    <Row>
+                        <Collapse isOpen={this.state.collapse}>
+
+                                <Nav tabs>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '1' })}
+                                            onClick={() => { this.togglefunc('1'); }}
+                                        >
+                                            Auction details
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '2' })}
+                                            onClick={() => { this.togglefunc('2'); }}
+                                        >
+                                            Location
+                                        </NavLink>
+                                    </NavItem>
+                                </Nav>
+                                <TabContent activeTab={this.state.activeTab}>
+                                    <TabPane tabId="1">
+                                        <Row>
+                                            <Col sm="12">
+                                                <Card body>
+                                                    <Col className="d-flex justify-content-start">
+                                                        <CardTitle>Description: {this.props.item.description}</CardTitle>
+                                                    </Col>
+                                                    <Col className="d-flex justify-content-start">
+                                                        <CardText>Categories: {this.props.item.categories}</CardText>
+                                                    </Col>
+                                                    <Col className="d-flex justify-content-start">
+                                                        <CardText> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </CardText>
+                                                    </Col>
+                                                    <Col className="d-flex justify-content-start">
+                                                        <CardText>Started: {this.props.item.start}</CardText>
+                                                    </Col>
+                                                    <Col className="d-flex justify-content-start">
+                                                        <CardText>Ends: {this.props.item.end}</CardText>
+                                                    </Col>
+                                                </Card>
+                                            </Col>
+
+                                        </Row>
+                                    </TabPane>
+                                    <TabPane tabId="2">
+                                        <Row>
+                                            <Col sm="6">
+                                                <Card body>
+                                                    <CardTitle>Special Title Treatment</CardTitle>
+                                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                                    <Button>Go somewhere</Button>
+                                                </Card>
+                                            </Col>
+                                            <Col sm="6">
+                                                <Card body>
+                                                    <CardTitle>Special Title Treatment</CardTitle>
+                                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                                    <Button>Go somewhere</Button>
+                                                </Card>
+                                            </Col>
+                                        </Row>
+                                    </TabPane>
+                                </TabContent>
+                        </Collapse>
+                    </Row>
                 </Col>
+
             </Card>
            </div>
         );

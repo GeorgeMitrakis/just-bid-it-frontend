@@ -97,9 +97,14 @@ class AuctionForm extends React.Component {
             })
         }
 
-        this.props.requestHandler(requestBody);
+        let id = null;
+        if(!(this.props.item === null || this.props.item === undefined)){
+            id = this.props.item.id;
+        }
+        this.props.requestHandler(requestBody, id);
 
-
+        console.log("sent:");
+        console.log(requestBody);
         console.log("[AuctionForm.js] submitHandler end");
     }
 

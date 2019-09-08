@@ -10,7 +10,7 @@ class NewAuction extends React.Component{
     }
 
 
-    postNewAuction = (data) =>{
+    postNewAuction = (data, dummy) =>{
         $.ajax({
             url: "http://localhost:8765/app/api/items",
             dataType : 'json',

@@ -19,6 +19,7 @@
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
+    "react-leaflet": "^2.4.0",
     "react-native-cli": "^2.0.1",
     "react-responsive-carousel": "^3.1.50",
     "react-router-dom": "^5.0.1",

@@ -91,6 +91,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
+				<Route path="/map" exact component={Map}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -106,6 +107,7 @@ class App extends React.Component {
 				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" component={Users}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
+				<Route path="/map" exact component={Map}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -120,6 +122,7 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
+				<Route path="/map" exact component={Map}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)

@@ -67,6 +67,23 @@ class AuctionForm extends React.Component {
     componentDidMount(){
         console.log(this.props.item);
         console.log(this.state);
+        let d = new Date();
+        console.log(d);
+        console.log("d.getTime() = "+d.getTime());
+        console.log("d.toDateString() =" +d.toDateString());
+        console.log("d.toISOString() =" +d.toISOString());
+        console.log("d.toLocaleDateString() =" +d.toLocaleDateString());
+        console.log("d.toLocaleTimeString() =" +d.toLocaleTimeString());
+        console.log("d.toLocaleString() =" +d.toLocaleString());
+        console.log("d.toString() =" +d.toString());
+        console.log("d.toUTCString() =" +d.toUTCString());
+        console.log("d.valueOf() =" +d.valueOf());
+        console.log("d.getDate() = "+d.getDate());
+        console.log("d.getDay() = "+d.getDay());
+        console.log("d.getFullYear() = "+d.getFullYear());
+        console.log("d.getHours() = "+d.getHours());
+        console.log("d.getMinutes() = "+d.getMinutes());
+        console.log("formatDate(d) = "+formatDate(d));
         
     }
 
@@ -147,6 +164,7 @@ class AuctionForm extends React.Component {
     }
 
     render() {
+        const endLimit = todayIs();
         return (
             <Container fluid id="content">
                 <Col>
@@ -213,8 +231,8 @@ class AuctionForm extends React.Component {
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input type="text" required placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
-                                                    <Col><input type="text" required placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
+                                                    <Col><input type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
+                                                    <Col><input type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
                                                     
                                                 </Row>
                                                 <br/>
@@ -249,7 +267,7 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Ends</Col>
-                                            <Col><input type="datetime-local"  name="ends" required value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)}/></Col>
+                                            <Col><input type="datetime-local"  name="ends" required value={this.state.ends} onChange={(event) => this.inputChangeHandler('ends', event)} min={endLimit}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>

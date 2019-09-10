@@ -16,30 +16,50 @@ var myIcon = L.icon({
 
 class MyMap extends React.Component{
 
-    state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13,
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            lat: 37.9838,
+            lng: 23.7275,
+            zoom: 13,
+            clickedOnMap: false
+        }
     }
     
     
+    setMarkerHandler(lat, lng){
+        this.setState({lat:lat, lng:lng, clickedOnMap: true});
+        console.log(lat,lng);
+    }
+
+    zoomHandler(zoom){
+        this.setState({zoom:zoom});
+    }
 
     render() {
         const position = [this.state.lat, this.state.lng]
         return (
             <Col className="d-flex justify-content-center">
-                <Map className={styles.map} center={position} zoom={this.state.zoom}>
+                <Map 
+                    className={styles.map} 
+                    center={position} 
+                    zoom={this.state.zoom} 
+                    onClick={(event) => this.setMarkerHandler(event.latlng.lat, event.latlng.lng)} 
+                    onZoomEnd={(event)=> this.zoomHandler(event.target._zoom)}
+                >
                     <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
+                    {this.state.clickedOnMap === true ? 
                     <Marker 
                         position={position}
                         icon={myIcon}>
                         <Popup>
                             A pretty CSS3 popup. <br /> Easily customizable.
                         </Popup>
-                    </Marker>
+                    </Marker>: null}
                 </Map>
             </Col>
         )

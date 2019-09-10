@@ -47,16 +47,22 @@ export const nextDayIs = (currDate) => {
     return formatDate(date);
 }
 
-const formatDate = (date) => {
+export const formatDate = (date) => {
     var d = new Date(date),
+        minutes = '' + (d.getMinutes()),
+        hours = '' + (d.getHours()),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
+    if (hours.length < 2) hours = '0' + hours;
+    if (minutes.length < 2) minutes = '0' + minutes;
 
-    return [year, month, day].join('-');
+    let fulldate =  [year, month, day].join('-');
+    let time = [hours, minutes].join(':');
+    return fulldate+"T"+time;
 }
 
 export const isLegitDate = (input) => {

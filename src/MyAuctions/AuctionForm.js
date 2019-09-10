@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 'reactstrap';
 import produce from 'immer';
 //import DatePicker from 'react-datepicker';
-//import { getUserInfo } from './Utility';
+import { formatDate, todayIs, tomorrowIs } from '../Utility/Utility';
 //import styles from './AuctionForm.module.css'
 import Popup from "reactjs-popup";
 
@@ -16,6 +16,8 @@ class AuctionForm extends React.Component {
         super(props);
 
 
+        //let day = new Date().toISOString();
+
         let name= '';
         let categoryList = [{category: ''}];
         let location ='';
@@ -24,7 +26,7 @@ class AuctionForm extends React.Component {
         let country ='';
         let buyPrice = 15.5;
         let firstBid = 15.5 ;
-        let ends ='';
+        let ends = tomorrowIs();
         let description ='';
 
         if(!(this.props.item === null || this.props.item === undefined)){
@@ -42,7 +44,7 @@ class AuctionForm extends React.Component {
             country = this.props.item.country;
             buyPrice = this.props.item.buyPrice;
             firstBid = this.props.item.firstBid;
-            ends = this.props.item.end;
+            ends = formatDate(this.props.item.end);
             description = this.props.item.description;
         }
         
@@ -117,9 +119,9 @@ class AuctionForm extends React.Component {
         this.setState(
             produce(draft=>{
                 draft[field] = v;
-            })
+            }),
+            ()=>console.log(this.state.ends)
         )
-        console.log(this.state.ends);
     }
 
     addCategoryHandler = () => {

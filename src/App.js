@@ -12,7 +12,7 @@ import AuctionsList from './MyAuctions/AuctionsList';
 import NewAuction from './MyAuctions/NewAuction';
 import AuctionsPage from './MyAuctions/AuctionsPage';
 import Header from './Header/Header';
-import Map from './Map';
+import Map from './Map/Map';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
 import Search from "./Search/Search";

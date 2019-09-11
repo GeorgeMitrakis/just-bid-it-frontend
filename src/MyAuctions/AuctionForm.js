@@ -4,9 +4,10 @@ import { Row, Col, Card, CardBody, CardHeader, Form, Button, Container} from 're
 import produce from 'immer';
 //import DatePicker from 'react-datepicker';
 import { formatDate, todayIs, tomorrowIs } from '../Utility/Utility';
-//import styles from './AuctionForm.module.css'
-import Popup from "reactjs-popup";
-
+import styles from './AuctionForm.module.css';
+//import Popup from "reactjs-popup";
+import Map from '../Map/Map';
+import Marker from '../Map/Marker';
 import $ from 'jquery';
 import { getUserInfoField } from '../Utility/Utility';
 
@@ -60,7 +61,8 @@ class AuctionForm extends React.Component {
             buyPrice: buyPrice,
             firstBid: firstBid,
             ends: ends,
-            description: description
+            description: description,
+            toggleMap: false
         }
     }
 
@@ -163,8 +165,12 @@ class AuctionForm extends React.Component {
         });
     }
 
+    toggleMapHandler = () =>{
+        this.setState({toggleMap: !this.state.toggleMap});
+    }
     render() {
         const endLimit = todayIs();
+        const position = [this.state.latitude, this.state.longitude];
         return (
             <Container fluid id="content">
                 <Col>
@@ -231,21 +237,24 @@ class AuctionForm extends React.Component {
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
-                                                    <Col><input type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
                                                     
                                                 </Row>
                                                 <br/>
                                                 <Row className="justify-content-center">
 
-                                                    <Popup trigger={<Button outline color="secondary">Open Map</Button>} position="right center">
-                                                        <div>Popup content here !!
-
-                                                        </div>
-                                                    </Popup>
+                                                    <Button outline color="secondary" onClick={this.toggleMapHandler}>Open Map</Button>
+                                                        
                                                 </Row>
                                             </Col>
                                         </Row>
+                                        <br/>
+                                        {this.state.toggleMap ? <Row className="d-flex justify-content-center">
+                                            <Map className={styles.map} position={position}>
+                                                <Marker position={position}/>
+                                            </Map>
+                                        </Row>:null}
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>

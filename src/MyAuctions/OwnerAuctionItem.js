@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import AuctionForm from "./AuctionForm";
 import styles from './OwnerAuctionItem.module.css';
 import $ from 'jquery';
+import CardBody from "reactstrap/es/CardBody";
+import Map from "../Map";
 
 
 class OwnerAuctionItem extends React.Component {
@@ -160,16 +162,22 @@ class OwnerAuctionItem extends React.Component {
                                 <Row>
                                     <Col sm="6">
                                         <Card body>
-                                            <CardTitle>Special Title Treatment</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
+                                           <Col className="d-flex justify-content-start">
+                                               <CardText>Location: {this.props.item.location}</CardText>
+                                           </Col>
+                                            <Col className="d-flex justify-content-start" >
+                                               <CardText>Country:{this.props.item.country}</CardText>
+                                           </Col>
                                         </Card>
                                     </Col>
+
                                     <Col sm="6">
                                         <Card body>
-                                            <CardTitle>Special Title Treatment</CardTitle>
-                                            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                            <Button>Go somewhere</Button>
+                                        <Col className="d-flex justify-content-center">
+                                        <CardBody>
+                                        <Map className = {styles.showmap} > </Map>
+                                        </CardBody>
+                                        </Col>
                                         </Card>
                                     </Col>
                                 </Row>

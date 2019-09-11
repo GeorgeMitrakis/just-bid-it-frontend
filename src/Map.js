@@ -42,7 +42,7 @@ class MyMap extends React.Component{
         return (
             <Col className="d-flex justify-content-center">
                 <Map 
-                    className={styles.map} 
+                    className={this.props.className}
                     center={position} 
                     zoom={this.state.zoom} 
                     onClick={(event) => this.setMarkerHandler(event.latlng.lat, event.latlng.lng)} 

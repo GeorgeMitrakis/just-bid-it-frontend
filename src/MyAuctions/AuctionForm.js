@@ -257,15 +257,12 @@ class AuctionForm extends React.Component {
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="latitude" name="latitude" value={this.state.latitude} onChange={(event) => this.inputChangeHandler('latitude', event)}/></Col>
-                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="longitude" name="longitude" value={this.state.longitude} onChange={(event) => this.inputChangeHandler('longitude', event)}/></Col>
-                                                    
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="latitude" name="latitude" value={this.state.latitude} /></Col>
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="longitude" name="longitude" value={this.state.longitude}/></Col>
                                                 </Row>
                                                 <br/>
                                                 <Row className="justify-content-center">
-
-                                                    <Button outline color="secondary" onClick={this.toggleMapHandler}>Open Map</Button>
-                                                        
+                                                    <Button outline color="secondary" onClick={this.toggleMapHandler}>Map</Button>
                                                 </Row>
                                             </Col>
                                         </Row>

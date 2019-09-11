@@ -22,13 +22,14 @@ class AuctionForm extends React.Component {
         let name= '';
         let categoryList = [{category: ''}];
         let location ='';
-        let latitude ='';
-        let longitude ='';
+        let latitude = '';
+        let longitude = '';
         let country ='';
         let buyPrice = 15.5;
         let firstBid = 15.5 ;
         let ends = tomorrowIs();
         let description ='';
+        let hasCoords = false;
 
         if(!(this.props.item === null || this.props.item === undefined)){
             name = this.props.item.name;
@@ -40,6 +41,7 @@ class AuctionForm extends React.Component {
             if(this.props.item.latitude!==0 && this.props.item.longitude!==0){
                 latitude = this.props.item.latitude;
                 longitude = this.props.item.longitude;
+                hasCoords = true;
             }
             
             country = this.props.item.country;
@@ -62,30 +64,32 @@ class AuctionForm extends React.Component {
             firstBid: firstBid,
             ends: ends,
             description: description,
-            toggleMap: false
+            toggleMap: false,
+            hasCoords: hasCoords,
+            zoom:13
         }
     }
 
     componentDidMount(){
         console.log(this.props.item);
         console.log(this.state);
-        let d = new Date();
-        console.log(d);
-        console.log("d.getTime() = "+d.getTime());
-        console.log("d.toDateString() =" +d.toDateString());
-        console.log("d.toISOString() =" +d.toISOString());
-        console.log("d.toLocaleDateString() =" +d.toLocaleDateString());
-        console.log("d.toLocaleTimeString() =" +d.toLocaleTimeString());
-        console.log("d.toLocaleString() =" +d.toLocaleString());
-        console.log("d.toString() =" +d.toString());
-        console.log("d.toUTCString() =" +d.toUTCString());
-        console.log("d.valueOf() =" +d.valueOf());
-        console.log("d.getDate() = "+d.getDate());
-        console.log("d.getDay() = "+d.getDay());
-        console.log("d.getFullYear() = "+d.getFullYear());
-        console.log("d.getHours() = "+d.getHours());
-        console.log("d.getMinutes() = "+d.getMinutes());
-        console.log("formatDate(d) = "+formatDate(d));
+        // let d = new Date();
+        // console.log(d);
+        // console.log("d.getTime() = "+d.getTime());
+        // console.log("d.toDateString() =" +d.toDateString());
+        // console.log("d.toISOString() =" +d.toISOString());
+        // console.log("d.toLocaleDateString() =" +d.toLocaleDateString());
+        // console.log("d.toLocaleTimeString() =" +d.toLocaleTimeString());
+        // console.log("d.toLocaleString() =" +d.toLocaleString());
+        // console.log("d.toString() =" +d.toString());
+        // console.log("d.toUTCString() =" +d.toUTCString());
+        // console.log("d.valueOf() =" +d.valueOf());
+        // console.log("d.getDate() = "+d.getDate());
+        // console.log("d.getDay() = "+d.getDay());
+        // console.log("d.getFullYear() = "+d.getFullYear());
+        // console.log("d.getHours() = "+d.getHours());
+        // console.log("d.getMinutes() = "+d.getMinutes());
+        // console.log("formatDate(d) = "+formatDate(d));
         
     }
 
@@ -113,10 +117,11 @@ class AuctionForm extends React.Component {
         }
 
         if(this.state.latitude !== '' && this.state.longitude !==''){
-            requestBody.concat({
+            requestBody = {
+                ...requestBody,
                 latitude:  this.state.latitude,
                 longitude: this.state.longitude
-            })
+            }
         }
 
         let id = null;
@@ -168,9 +173,24 @@ class AuctionForm extends React.Component {
     toggleMapHandler = () =>{
         this.setState({toggleMap: !this.state.toggleMap});
     }
+
+    coordsHandler = (lat, lng)=>{
+        this.setState({latitude:lat, longitude:lng, hasCoords:true});
+    }
+
+    zoomHandler = (zoom)=>{
+        this.setState({zoom:zoom});
+    }
+
     render() {
         const endLimit = todayIs();
-        const position = [this.state.latitude, this.state.longitude];
+        let position;
+        if(this.state.hasCoords === true){
+            position = [this.state.latitude, this.state.longitude];
+        }
+        else{
+            position = [37.9838, 23.7275]
+        }
         return (
             <Container fluid id="content">
                 <Col>
@@ -250,9 +270,17 @@ class AuctionForm extends React.Component {
                                             </Col>
                                         </Row>
                                         <br/>
-                                        {this.state.toggleMap ? <Row className="d-flex justify-content-center">
-                                            <Map className={styles.map} position={position}>
-                                                <Marker position={position}/>
+                                        {this.state.toggleMap ? 
+                                        <Row className="d-flex justify-content-center">
+                                            <Map 
+                                                className={styles.map} 
+                                                position={position}
+                                                zoom={this.state.zoom} 
+                                                coordsHandler={this.coordsHandler} 
+                                                zoomHandler={this.zoomHandler}
+                                            >
+                                                {(this.state.hasCoords===true)?
+                                                <Marker position={position}/>:null}
                                             </Map>
                                         </Row>:null}
                                         <br/>

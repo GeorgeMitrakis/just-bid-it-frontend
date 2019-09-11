@@ -14,6 +14,7 @@ import AuctionsPage from './MyAuctions/AuctionsPage';
 import Header from './Header/Header';
 import Map from './Map';
 import MessageForm from "./Messages/MessageForm";
+import Map from './Map/Map';
 //import UserRequestData from './UserRequest/UserRequestData';
 import NotFound from './NotFound';
 import Search from "./Search/Search";

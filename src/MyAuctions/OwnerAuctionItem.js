@@ -107,7 +107,7 @@ class OwnerAuctionItem extends React.Component {
                     <Row>
                     <Collapse isOpen={this.state.collapse}>
                         <>
-                        <Nav tabs>
+                        <Nav tabs className="d-flex justify-content-center">
                             <NavItem>
                                 <NavLink
                                     className={classnames({ active: this.state.activeTab === '1' })}

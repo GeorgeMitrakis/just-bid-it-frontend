@@ -8,7 +8,7 @@ import AuctionForm from "./AuctionForm";
 import styles from './OwnerAuctionItem.module.css';
 import $ from 'jquery';
 import CardBody from "reactstrap/es/CardBody";
-import Map from "../Map";
+import Map from '../Map/Map';
 
 
 class OwnerAuctionItem extends React.Component {
@@ -174,9 +174,9 @@ class OwnerAuctionItem extends React.Component {
                                     <Col sm="6">
                                         <Card body>
                                         <Col className="d-flex justify-content-center">
-                                        <CardBody>
+                                        <>
                                         <Map className = {styles.showmap} > </Map>
-                                        </CardBody>
+                                        </>
                                         </Col>
                                         </Card>
                                     </Col>

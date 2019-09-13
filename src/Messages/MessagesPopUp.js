@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../Search/Searchbar.module.scss";
 
-const AutoCompletePopup = (props) => {
+const MessagesPopUp = (props) => {
     if (!props.isOpen) return null;
     return (
         <div className={styles.popupParent}>
@@ -28,4 +28,4 @@ const AutoCompletePopup = (props) => {
     );
 }
 
-export default AutoCompletePopup;
+export default MessagesPopUp;

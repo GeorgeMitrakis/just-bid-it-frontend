@@ -50,21 +50,21 @@ class MessagesReceived extends React.Component{
                             <br/>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
-                                    <h4>From:</h4>
-                                    {messages.sender}
+                                    <h4>From: {messages.sender} </h4>
+
                                 </Col>
                             </Row>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
-                                    <h4>Sent:</h4>
-                                    {messages.date}
+                                    <p>Sent: Dec-10-01 22:56{messages.date}</p>
+
                                 </Col>
                             </Row>
                             <hr/>
                             <br/>
                             <Row className="d-flex justify-content-between">
                                 <Col className="d-flex justify-content-start" >
-                                    {messages.text}
+                                    <h4>{messages.text}</h4>
                                 </Col>
                             </Row>
                         </Col>

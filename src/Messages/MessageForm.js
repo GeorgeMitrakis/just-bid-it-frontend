@@ -5,13 +5,80 @@ import {Button, Card, CardHeader, Col, Container, Row, Table} from "reactstrap";
 import CardBody from "reactstrap/es/CardBody";
 import Form from "reactstrap/es/Form";
 import {content} from "../Signup/Signup.module.css";
+import $ from "jquery";
 
 
 class MessageForm extends React.Component{
-
-
-
-
+    // constructor(props){
+    //     super(props);
+    //
+    //     this.state = {
+    //
+    //         usernamesvalue : '',
+    //         isUsernamesPopupOpen : false
+    //
+    //     }
+    //
+    // }
+    //
+    // usernamesGet(value){
+    //     if(value===''){
+    //         this.setState({categories:[]});
+    //         this.hideCategoryPopup();
+    //         return;
+    //     }
+    //     inputChangedHandler(event, field) {
+    //         event.persist();
+    //         event.preventDefault();
+    //         //console.log(event.target.value);
+    //         let v = event.target.value;
+    //         this.setState(
+    //             produce(draft=>{
+    //                 draft[field]= v;
+    //             })
+    //         )
+    //
+    //         if(field === "usernamesvalue"){
+    //             this.usernamesGet(v);
+    //         }
+    //
+    //     }
+    //     $.ajax({
+    //         url: "http://localhost:8765/app/api/usernames",
+    //         dataType: 'json',
+    //         type: 'GET',
+    //         data: {
+    //             usernames: value
+    //         }
+    //
+    //     })
+    //         .then(json => {
+    //             console.log("Ajax success!");
+    //             console.log(json)
+    //             this.setState({categories:json.categories})
+    //             this.showCategoryPopup();
+    //             console.log("Ajax end");
+    //         })
+    //         .fail(err=>{
+    //             console.log(err)
+    //         })
+    // }
+    //
+    // categorySelectHandler(value){
+    //     //console.log("categorySelectHandler start");
+    //     //console.log(this.state);
+    //     this.setState({usernamesvalue:value});
+    //     this.hideCategoryPopup();
+    //     //console.log(this.state);
+    //     //console.log("categorySelectHandler end");
+    // }
+    // showUsernamesPopup() {
+    //     this.setState({ isUsenamesPopupOpen: true });
+    // }
+    //
+    // hideUsernamesPopup() {
+    //     this.setState({ isUsernamesPopupOpen: false });
+    // }
     render() {
         return(
                 <Container fluid id={content}>

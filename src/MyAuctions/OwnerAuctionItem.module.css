@@ -7,6 +7,11 @@
 
 }
 .showmap {
-    width:250px;
-    height:150px;
+    width:384px;
+    height:384px;
+}
+
+.noBid{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

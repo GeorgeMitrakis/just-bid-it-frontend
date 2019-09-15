@@ -273,8 +273,8 @@ class AuctionForm extends React.Component {
                                                 className={styles.map} 
                                                 position={position}
                                                 zoom={this.state.zoom} 
-                                                coordsHandler={this.coordsHandler} 
-                                                zoomHandler={this.zoomHandler}
+                                                onClick={(event) => this.coordsHandler(event.latlng.lat, event.latlng.lng)} 
+                                                onZoomEnd={(event)=>this.zoomHandler(event.target._zoom)}
                                             >
                                                 {(this.state.hasCoords===true)?
                                                 <Marker position={position}/>:null}

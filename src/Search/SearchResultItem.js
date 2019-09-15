@@ -18,6 +18,9 @@ import {
 import {bidcard, infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
 import $ from "jquery";
 import {getUserInfoField} from "../Utility/Utility";
+import Map from '../Map/Map';
+import Marker from '../Map/Marker';
+import styles from './SearchResultItem.module.css';
 
 class SearchResultItem extends React.Component{
 
@@ -110,8 +113,11 @@ class SearchResultItem extends React.Component{
 
 
     render() {
+        let hasCoords = false;
+        if(this.props.item.latitude !== 0 && this.props.item.longitude !== 0){
+            hasCoords = true;
+        }
         return(
-           <div>
             <Card className={bidcard}>
                 <Col>
                     <br/>
@@ -163,7 +169,7 @@ class SearchResultItem extends React.Component{
                     <Row className="d-flex justify-content-lg-end">
                         <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                     </Row>
-                    <Row >
+                    <Row className="d-flex justify-content-center">
                         <Collapse isOpen={this.state.collapse}>
 
                                 <Nav tabs className="d-flex justify-content-center">
@@ -210,30 +216,45 @@ class SearchResultItem extends React.Component{
                                         </Row>
                                     </TabPane>
                                     <TabPane tabId="2">
-                                        <Row>
-                                            <Col sm="6">
-                                                <Card body>
-                                                    <CardTitle>Special Title Treatment</CardTitle>
-                                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                                    <Button>Go somewhere</Button>
-                                                </Card>
-                                            </Col>
-                                            <Col sm="6">
-                                                <Card body>
-                                                    <CardTitle>Special Title Treatment</CardTitle>
-                                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                                    <Button>Go somewhere</Button>
-                                                </Card>
+                                        <Row className="d-flex justify-content-center" >
+                                            <Col>
+                                                <Row>
+                                                    <Card body>
+                                                    <Col>
+                                                        <CardText>Location: {this.props.item.location}</CardText>
+                                                    </Col>
+                                                        <Col>
+                                                        <CardText>Country:{this.props.item.country}</CardText>
+                                                    </Col>
+                                                    </Card>
+                                                </Row>
+                                                {hasCoords === true &&
+                                                <Row>
+                                                    <Card body>
+                                                        <Col>
+                                                        {this.state.activeTab==='2' &&
+                                                            <Map 
+                                                                className = {styles.showmap} 
+                                                                zoom = {15}
+                                                                minZoom={13}
+                                                                maxZoom={17}
+                                                                position={[this.props.item.latitude, this.props.item.longitude]}
+                                                                coordsHandler={(event)=>console.log(event)}
+                                                            >
+                                                                <Marker position={[this.props.item.latitude, this.props.item.longitude]} />
+                                                            </Map>}
+                                                        </Col>
+                                                    </Card>
+                                                </Row>}
                                             </Col>
                                         </Row>
-                                    </TabPane>
-                                </TabContent>
+                                </TabPane>
+                            </TabContent>
                         </Collapse>
                     </Row>
                 </Col>
 
             </Card>
-           </div>
         );
     }
 }

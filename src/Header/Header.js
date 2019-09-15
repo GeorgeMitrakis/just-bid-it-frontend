@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import logo from '../images/bid1.jpg';
 import {Navbar}from 'reactstrap';
 import { getUserInfo, getUserInfoField } from '../Utility/Utility';
+import $ from 'jquery';
 
 class Header extends React.Component {
 
@@ -54,11 +55,56 @@ class Header extends React.Component {
         return(
             <ul className={styles.ul}>
                 <li className={styles.li}><a  className={styles.a} href="/admin/users">Users</a></li>
-                <li className={styles.li}><a  className={styles.a} href="#">Export items in XML</a></li>
-                <li className={styles.li}><a  className={styles.a} href="#">Export items in JSON</a></li>
+                <li className={styles.li}><a  className={styles.a} href="#" onClick={this.downloadXMLHandler}>Export items in XML</a></li>
+                <li className={styles.li}><a  className={styles.a} href="#" onClick={this.downloadJSONHandler}>Export items in JSON</a></li>
                 <li className={styles.li}><a  className={styles.a} href="/logout">Logout</a></li>
             </ul>
         );
+    }
+
+    downloadJSONHandler = () =>{
+        $.ajax({
+            url:"http://localhost:8765/app/api/admin/download/json",
+            type:'GET',
+            dataType:'json',
+            responseType: 'blob'
+        })
+        .then(response => {
+            console.log(response);
+            let dt = JSON.stringify(response, null, 4);
+            const url = window.URL.createObjectURL(new Blob([dt]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'file.json');
+            document.body.appendChild(link);
+            link.click();
+        })
+        .fail(err=>{
+            console.log(err);
+        })
+    }
+
+    downloadXMLHandler = () =>{
+        $.ajax({
+            url:"http://localhost:8765/app/api/admin/download/xml",
+            type:'GET',
+            dataType:'xml',
+            responseType: 'blob'
+        })
+        .then(response => {
+            console.log(response);
+            //console.log(new XMLSerializer().serializeToString(response));
+            let xmlString = new XMLSerializer().serializeToString(response);
+            const url = window.URL.createObjectURL(new Blob([xmlString]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'file.xml');
+            document.body.appendChild(link);
+            link.click();
+        })
+        .fail(err=>{
+            console.log(err);
+        })
     }
 
     userOptions = () =>{

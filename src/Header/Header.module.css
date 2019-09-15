@@ -13,6 +13,11 @@ ul {
     float: left;
 } */
 
+#download{
+    width: 800px;
+	margin: auto;
+}
+
 li a {
     display: block;
     color: white;

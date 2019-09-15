@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import {withRouter} from 'react-router-dom';
 import {
     Button,
     Card,
@@ -88,21 +89,22 @@ class SearchResultItem extends React.Component{
             return;
         }
 
-        $.ajax({
-            url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/buy",
-            dataType: 'json',
-            type: 'POST',
-            data: {
-                bidder_id: getUserInfoField("id")
-            }
+        // $.ajax({
+        //     url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/buy",
+        //     dataType: 'json',
+        //     type: 'POST',
+        //     data: {
+        //         bidder_id: getUserInfoField("id")
+        //     }
+        // })
+        // .then(json => {
+            //console.log(json)
+            this.props.history.push("/messages")
 
-        })
-        .then(json => {
-            console.log(json)
-        })
-        .fail(err=>{
-            console.log(err)
-        })
+        // })
+        // .fail(err=>{
+        //     console.log(err)
+        // })
     }
 
 
@@ -160,10 +162,10 @@ class SearchResultItem extends React.Component{
                     <Row className="d-flex justify-content-lg-end">
                         <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                     </Row>
-                    <Row>
+                    <Row >
                         <Collapse isOpen={this.state.collapse}>
 
-                                <Nav tabs>
+                                <Nav tabs className="d-flex justify-content-center">
                                     <NavItem>
                                         <NavLink
                                             className={classnames({ active: this.state.activeTab === '1' })}
@@ -235,4 +237,4 @@ class SearchResultItem extends React.Component{
     }
 }
 
-export default SearchResultItem;
+export default withRouter(SearchResultItem);

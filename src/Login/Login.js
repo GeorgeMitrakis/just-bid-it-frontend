@@ -66,11 +66,17 @@ class Login extends React.Component{
                 </div>
             );
         }
-        else if(this.props.role !== "guest" && this.props.access ==="granted"){
+        else if(this.props.role !== "guest" && this.props.role !== "administrator" && this.props.access ==="granted"){
             return(
                 <Redirect to="/home"/>
             );
         }
+        else if(this.props.role === "administrator"){
+            return(
+                <Redirect to="/admin/users"/>
+            );
+        }
+
         else{
             return(
                 <Container fluid id="content">

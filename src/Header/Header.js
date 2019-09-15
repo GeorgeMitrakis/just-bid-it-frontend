@@ -43,9 +43,10 @@ class Header extends React.Component {
     commonUserOptions = () =>{
         return(
             <ul className={styles.ul}>
-                <li className={styles.li}><a  className={styles.a} href="/bids">My Bids</a></li>
+                {/*<li className={styles.li}><a  className={styles.a} href="/bids">My Bids</a></li>*/}
                 <li className={styles.li}><a  className={styles.a} href="/items">My Auctions</a></li>
-                <li className={styles.li}><a  className={styles.a} href="/messages">Messages</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/messages/received">Messages Received</a></li>
+                <li className={styles.li}><a  className={styles.a} href="/messages/sent">Messages Sent</a></li>
                 <li className={styles.li}><a  className={styles.a} href="/logout">Logout</a></li>
             </ul>
         );

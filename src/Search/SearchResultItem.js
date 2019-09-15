@@ -60,6 +60,7 @@ class SearchResultItem extends React.Component{
 
     bidHandler(){
         console.log("creep");
+        if(!window.confirm(`Are you sure you want to bid on this item? You can't undo this action `)) return;
         $.ajax({
             url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/bid",
             dataType: 'json',
@@ -99,7 +100,7 @@ class SearchResultItem extends React.Component{
         // })
         // .then(json => {
             //console.log(json)
-            this.props.history.push("/messages")
+            this.props.history.push("/messages/option")
 
         // })
         // .fail(err=>{

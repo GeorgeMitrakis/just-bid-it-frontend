@@ -24,7 +24,7 @@ import {Row} from "reactstrap";
 import MessageForm from "./Messages/MessageForm";
 import MessagesSent from "./Messages/MessagesSent";
 import MessagesReceived from "./Messages/MessagesReceived";
-
+import MessageOption from "./Messages/MessageOption";
 //import { getUserInfo } from './Utility';
 class App extends React.Component {
 	constructor(props){
@@ -78,6 +78,7 @@ class App extends React.Component {
 				<Route path="/messages" exact component={MessageForm}/>
 				<Route path="/messages/sent" exact component={MessagesSent}/>
 				<Route path="/messages/received" exact component={MessagesReceived}/>
+				<Route path="/messages/option" exact component={MessageOption}/>
 				<Route path="/map" exact component={Map}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>

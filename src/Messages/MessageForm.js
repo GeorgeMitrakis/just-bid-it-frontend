@@ -20,72 +20,10 @@ class MessageForm extends React.Component{
         // this.text = React.createRef();
         this.state = {
             text: text
-            // usernamesvalue : '',
-            // isUsernamesPopupOpen : false
-
         }
 
     }
 
-    // inputChangedHandler(event, field){
-    //     event.persist();
-    //     event.preventDefault();
-    //     //console.log(event.target.value);
-    //     let v = event.target.value;
-    //     this.setState(
-    //         produce(draft=>{
-    //             draft[field]= v;
-    //         })
-    //     )
-    //
-    //     if(field === "usernamesvalue"){
-    //         this.usernamesGet(v);
-    //     }
-    //
-    // }
-    // usernamesGet(value){
-    //     if(value===''){
-    //         this.setState({messages:[]});
-    //         this.hideMessagesPopup();
-    //         return;
-    //     }
-    //
-    //     $.ajax({
-    //         url: "http://localhost:8765/app/api/usernames",
-    //         dataType: 'json',
-    //         type: 'GET',
-    //         data: {
-    //             usernames: value
-    //         }
-    //
-    //     })
-    //         .then(json => {
-    //             console.log("Ajax success!");
-    //             console.log(json)
-    //             this.setState({categories:json.categories})
-    //             this.showCategoryPopup();
-    //             console.log("Ajax end");
-    //         })
-    //         .fail(err=>{
-    //             console.log(err)
-    //         })
-    // }
-
-    // messageSelectHandler(value){
-    //     //console.log("categorySelectHandler start");
-    //     //console.log(this.state);
-    //     this.setState({usernamesvalue:value});
-    //     this.hideCategoryPopup();
-    //     //console.log(this.state);
-    //     //console.log("categorySelectHandler end");
-    // }
-    // showMessagesPopup() {
-    //     this.setState({ isMessagesPopupOpen: true });
-    // }
-    //
-    // hideMessagesPopup() {
-    //     this.setState({ isMessagesPopupOpen: false });
-    // }
     // submitHandler = (event) => {
     //     event.persist();
     //     event.preventDefault();
@@ -108,6 +46,9 @@ class MessageForm extends React.Component{
     //     this.props.searchHandler(data);
     // }
 
+    clearText(){
+        this.setState({text:''})
+    }
 
     inputChangeHandler(field, event){
         // console.log(field);
@@ -118,7 +59,7 @@ class MessageForm extends React.Component{
             produce(draft=>{
                 draft[field] = v;
             }),
-            ()=>console.log(this.state.ends)
+            ()=>console.log(this.state.text)
         )
     }
     componentDidMount() {
@@ -179,16 +120,8 @@ class MessageForm extends React.Component{
                                                 type="text"
                                                 placeholder="username"
                                                 className="form-control form-control-sm"
-                                                style={{ marginBottom:" 7px"}}
-                                                // value={this.state.usernamesvalue}
-                                                // onChange={(event)=> this.inputChangedHandler(event, "usernamesvalue")}
-                                                // onClick={() => {if(this.state.usernamesvalue!==''){ this.showMessagesPopup()}}}
                                             />
-                                                {/*<MessagesPopUp*/}
-                                                {/*    isOpen={this.state.isMessagesPopupOpen}*/}
-                                                {/*    items = {this.state.usernames}*/}
-                                                {/*    select={(value) => this.messageSelectHandler(value)}*/}
-                                                {/*/>*/}
+
                                             </Col>
                                         </Row>
                                         <br/>
@@ -207,7 +140,7 @@ class MessageForm extends React.Component{
                                         </Row>
                                         <br/>
                                         <Row className="d-flex justify-content-around">
-                                            <Button type="button" color="muted" className="btn btn-outline-secondary"
+                                            <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.clearText()}
                                             >
                                                 Clear text
                                             </Button>

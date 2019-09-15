@@ -7,7 +7,7 @@ import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import { Pagination,Form, Container as Cont } from 'semantic-ui-react';
 import Row from "reactstrap/es/Row";
-
+import {myinpt} from "./Search.module.css"
 
 class Search extends React.Component {
     constructor(props) {
@@ -83,8 +83,9 @@ class Search extends React.Component {
             >
                <SearchBar searchHandler={(data)=>this.searchHandler(data)}/>
 
-                <Cont>
                 <Row className="d-flex justify-content-center">
+
+                <Cont>
                 <Pagination
                     activePage={this.state.activePage}
                     onPageChange={this.handlePaginationChange}
@@ -96,16 +97,16 @@ class Search extends React.Component {
                     siblingRange={1}
                     totalPages={10}
                 />
-                <br/>
-                    <Form.Input
-                        name = 'activePage'
-                        min={1}
-                        onChange={this.handleInputChange}
-                        type='number'
-                        value={this.state.activePage}
-                    />
-                </Row>
                 </Cont>
+                    {/*<Form.Input*/}
+                    {/*    style={{width:'50px'}}*/}
+                    {/*    name = 'activePage'*/}
+                    {/*    min={1}*/}
+                    {/*    onChange={this.handleInputChange}*/}
+                    {/*    type='number'*/}
+                    {/*    value={this.state.activePage}*/}
+                    {/*/>*/}
+                </Row>
                 <Col>
                 {
                     this.state.items.length!==0 ?(

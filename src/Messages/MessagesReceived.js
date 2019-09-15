@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card, Col, Container, Row, Table} from "reactstrap";
 import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
 // import styles from "../MyAuctions/OwnerAuctionItem.module.css";
-import {content} from "../Signup/Signup.module.css";
+import {received} from "../Signup/Signup.module.css";
 import styles from '../MyAuctions/OwnerAuctionItem.module.css';
 import $ from "jquery";
 
@@ -42,16 +42,19 @@ class MessagesReceived extends React.Component{
     {
         return(
             <>
-                <Container fluid id={content}>
+                <Container fluid id={received} className="d-flex justify-content-center" >
                     {this.state.messages.map((messages,index) =>{
                         return(
-                            <Card className={styles.bidcard}>
+                            <Card style ={{width : '600px'}} >
                         <Col>
                             <br/>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
                                     <h4>From: {messages.sender} </h4>
 
+                                </Col>
+                                <Col>
+                                    <button type="button" color="muted" className="btn btn-outline-secondary"> Delete</button>
                                 </Col>
                             </Row>
                             <Row className="d-flex justify-content-around">

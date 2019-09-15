@@ -4,7 +4,6 @@ import { withRouter,Route, BrowserRouter as Router, Switch } from 'react-router-
 import { Button} from 'reactstrap';
 
 
-
 class Pagination extends React.Component {
     constructor(props) {
         super(props);
@@ -31,7 +30,7 @@ class Pagination extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div>
                     <Button.List>
                         <Button
@@ -67,7 +66,7 @@ class Pagination extends React.Component {
                         </Button>
                     </Button.List>
                 </div>
-            </div>
+            </>
 
         )
     }

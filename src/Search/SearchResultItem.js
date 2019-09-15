@@ -7,7 +7,7 @@ import {
     CardText,
     CardTitle,
     Col,
-    Collapse,
+    Collapse, Container,
     Nav,
     NavItem,
     NavLink,
@@ -93,22 +93,22 @@ class SearchResultItem extends React.Component{
             return;
         }
 
-        // $.ajax({
-        //     url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/buy",
-        //     dataType: 'json',
-        //     type: 'POST',
-        //     data: {
-        //         bidder_id: getUserInfoField("id")
-        //     }
-        // })
-        // .then(json => {
-            //console.log(json)
+        $.ajax({
+            url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/buy",
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                bidder_id: getUserInfoField("id")
+            }
+        })
+        .then(json => {
+            console.log(json)
             this.props.history.push("/messages/option")
 
-        // })
-        // .fail(err=>{
-        //     console.log(err)
-        // })
+        })
+        .fail(err=>{
+            console.log(err)
+        })
     }
 
 
@@ -136,11 +136,11 @@ class SearchResultItem extends React.Component{
                     <br/>
                     <Row className={infoRow}>
                         <span className={itemTextArea}>
-                            Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30)
+                            Auction ends at : {this.props.item.end}
                         </span>
                         <span>
                             {"$ "}<input className={buy+" "+pairInput} type="number" step="0.5" readOnly value={this.props.item.buyPrice}/>
-                            <button className={pairButton} type="submit" onClick={()=>this.buyHandler()}>Buy</button>
+                            <button  type="button" color="muted" className={"btn btn-outline-secondary "+pairButton}  onClick={()=>this.buyHandler()}>Buy</button>
                         </span>
                     </Row>
                     <br/>
@@ -150,7 +150,7 @@ class SearchResultItem extends React.Component{
                         </span>
                         <span>
                             {"$ "}<input className={bid+" "+ pairInput} type="number" step="0.5" min={this.props.item.currentBid+0.5} value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
-                            <button className={pairButton} type="submit" onClick={()=>this.bidHandler()} > Bid</button>
+                            <button type="button" color="muted" className={"btn btn-outline-secondary "+pairButton} onClick={()=>this.bidHandler()} > Bid</button>
                         </span>
                     </Row>
                     <br/>
@@ -195,20 +195,23 @@ class SearchResultItem extends React.Component{
                                         <Row>
                                             <Col sm="12">
                                                 <Card body>
-                                                    <Col className="d-flex justify-content-start">
-                                                        <CardTitle>Description: {this.props.item.description}</CardTitle>
+                                                    <Col>
+                                                            <Row><h4>Description:</h4></Row>
+                                                            <Row>{this.props.item.description}</Row>
                                                     </Col>
-                                                    <Col className="d-flex justify-content-start">
-                                                        <CardText>Categories: {this.props.item.categories}</CardText>
+                                                    <br/>
+                                                    <Col >
+                                                        <Row> <h4>Categories: </h4></Row>
+                                                            {this.props.item.categories.map((category,index) =>{
+                                                                return(
+                                                                    <Row key={index}>{category}</Row>
+                                                                )}
+                                                            )}
                                                     </Col>
-                                                    <Col className="d-flex justify-content-start">
-                                                        <CardText> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </CardText>
-                                                    </Col>
-                                                    <Col className="d-flex justify-content-start">
-                                                        <CardText>Started: {this.props.item.start}</CardText>
-                                                    </Col>
-                                                    <Col className="d-flex justify-content-start">
-                                                        <CardText>Ends: {this.props.item.end}</CardText>
+                                                    <br/>
+                                                    <Col >
+                                                        <Row> First bid is: <input type="number" readOnly value={this.props.item.firstBid}/> </Row>
+                                                        <Row>Auction started at: {this.props.item.start}</Row>
                                                     </Col>
                                                 </Card>
                                             </Col>

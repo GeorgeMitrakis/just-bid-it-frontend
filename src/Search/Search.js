@@ -90,7 +90,6 @@ class Search extends React.Component {
                     activePage={this.state.activePage}
                     onPageChange={this.handlePaginationChange}
                     boundaryRange={0}
-                    defaultActivePage={1}
                     ellipsisItem={null}
                     firstItem={null}
                     lastItem={null}

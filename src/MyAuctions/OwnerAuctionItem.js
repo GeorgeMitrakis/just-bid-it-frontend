@@ -60,8 +60,12 @@ class OwnerAuctionItem extends React.Component {
         if(this.props.item.latitude !== 0 && this.props.item.longitude !== 0){
             hasCoords = true;
         }
+        let bidcardStyle = styles.bidcard;
+        if(this.props.item.running === false){
+            bidcardStyle =  styles.closed;
+        }
         return(
-            <Card className={styles.bidcard}>
+            <Card className={bidcardStyle}>
                 <Col>
                     <br/>
                     <Row className="d-flex justify-content-around">
@@ -89,7 +93,7 @@ class OwnerAuctionItem extends React.Component {
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                        Remaining time: 7d 20h 32m (Tuesday, March 8th, 20:30) $
+                        Auction ends at : {this.props.item.end}
                         </Col>
                     </Row>
                     <br/>
@@ -139,21 +143,27 @@ class OwnerAuctionItem extends React.Component {
                                 <Row>
                                     <Col sm="12">
                                         <Card body>
-                                            <Col className="d-flex justify-content-start">
-                                            <CardTitle>Description: {this.props.item.description}</CardTitle>
+                                            <Col>
+                                                <Row><h4>Description:</h4></Row>
+                                                <Row>{this.props.item.description}</Row>
                                             </Col>
-                                            <Col className="d-flex justify-content-start">
-                                            <CardText>Categories: {this.props.item.categories}</CardText>
+
+                                            <Col >
+                                                <Row> <h4>Categories: </h4></Row>
+                                                {this.props.item.categories.map((category,index) =>{
+                                                    return(
+                                                        <Row key={index}>{category}</Row>
+                                                    )}
+                                                )}
                                             </Col>
-                                            <Col className="d-flex justify-content-start">
-                                            <CardText> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </CardText>
+                                            <br/>
+
+                                            <Col>
+                                            <Row> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </Row>
+                                            <br/>
+                                            <Row>Auction started at: {this.props.item.start}</Row>
                                             </Col>
-                                            <Col className="d-flex justify-content-start">
-                                            <CardText>Started: {this.props.item.start}</CardText>
-                                            </Col>
-                                            <Col className="d-flex justify-content-start">
-                                            <CardText>Ends: {this.props.item.end}</CardText>
-                                            </Col>
+
                                         </Card>
                                     </Col>
 

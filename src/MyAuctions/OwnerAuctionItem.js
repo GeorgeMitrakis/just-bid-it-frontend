@@ -4,11 +4,9 @@ import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router
 import { Collapse, Button, CardText, 
     Nav, NavItem, NavLink, TabContent, TabPane, CardTitle } from 'reactstrap';
 import classnames from 'classnames';
-import AuctionForm from "./AuctionForm";
 import styles from './OwnerAuctionItem.module.css';
-import $ from 'jquery';
-import CardBody from "reactstrap/es/CardBody";
 import Map from '../Map/Map';
+import Marker from '../Map/Marker';
 
 
 class OwnerAuctionItem extends React.Component {
@@ -58,6 +56,10 @@ class OwnerAuctionItem extends React.Component {
     // }
 
     render() {
+        let hasCoords = false;
+        if(this.props.item.latitude !== 0 && this.props.item.longitude !== 0){
+            hasCoords = true;
+        }
         return(
             <Card className={styles.bidcard}>
                 <Col>
@@ -106,7 +108,6 @@ class OwnerAuctionItem extends React.Component {
                     </Row>
                     <Row className="d-flex justify-content-center">
                     <Collapse isOpen={this.state.collapse}>
-                        <>
                         <Nav tabs className="d-flex justify-content-center">
                             <NavItem>
                                 <NavLink
@@ -159,26 +160,36 @@ class OwnerAuctionItem extends React.Component {
                                 </Row>
                             </TabPane>
                             <TabPane tabId="2">
-                                <Row>
-                                    <Col sm="6">
-                                        <Card body>
-                                           <Col className="d-flex justify-content-start">
-                                               <CardText>Location: {this.props.item.location}</CardText>
-                                           </Col>
-                                            <Col className="d-flex justify-content-start" >
-                                               <CardText>Country:{this.props.item.country}</CardText>
-                                           </Col>
-                                        </Card>
-                                    </Col>
-
-                                    <Col sm="6">
-                                        <Card body>
-                                        <Col className="d-flex justify-content-center">
-                                        <>
-                                        <Map className = {styles.showmap} > </Map>
-                                        </>
-                                        </Col>
-                                        </Card>
+                                <Row className="d-flex justify-content-center" >
+                                    <Col>
+                                        <Row>
+                                            <Card body>
+                                            <Col>
+                                                <CardText>Location: {this.props.item.location}</CardText>
+                                            </Col>
+                                                <Col>
+                                                <CardText>Country:{this.props.item.country}</CardText>
+                                            </Col>
+                                            </Card>
+                                        </Row>
+                                        {hasCoords === true &&
+                                        <Row>
+                                            <Card body>
+                                                <Col>
+                                                {this.state.activeTab==='2' &&
+                                                    <Map 
+                                                        className = {styles.showmap} 
+                                                        zoom = {15}
+                                                        minZoom={13}
+                                                        maxZoom={17}
+                                                        position={[this.props.item.latitude, this.props.item.longitude]}
+                                                        coordsHandler={(event)=>console.log(event)}
+                                                    >
+                                                        <Marker position={[this.props.item.latitude, this.props.item.longitude]} />
+                                                    </Map>}
+                                                </Col>
+                                            </Card>
+                                        </Row>}
                                     </Col>
                                 </Row>
                             </TabPane>
@@ -214,7 +225,6 @@ class OwnerAuctionItem extends React.Component {
                                 </div>
                             </TabPane>
                         </TabContent>
-                        </>
                     </Collapse>
                     </Row>
                 </Col>

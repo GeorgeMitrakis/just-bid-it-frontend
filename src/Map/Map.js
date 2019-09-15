@@ -22,8 +22,12 @@ const MyMap = (props) => {
             className={style} 
             center={props.position} 
             zoom={props.zoom} 
-            onClick={(event) => props.coordsHandler(event.latlng.lat, event.latlng.lng)} 
-            onZoomEnd={(event) => props.zoomHandler(event.target._zoom)}
+            zoomControl={props.zoomControl}
+            onClick={props.onClick} 
+            onZoomEnd={props.onZoomEnd}
+            minZoom={props.minZoom}
+            maxZoom={props.maxZoom}
+            
         >
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

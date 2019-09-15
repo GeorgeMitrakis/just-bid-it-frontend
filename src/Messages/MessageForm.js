@@ -91,6 +91,7 @@ class MessageForm extends React.Component{
     render() {
         return(
             <div>
+                <Row className="mb-3"/>
                 <Row className="d-flex justify-content-around">
                     <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/received")}
                     >

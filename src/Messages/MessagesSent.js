@@ -2,10 +2,9 @@ import React from 'react';
 import {Button, Card, Col, Container, Row, Table} from "reactstrap";
 import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
 // import styles from "../MyAuctions/OwnerAuctionItem.module.css";
-import {content} from "../Signup/Signup.module.css";
 import styles from '../MyAuctions/OwnerAuctionItem.module.css';
 import $ from "jquery";
-
+import {sent} from "./MessageForm.module.css"
 class MessagesSent extends React.Component{
 
     constructor(props){
@@ -42,7 +41,7 @@ class MessagesSent extends React.Component{
     render()
         {
         return(
-            <Container fluid id={content}>
+            <Container fluid id={sent} >
                 <Row className="d-flex justify-content-center">
                     <button
                         type="button" color="muted" className="btn btn-outline-secondary"
@@ -51,18 +50,20 @@ class MessagesSent extends React.Component{
                         Create a new message
                     </button>
                 </Row>
+
+                <Row className="d-flex justify-content-center">
                 {this.state.messages.map((messages,index) =>{
                     return(
-               <Card className={styles.bidcard}>
+               <Card key={index} style ={{width : '600px', marginTop:'30px' , marginBottom:'30px'}} className="d-flex justify-content-center">
                 <Col>
                     <br/>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <h4>To:{messages.receiver}</h4>
+                            <h4>To: {messages.receiver}</h4>
 
                         </Col>
-                        <Col>
-                            <button type="button" color="muted" className="btn btn-outline-secondary"> Delete</button>
+                        <Col className="d-flex justify-content-end">
+                            <button type="button" color="muted" className="btn btn-outline-secondary" > Delete</button>
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-around">
@@ -75,14 +76,19 @@ class MessagesSent extends React.Component{
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                            <h4> {messages.text}</h4>
+                            <h5> "{messages.text}."</h5>
                         </Col>
                     </Row>
+                    <br/>
                 </Col>
-            </Card>
+                   <br/>
+               </Card>
+
                     )
                 }
                 )}
+
+                </Row>
             </Container>
 
 

@@ -103,7 +103,7 @@ class SearchResultItem extends React.Component{
         })
         .then(json => {
             console.log(json)
-            this.props.history.push("/messages/option")
+            this.props.history.push("/messages/option/"+this.props.item.seller.username)
 
         })
         .fail(err=>{
@@ -130,7 +130,7 @@ class SearchResultItem extends React.Component{
                     <br/>
                     <Row className={infoRow}>
                         <span className={itemTextArea}>
-                            by {this.props.item.sellerId}
+                            by {this.props.item.seller.username}
                         </span>
                     </Row>
                     <br/>
@@ -146,7 +146,7 @@ class SearchResultItem extends React.Component{
                     <br/>
                     <Row className={infoRow}>
                         <span  className={itemTextArea}>
-                            Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5) 
+                            Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5)
                         </span>
                         <span>
                             {"$ "}<input className={bid+" "+ pairInput} type="number" step="0.5" min={this.props.item.currentBid+0.5} value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>

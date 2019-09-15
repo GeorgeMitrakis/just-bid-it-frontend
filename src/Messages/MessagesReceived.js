@@ -2,9 +2,9 @@ import React from 'react';
 import {Button, Card, Col, Container, Row, Table} from "reactstrap";
 import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
 // import styles from "../MyAuctions/OwnerAuctionItem.module.css";
-import {received} from "../Signup/Signup.module.css";
-import styles from '../MyAuctions/OwnerAuctionItem.module.css';
+import {received} from "./MessageForm.module.css";
 import $ from "jquery";
+import {divIcon} from "leaflet/dist/leaflet-src.esm";
 
 class MessagesReceived extends React.Component{
 
@@ -42,18 +42,18 @@ class MessagesReceived extends React.Component{
     {
         return(
             <>
+
                 <Container fluid id={received} className="d-flex justify-content-center" >
                     {this.state.messages.map((messages,index) =>{
                         return(
-                            <Card style ={{width : '600px'}} >
+                            <Card key={index} style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
                         <Col>
                             <br/>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
                                     <h4>From: {messages.sender} </h4>
-
                                 </Col>
-                                <Col>
+                                <Col className="d-flex justify-content-end" >
                                     <button type="button" color="muted" className="btn btn-outline-secondary"> Delete</button>
                                 </Col>
                             </Row>
@@ -64,10 +64,9 @@ class MessagesReceived extends React.Component{
                                 </Col>
                             </Row>
                             <hr/>
-                            <br/>
                             <Row className="d-flex justify-content-between">
                                 <Col className="d-flex justify-content-start" >
-                                    <h4>{messages.text}</h4>
+                                   " <h5>{messages.text}</h5> ."
                                 </Col>
                             </Row>
                         </Col>
@@ -76,7 +75,7 @@ class MessagesReceived extends React.Component{
                         }
                     )}
                 </Container>
-            </>
+           </>
         );
     }
 }

@@ -78,7 +78,7 @@ class App extends React.Component {
 				<Route path="/messages" exact component={MessageForm}/>
 				<Route path="/messages/sent" exact component={MessagesSent}/>
 				<Route path="/messages/received" exact component={MessagesReceived}/>
-				<Route path="/messages/option" exact component={MessageOption}/>
+				<Route path="/messages/option"  component={MessageOption}/>
 				<Route path="/map" exact component={Map}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>

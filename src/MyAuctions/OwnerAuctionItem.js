@@ -104,7 +104,7 @@ class OwnerAuctionItem extends React.Component {
                     <Row className="d-flex justify-content-lg-end">
                     <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                     </Row>
-                    <Row>
+                    <Row className="d-flex justify-content-center">
                     <Collapse isOpen={this.state.collapse}>
                         <>
                         <Nav tabs className="d-flex justify-content-center">
@@ -184,34 +184,33 @@ class OwnerAuctionItem extends React.Component {
                             </TabPane>
                             <TabPane tabId="3">
                                 <div>
-                                    <Table className="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th className="hidden">Bid id</th>
-                                            <th>Bidder</th>
-                                            <th>Amount($)</th>
-                                            <th>Time</th>
-                                            <th>Bidder rating</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
+                                    
                                         {   this.props.item.bids!== null ?(
-                                            this.props.item.bids.map((item,index) =>{
+                                            <Table className="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th className="hidden">Bid id</th>
+                                                <th>Bidder</th>
+                                                <th>Amount($)</th>
+                                                <th>Time</th>
+                                                <th>Bidder rating</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {this.props.item.bids.map((item,index) =>{
                                             return(<tr key={index}>
                                                 <td>{item.id}</td>
                                                 <td>{item.bidder}</td>
                                                 <td>{item.amount}</td>
                                                 <td>{item.time}</td>
                                                 <td>{item.bidderRating}</td>
-                                            </tr>)
-                                        }) ):
-                                            <div> - </div>
-                                        }
+                                            </tr>)})}                                            
+                                            </tbody>
+                                            </Table>
+                                            ):
+                                            <div className={styles.noBid}>There are no bids in this auction yet.</div>
 
-                                        </tbody>
-
-                                    </Table>
+                                        }                                    
                                 </div>
                             </TabPane>
                         </TabContent>

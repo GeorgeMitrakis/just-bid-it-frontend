@@ -5,6 +5,7 @@ import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router
 import styles from '../MyAuctions/OwnerAuctionItem.module.css';
 import $ from "jquery";
 import {sent} from "./MessageForm.module.css"
+import {getUserInfoField} from "../Utility/Utility";
 class MessagesSent extends React.Component{
 
     constructor(props){
@@ -23,7 +24,7 @@ class MessagesSent extends React.Component{
             url: "http://localhost:8765/app/api/messages/sent",
             dataType : 'json',
             type: 'GET',
-            data: {userId:9}
+            data: {userId:getUserInfoField("id")}
 
         })
             .then(json => {

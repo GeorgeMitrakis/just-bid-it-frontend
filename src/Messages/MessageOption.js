@@ -9,6 +9,16 @@ class MessageOption extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state={
+            username:''
+        }
+    }
+    componentDidMount() {
+        let urlparts = window.location.href.split("/");
+        let username = urlparts[5];
+        console.log(username);
+        console.log(urlparts);
+        this.setState({username:username})
     }
 
     render() {
@@ -28,7 +38,7 @@ class MessageOption extends React.Component{
                                         <br/>
                                         <Row className="d-flex justify-content-around">
                                         <Button type="button"color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/search")}>Back to search</Button>
-                                        <Button type = "button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages")}>Send message</Button>
+                                        <Button type = "button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/new/"+this.state.username)}>Send message</Button>
                                         </Row>
                                     </CardBody>
                                 </Card>

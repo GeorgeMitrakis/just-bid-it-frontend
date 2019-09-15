@@ -5,6 +5,7 @@ import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router
 import {received} from "./MessageForm.module.css";
 import $ from "jquery";
 import {divIcon} from "leaflet/dist/leaflet-src.esm";
+import {getUserInfoField} from "../Utility/Utility";
 
 class MessagesReceived extends React.Component{
 
@@ -24,7 +25,7 @@ class MessagesReceived extends React.Component{
             url: "http://localhost:8765/app/api/messages/received",
             dataType : 'json',
             type: 'GET',
-            data: {userId:9}
+            data: {userId:getUserInfoField("id")}
 
         })
             .then(json => {

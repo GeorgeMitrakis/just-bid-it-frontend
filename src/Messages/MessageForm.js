@@ -19,7 +19,8 @@ class MessageForm extends React.Component{
 
         // this.text = React.createRef();
         this.state = {
-            text: text
+            text: text,
+            username:''
         }
 
     }
@@ -65,13 +66,18 @@ class MessageForm extends React.Component{
     componentDidMount() {
         console.log(this.props.messages);
         console.log(this.state);
+        let urlparts = window.location.href.split("/");
+        let username = urlparts[5];
+        console.log(username);
+        console.log(urlparts);
+        this.setState({username:username})
     }
 
     sendHandler  = (event) =>{
 
         console.log("success");
         $.ajax({
-            url: "http://localhost:8765/app/api/messages/"+this.props.messages.username+"/send",
+            url: "http://localhost:8765/app/api/messages/"+this.state.username+"/send",
             dataType: 'json',
             type: 'POST',
             data: {
@@ -117,10 +123,13 @@ class MessageForm extends React.Component{
                                         <br/>
                                         <Row>
                                             <Col className="d-flex justify-content-center">
-                                                <h4> To: {'  '} </h4> {' '}<input
+                                                <h4> To: {'  '} </h4> {' '}
+                                                <input
                                                 type="text"
                                                 placeholder="username"
                                                 className="form-control form-control-sm"
+                                                value = {this.state.username}
+                                                readOnly
                                             />
 
                                             </Col>

@@ -75,9 +75,10 @@ class App extends React.Component {
 				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
 				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/messages" exact component={MessageForm}/>
+				{/*<Route path="/messages" exact component={MessageForm}/>*/}
 				<Route path="/messages/sent" exact component={MessagesSent}/>
 				<Route path="/messages/received" exact component={MessagesReceived}/>
+				<Route path="/messages/new" component={MessageForm}/>
 				<Route path="/messages/option"  component={MessageOption}/>
 				<Route path="/map" exact component={Map}/>
 				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}

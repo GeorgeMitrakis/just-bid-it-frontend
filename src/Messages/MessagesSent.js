@@ -45,6 +45,7 @@ class MessagesSent extends React.Component{
             <Container fluid id={content}>
                 <Row className="d-flex justify-content-center">
                     <button
+                        type="button" color="muted" className="btn btn-outline-secondary"
                         onClick={()=>this.props.history.push("/messages")}
                     >
                         Create a new message
@@ -57,21 +58,24 @@ class MessagesSent extends React.Component{
                     <br/>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <h4>To:</h4>
-                            {messages.receiver}
+                            <h4>To:{messages.receiver}</h4>
+
+                        </Col>
+                        <Col>
+                            <button type="button" color="muted" className="btn btn-outline-secondary"> Delete</button>
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <h4>Sent:</h4>
-                            {messages.date}
+                            <p>Sent: Dec-10-01 22:56 {messages.date}</p>
+
                         </Col>
                     </Row>
                     <hr/>
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                            {messages.text}
+                            <h4> {messages.text}</h4>
                         </Col>
                     </Row>
                 </Col>

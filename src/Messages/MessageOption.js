@@ -34,7 +34,7 @@ class MessageOption extends React.Component{
                                 <Card id="login_form">
                                     <>  </>
                                     <CardBody style ={{width : '400px',height:'120px'}}>
-                                        <Row className="d-flex justify-content-center"> <p> Would you like to send a message to blabla?</p> </Row>
+                                        <Row className="d-flex justify-content-center"> <p> Would you like to send a message to {this.state.username}?</p> </Row>
                                         <br/>
                                         <Row className="d-flex justify-content-around">
                                         <Button type="button"color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/search")}>Back to search</Button>

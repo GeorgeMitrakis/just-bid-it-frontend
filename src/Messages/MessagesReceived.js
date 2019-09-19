@@ -6,6 +6,7 @@ import {received} from "./MessageForm.module.css";
 import $ from "jquery";
 import {divIcon} from "leaflet/dist/leaflet-src.esm";
 import {getUserInfoField} from "../Utility/Utility";
+import produce from 'immer';
 
 class MessagesReceived extends React.Component{
 
@@ -39,35 +40,59 @@ class MessagesReceived extends React.Component{
             })
     }
 
+    deleteHandler = (id) =>{
+        if(!window.confirm(`Are you sure you want to delete this message?`)) return;
+        console.log(id);
+        $.ajax({
+            url: "http://localhost:8765/app/api/messages/"+id+"/delete" ,
+            dataType : 'json',
+            type: 'DELETE'
+        })
+            .then(json => {
+                console.log(json)
+                this.setState(
+                    produce(draft=>{
+                        draft.messages = this.state.messages.filter((elem, index)=>elem.id !== this.state.messages[index].id
+                        )
+                    })
+                )
+            })
+            .fail(err=>{
+                console.log(err);
+            })
+    }
+
     render()
     {
         return(
             <>
 
                 <Container fluid id={received} className="d-flex justify-content-center" >
-                    {this.state.messages.map((messages,index) =>{
+                    {this.state.messages.map((message,index) =>{
                         return(
                             <Card key={index} style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
                         <Col>
                             <br/>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
-                                    <h4>From: {messages.sender} </h4>
+                                    <h4>From: {message.sender} </h4>
                                 </Col>
                                 <Col className="d-flex justify-content-end" >
-                                    <button type="button" color="muted" className="btn btn-outline-secondary"> Delete</button>
+                                    <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
+                                    <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/new/"+message.sender)}> Reply </button>
                                 </Col>
+
                             </Row>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
-                                    <p>Sent: Dec-10-01 22:56{messages.date}</p>
+                                    <p>Sent: Dec-10-01 22:56{message.date}</p>
 
                                 </Col>
                             </Row>
                             <hr/>
                             <Row className="d-flex justify-content-between">
                                 <Col className="d-flex justify-content-start" >
-                                   " <h5>{messages.text}</h5> ."
+                                   " <h5>{message.text}</h5> ."
                                 </Col>
                             </Row>
                         </Col>

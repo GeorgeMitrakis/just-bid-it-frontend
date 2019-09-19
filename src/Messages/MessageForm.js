@@ -47,6 +47,7 @@ class MessageForm extends React.Component{
     //     this.props.searchHandler(data);
     // }
 
+
     clearText(){
         this.setState({text:''})
     }
@@ -88,6 +89,7 @@ class MessageForm extends React.Component{
         })
             .then(json => {
                 console.log(json)
+                {this.props.history.push("/messages/sent")}
             })
             .fail(err=>{
                 console.log(err)

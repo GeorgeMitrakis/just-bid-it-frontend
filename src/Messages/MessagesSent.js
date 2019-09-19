@@ -6,6 +6,9 @@ import styles from '../MyAuctions/OwnerAuctionItem.module.css';
 import $ from "jquery";
 import {sent} from "./MessageForm.module.css"
 import {getUserInfoField} from "../Utility/Utility";
+import produce from 'immer';
+
+
 class MessagesSent extends React.Component{
 
     constructor(props){
@@ -39,37 +42,59 @@ class MessagesSent extends React.Component{
             })
     }
 
+    deleteHandler = (id) =>{
+        if(!window.confirm(`Are you sure you want to delete this message?`)) return;
+        console.log(id);
+        $.ajax({
+            url: "http://localhost:8765/app/api/messages/"+id+"/delete" ,
+            dataType : 'json',
+            type: 'DELETE'
+        })
+            .then(json => {
+                console.log(json)
+                this.setState(
+                    produce(draft=>{
+                        draft.messages = this.state.messages.filter((elem, index)=>elem.id !== this.state.messages[index].id
+                        )
+                    })
+                )
+
+            })
+            .fail(err=>{
+                console.log(err);
+            })
+    }
     render()
         {
         return(
             <Container fluid id={sent} >
-                <Row className="d-flex justify-content-center">
-                    <button
-                        type="button" color="muted" className="btn btn-outline-secondary"
-                        onClick={()=>this.props.history.push("/messages")}
-                    >
-                        Create a new message
-                    </button>
-                </Row>
+                {/*<Row className="d-flex justify-content-center">*/}
+                {/*    <button*/}
+                {/*        type="button" color="muted" className="btn btn-outline-secondary"*/}
+                {/*        onClick={()=>this.props.history.push("/messages/new")}*/}
+                {/*    >*/}
+                {/*        Create a new message*/}
+                {/*    </button>*/}
+                {/*</Row>*/}
 
                 <Row className="d-flex justify-content-center">
-                {this.state.messages.map((messages,index) =>{
+                {this.state.messages.map((message,index) =>{
                     return(
                <Card key={index} style ={{width : '600px', marginTop:'30px' , marginBottom:'30px'}} className="d-flex justify-content-center">
                 <Col>
                     <br/>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <h4>To: {messages.receiver}</h4>
+                            <h4>To: {message.receiver}</h4>
 
                         </Col>
                         <Col className="d-flex justify-content-end">
-                            <button type="button" color="muted" className="btn btn-outline-secondary" > Delete</button>
+                            <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <p>Sent: Dec-10-01 22:56 {messages.date}</p>
+                            <p>Sent: Dec-10-01 22:56 {message.date}</p>
 
                         </Col>
                     </Row>
@@ -77,7 +102,7 @@ class MessagesSent extends React.Component{
                     <br/>
                     <Row className="d-flex justify-content-between">
                         <Col className="d-flex justify-content-start" >
-                            <h5> "{messages.text}."</h5>
+                            <h5> "{message.text}."</h5>
                         </Col>
                     </Row>
                     <br/>

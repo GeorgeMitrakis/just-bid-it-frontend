@@ -104,7 +104,7 @@ class OwnerAuctionItem extends React.Component {
                             <Col className="d-flex justify-content-between" >
                                 Bids : {this.props.item.numberOfBids} </Col>
                         <Col className="d-flex justify-content-between" >
-                        Highest Bid :$ {this.props.item.currentBid} by {this.props.item.bidder} (bidder review: 3/5) $
+                        Highest Bid :$ {this.props.item.currentBid} by username (bidder review: 3/5) $
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-lg-end">
@@ -218,13 +218,13 @@ class OwnerAuctionItem extends React.Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {this.props.item.bids.map((item,index) =>{
+                                            {this.props.item.bids.map((bid,index) =>{
                                             return(<tr key={index}>
-                                                <td>{item.id}</td>
-                                                <td>{item.bidder}</td>
-                                                <td>{item.amount}</td>
-                                                <td>{item.time}</td>
-                                                <td>{item.bidderRating}</td>
+                                                <td>{bid.id}</td>
+                                                <td>{bid.bidder}</td>
+                                                <td>{bid.amount}</td>
+                                                <td>{bid.time}</td>
+                                                <td>{bid.bidderRating}</td>
                                             </tr>)})}                                            
                                             </tbody>
                                             </Table>

@@ -27,7 +27,7 @@ class AuctionForm extends React.Component {
             longitude:''
         };
         let country ='';
-        let buyPrice = 15.5;
+        let buyPrice = 100;
         let firstBid = 15.5 ;
         let ends = tomorrowIs();
         let description ='';
@@ -184,6 +184,7 @@ class AuctionForm extends React.Component {
             produce(draft=>{
                 draft.location.latitude = lat;
                 draft.location.longitude = lng;
+                draft.hasCoords = true;
             }),()=>console.log(this.state)
         )
             

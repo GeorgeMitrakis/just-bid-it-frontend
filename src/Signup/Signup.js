@@ -19,7 +19,8 @@ class Signup extends React.Component{
         this.password = React.createRef();
         this.password1 = React.createRef();
         this.state ={
-            visible: false
+            visible: false,
+            message: ''
         };
         this.onDismiss = this.onDismiss.bind(this);
     }
@@ -70,7 +71,38 @@ class Signup extends React.Component{
             this.props.history.replace("/login");
         })
         .fail(err=>{
-            this.setState({visible:true, options:false});
+            let msg;
+            switch(err.status){
+                case(461):{
+                    msg = 'passwords don\'t match';
+                    break;
+                }
+                case(462):{
+                    msg = 'username taken';
+                    break;                    
+                }
+                case(463):{
+                    msg = 'email is already in use';
+                    break;                    
+                }
+                case(464):{
+                    msg = 'phone number is already in use';
+                    break;                    
+                }
+                case(465):{
+                    msg = 'tax number is already in use';
+                    break;                    
+                }
+                case(400):{
+                    msg = 'missing or empty parameters';
+                    break;                    
+                }
+                default:{
+                    msg = 'internal server error';
+                    break;
+                }
+            }
+            this.setState({visible:true, options:false, message:msg});
             console.log(err)
         })
 
@@ -82,17 +114,11 @@ render(){
     return(
         <Container fluid id={content}>
             <Col>
-                <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                    Invalid inputs <br/>
-                    Check fields again
-                </Alert>
                 <Row className="mb-3"/>
                 <Row className="justify-content-center">
-                    {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}
                     <Col className="align-self-center" xs="auto">
                         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                           Invalid inputs <br/>
-                           Check fields again
+                           {this.state.message}
                         </Alert>
                         <Card id="signup_form">
                             <CardHeader>

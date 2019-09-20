@@ -221,10 +221,10 @@ class OwnerAuctionItem extends React.Component {
                                             {this.props.item.bids.map((bid,index) =>{
                                             return(<tr key={index}>
                                                 <td>{bid.id}</td>
-                                                <td>{bid.bidder}</td>
+                                                <td>{bid.bidder.username}</td>
                                                 <td>{bid.amount}</td>
                                                 <td>{bid.time}</td>
-                                                <td>{bid.bidderRating}</td>
+                                                <td>{bid.bidder.rating}</td>
                                             </tr>)})}                                            
                                             </tbody>
                                             </Table>

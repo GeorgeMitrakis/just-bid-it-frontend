@@ -5,6 +5,7 @@ import AuctionForm from './AuctionForm';
 import produce from 'immer';
 import $ from 'jquery';
 import NewAuction from './NewAuction';
+import { getUserInfoField } from '../Utility/Utility';
 
 class AuctionsPage extends React.Component{
     constructor(props){
@@ -24,7 +25,7 @@ class AuctionsPage extends React.Component{
             url: "http://localhost:8765/app/api/items",
             dataType : 'json',
             type: 'GET',
-            data: {userId:9}
+            data: {userId:getUserInfoField("id")}
         })
         .then(json => {
             console.log(json) 

@@ -175,7 +175,7 @@ class OwnerAuctionItem extends React.Component {
                                         <Row>
                                             <Card body>
                                             <Col>
-                                                <CardText>Location: {this.props.item.location}</CardText>
+                                                <CardText>Location: {this.props.item.location.name}</CardText>
                                             </Col>
                                                 <Col>
                                                 <CardText>Country:{this.props.item.country}</CardText>
@@ -192,10 +192,10 @@ class OwnerAuctionItem extends React.Component {
                                                         zoom = {15}
                                                         minZoom={13}
                                                         maxZoom={17}
-                                                        position={[this.props.item.latitude, this.props.item.longitude]}
+                                                        position={[this.props.item.location.latitude, this.props.item.location.longitude]}
                                                         coordsHandler={(event)=>console.log(event)}
                                                     >
-                                                        <Marker position={[this.props.item.latitude, this.props.item.longitude]} />
+                                                        <Marker position={[this.props.item.location.latitude, this.props.item.location.longitude]} />
                                                     </Map>}
                                                 </Col>
                                             </Card>

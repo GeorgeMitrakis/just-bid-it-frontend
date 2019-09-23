@@ -136,9 +136,6 @@ class AuctionForm extends React.Component {
     }
 
     inputChangeHandler(field, event){
-        // console.log(field);
-        //event.persist();
-        console.log(event);
         let v = event.target.value;
         this.setState(
             produce(draft=>{
@@ -301,13 +298,13 @@ class AuctionForm extends React.Component {
 
                                         <Row>
                                             <Col>Buy Price</Col>
-                                            <Col><input type="text" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
+                                            <Col><input type="number" step="0.5" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>First Bid</Col>
-                                            <Col><input type="text" name="first_bid" required  value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
+                                            <Col><input type="number" step="0.5" name="first_bid" required  value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
 
                                         </Row>
                                         <br/>

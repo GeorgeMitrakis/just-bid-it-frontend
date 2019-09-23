@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 import {bidcard, infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
 import $ from "jquery";
-import {getUserInfoField} from "../Utility/Utility";
+import {getUserInfo, getUserInfoField} from "../Utility/Utility";
 import Map from '../Map/Map';
 import Marker from '../Map/Marker';
 import styles from './SearchResultItem.module.css';
@@ -71,6 +71,28 @@ class SearchResultItem extends React.Component{
     bidHandler(){
         console.log("creep");
 
+        if(getUserInfo()===null || getUserInfo()===undefined){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'You must be logged-in to perform this action.';
+                    draft.alert.type = 'danger';
+                })
+            )
+            return;
+        }
+
+        if(getUserInfoField("access")!=="granted"){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'Your account must be activated by the admin to perform this action.';
+                    draft.alert.type = 'danger';
+                })
+            )
+            return;
+        }
+
         if(this.props.item.running === false){
             this.setState(
                 produce(draft=>{
@@ -122,6 +144,7 @@ class SearchResultItem extends React.Component{
         console.log("creep");
         console.log(this.props.item);
         console.log( getUserInfoField("id"));
+        console.log(getUserInfo());
 
         if(this.props.item.running === false){
             this.setState(
@@ -133,6 +156,30 @@ class SearchResultItem extends React.Component{
             )
             return;
         }
+
+        if(getUserInfo()===null || getUserInfo()===undefined){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'You must be logged-in to perform this action.';
+                    draft.alert.type = 'danger';
+                })
+            )
+            return;
+        }
+
+
+        if(getUserInfoField("access")!=="granted"){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'Your account must be activated by the admin to perform this action.';
+                    draft.alert.type = 'danger';
+                })
+            )
+            return;
+        }
+        
 
         if(this.props.item.buyPrice === null){
             this.setState(

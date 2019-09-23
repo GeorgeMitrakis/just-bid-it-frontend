@@ -148,8 +148,7 @@ class AuctionForm extends React.Component {
                 else{
                     draft[field] = v;
                 }                
-            }),
-            ()=>console.log(this.state)
+            })
         )
     }
 

@@ -100,14 +100,14 @@ class Login extends React.Component{
                                             <br/>
                                             <Row>
                                                 <Col>Username:</Col>  
-                                                <Col><input type="text" name="username" ref={this.username}/></Col>   
+                                                <Col><input required type="text" name="username" ref={this.username}/></Col>   
                                             </Row>
                                             <br/>
                                             <Row>
                                             <Col>Password:</Col>
-                                            <Col><input type="password" name="password" ref={this.password}/></Col>
-                        </Row>
-                        <br/>
+                                            <Col><input required type="password" name="password" ref={this.password}/></Col>
+                                            </Row>
+                                            <br/>
                                             <br/>                                       
                                             <Row className="justify-content-center">
                                                 <Button type="submit">

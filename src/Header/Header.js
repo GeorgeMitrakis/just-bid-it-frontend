@@ -76,7 +76,7 @@ class Header extends React.Component {
             const url = window.URL.createObjectURL(new Blob([dt]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'file.json');
+            link.setAttribute('download', 'items.json');
             document.body.appendChild(link);
             link.click();
         })
@@ -99,7 +99,7 @@ class Header extends React.Component {
             const url = window.URL.createObjectURL(new Blob([xmlString]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'file.xml');
+            link.setAttribute('download', 'items.xml');
             document.body.appendChild(link);
             link.click();
         })

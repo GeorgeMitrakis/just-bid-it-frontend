@@ -74,31 +74,31 @@ class Signup extends React.Component{
             let msg;
             switch(err.status){
                 case(461):{
-                    msg = 'passwords don\'t match';
+                    msg = 'Passwords don\'t match';
                     break;
                 }
                 case(462):{
-                    msg = 'username taken';
+                    msg = 'Username taken';
                     break;                    
                 }
                 case(463):{
-                    msg = 'email is already in use';
+                    msg = 'Email is already in use';
                     break;                    
                 }
                 case(464):{
-                    msg = 'phone number is already in use';
+                    msg = 'Phone number is already in use';
                     break;                    
                 }
                 case(465):{
-                    msg = 'tax number is already in use';
+                    msg = 'Tax number is already in use';
                     break;                    
                 }
                 case(400):{
-                    msg = 'missing or empty parameters';
+                    msg = 'Missing or empty parameters';
                     break;                    
                 }
                 default:{
-                    msg = 'internal server error';
+                    msg = 'Internal server error';
                     break;
                 }
             }

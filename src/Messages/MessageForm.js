@@ -108,6 +108,7 @@ class MessageForm extends React.Component{
                                                 placeholder="username"
                                                 className="form-control form-control-sm"
                                                 value = {this.state.username}
+                                                maxLength="2048"
                                                 readOnly
                                             />
 

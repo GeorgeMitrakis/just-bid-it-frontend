@@ -219,7 +219,7 @@ class AuctionForm extends React.Component {
                                     <Form onSubmit={this.submitHandler}>
                                         <Row>
                                             <Col> Name </Col>
-                                            <Col> <input type="text" name="bid_name" required value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
+                                            <Col> <input type="text" name="bid_name" maxLength="256" required value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
@@ -235,6 +235,7 @@ class AuctionForm extends React.Component {
                                                                 required
                                                                 value={category.category}
                                                                 onChange={(event)=>this.changeCategoryHandler(index, event)}
+                                                                maxLength="128"
                                                             /> 
                                                             <Button
                                                                 color="muted"
@@ -261,7 +262,7 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location" required value={this.state.location.name} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
+                                            <Col> <input type="text" name="location" maxLength="32" required value={this.state.location.name} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
@@ -294,7 +295,7 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country" required value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
+                                            <Col><input type="text" name="country" maxLength="32" required value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
                                         </Row>
                                         <br/>
 
@@ -318,7 +319,7 @@ class AuctionForm extends React.Component {
                                         <Row>
 
                                             <Col>Description</Col>
-                                            <Col><textarea type="text" name="description" required value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
+                                            <Col><textarea type="text" name="description" maxLength="2048" required value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
 
                                         </Row>
                                         <br/>

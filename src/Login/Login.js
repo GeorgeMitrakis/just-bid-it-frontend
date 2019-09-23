@@ -100,7 +100,7 @@ class Login extends React.Component{
                                             <br/>
                                             <Row>
                                                 <Col>Username:</Col>  
-                                                <Col><input required type="text" name="username" ref={this.username}/></Col>   
+                                                <Col><input maxLength="128" required type="text" name="username" ref={this.username}/></Col>   
                                             </Row>
                                             <br/>
                                             <Row>

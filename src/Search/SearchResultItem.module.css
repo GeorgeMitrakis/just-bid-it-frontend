@@ -7,6 +7,22 @@
 
 }
 
+.alert{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+}
+
+
+.closed{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+    background-color: lightgray!important;
+}
+
 .infoRow{
     display: flex;
     padding-left: 3vw;  

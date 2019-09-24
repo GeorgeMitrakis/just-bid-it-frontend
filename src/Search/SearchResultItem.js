@@ -309,11 +309,11 @@ class SearchResultItem extends React.Component{
                                             <Row>
                                                 <Col sm="12">
                                                     <Card body>
-                                                        <Col>
+                                                        <Col className="d-flex justify-content-start">
                                                                 <Row><h4>Description:</h4></Row>
                                                                 <Row>{this.props.item.description}</Row>
                                                         </Col>
-                                                        <br/>
+
                                                         <Col >
                                                             <Row> <h4>Categories: </h4></Row>
                                                                 {this.props.item.categories.map((category,index) =>{

@@ -91,11 +91,13 @@ class MessagesReceived extends React.Component{
                                 </Col>
                             </Row>
                             <hr/>
+                            <br/>
                             <Row className="d-flex justify-content-between">
                                 <Col className="d-flex justify-content-start" >
                                    " <h5>{message.text}</h5> ."
                                 </Col>
                             </Row>
+                            <br/>
                         </Col>
                     </Card>
                         )

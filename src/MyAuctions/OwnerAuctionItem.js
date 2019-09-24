@@ -184,8 +184,8 @@ class OwnerAuctionItem extends React.Component {
                                 <TabPane tabId="1">
                                     <Row>
                                         <Col sm="12">
-                                            <Card body>
-                                                <Col>
+                                            <Card body className="d-flex justify-content-start" style ={{width:'100%'}}>
+                                                <Col >
                                                     <Row><h4>Description:</h4></Row>
                                                     <Row>{this.props.item.description}</Row>
                                                 </Col>

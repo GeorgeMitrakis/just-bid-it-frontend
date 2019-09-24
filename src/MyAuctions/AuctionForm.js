@@ -21,11 +21,13 @@ class AuctionForm extends React.Component {
 
         let name= '';
         let categoryList = [{category: ''}];
-        let location ='';
-        let latitude = '';
-        let longitude = '';
+        let location ={
+            name:'',
+            latitude:'',
+            longitude:''
+        };
         let country ='';
-        let buyPrice = 15.5;
+        let buyPrice = 100;
         let firstBid = 15.5 ;
         let ends = tomorrowIs();
         let description ='';
@@ -37,10 +39,10 @@ class AuctionForm extends React.Component {
             this.props.item.categories.map((category, index)=>{
                 categoryList.push({category: category});
             });
-            location = this.props.item.location;
-            if(this.props.item.latitude!==0 && this.props.item.longitude!==0){
-                latitude = this.props.item.latitude;
-                longitude = this.props.item.longitude;
+            location.name = this.props.item.location.name;
+            if(this.props.item.location.latitude!==0 && this.props.item.location.longitude!==0){
+                location.latitude = this.props.item.location.latitude;
+                location.longitude = this.props.item.location.longitude;
                 hasCoords = true;
             }
             
@@ -57,8 +59,6 @@ class AuctionForm extends React.Component {
             name : name,
             categoryList : categoryList,
             location: location,
-            latitude: latitude,
-            longitude: longitude,
             country: country,
             buyPrice: buyPrice,
             firstBid: firstBid,
@@ -108,7 +108,7 @@ class AuctionForm extends React.Component {
             userId: getUserInfoField("id"),
             name: this.state.name,
             categories: this.state.categoryList,
-            location: this.state.location,
+            location: this.state.location.name,
             country: this.state.country,
             buy_price: this.state.buyPrice,
             first_bid: this.state.firstBid,
@@ -116,11 +116,11 @@ class AuctionForm extends React.Component {
             description: this.state.description
         }
 
-        if(this.state.latitude !== '' && this.state.longitude !==''){
+        if(this.state.location.latitude !== '' && this.state.location.longitude !==''){
             requestBody = {
                 ...requestBody,
-                latitude:  this.state.latitude,
-                longitude: this.state.longitude
+                latitude:  this.state.location.latitude,
+                longitude: this.state.location.longitude
             }
         }
 
@@ -136,15 +136,16 @@ class AuctionForm extends React.Component {
     }
 
     inputChangeHandler(field, event){
-        // console.log(field);
-        //event.persist();
-        console.log(event);
         let v = event.target.value;
         this.setState(
             produce(draft=>{
-                draft[field] = v;
-            }),
-            ()=>console.log(this.state.ends)
+                if(field==='location'){
+                    draft[field].name = v;
+                }
+                else{
+                    draft[field] = v;
+                }                
+            })
         )
     }
 
@@ -175,7 +176,14 @@ class AuctionForm extends React.Component {
     }
 
     coordsHandler = (lat, lng)=>{
-        this.setState({latitude:lat, longitude:lng, hasCoords:true});
+        this.setState(
+            produce(draft=>{
+                draft.location.latitude = lat;
+                draft.location.longitude = lng;
+                draft.hasCoords = true;
+            }),()=>console.log(this.state)
+        )
+            
     }
 
     zoomHandler = (zoom)=>{
@@ -186,7 +194,7 @@ class AuctionForm extends React.Component {
         const endLimit = todayIs();
         let position;
         if(this.state.hasCoords === true){
-            position = [this.state.latitude, this.state.longitude];
+            position = [this.state.location.latitude, this.state.location.longitude];
         }
         else{
             position = [37.9838, 23.7275]
@@ -208,7 +216,7 @@ class AuctionForm extends React.Component {
                                     <Form onSubmit={this.submitHandler}>
                                         <Row>
                                             <Col> Name </Col>
-                                            <Col> <input type="text" name="bid_name" required value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
+                                            <Col> <input type="text" name="bid_name" maxLength="256" required value={this.state.name} onChange={(event)=>this.inputChangeHandler('name',event)}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
@@ -224,6 +232,7 @@ class AuctionForm extends React.Component {
                                                                 required
                                                                 value={category.category}
                                                                 onChange={(event)=>this.changeCategoryHandler(index, event)}
+                                                                maxLength="128"
                                                             /> 
                                                             <Button
                                                                 color="muted"
@@ -250,15 +259,15 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location" required value={this.state.location} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
+                                            <Col> <input type="text" name="location" maxLength="32" required value={this.state.location.name} onChange={(event) => this.inputChangeHandler('location', event)}/></Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Coordinates</Col>
                                             <Col> 
                                                 <Row>
-                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="latitude" name="latitude" value={this.state.latitude} /></Col>
-                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="longitude" name="longitude" value={this.state.longitude}/></Col>
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="latitude" name="latitude" value={this.state.location.latitude} /></Col>
+                                                    <Col><input readOnly className={styles.coords} type="text" placeholder="longitude" name="longitude" value={this.state.location.longitude}/></Col>
                                                 </Row>
                                                 <br/>
                                                 <Row className="justify-content-center">
@@ -283,19 +292,19 @@ class AuctionForm extends React.Component {
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country" required value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
+                                            <Col><input type="text" name="country" maxLength="32" required value={this.state.country} onChange={(event) => this.inputChangeHandler('country', event)}/> </Col>
                                         </Row>
                                         <br/>
 
                                         <Row>
                                             <Col>Buy Price</Col>
-                                            <Col><input type="text" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
+                                            <Col><input type="number" step="0.5" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>First Bid</Col>
-                                            <Col><input type="text" name="first_bid" required  value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
+                                            <Col><input type="number" step="0.5" name="first_bid" required  value={this.state.firstBid} onChange={(event) => this.inputChangeHandler('firstBid', event)}/></Col>
 
                                         </Row>
                                         <br/>
@@ -307,7 +316,7 @@ class AuctionForm extends React.Component {
                                         <Row>
 
                                             <Col>Description</Col>
-                                            <Col><textarea type="text" name="description" required value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
+                                            <Col><textarea type="text" name="description" maxLength="2048" required value={this.state.description} onChange={(event) => this.inputChangeHandler('description', event)}/></Col>
 
                                         </Row>
                                         <br/>

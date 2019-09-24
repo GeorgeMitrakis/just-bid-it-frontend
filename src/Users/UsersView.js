@@ -28,8 +28,8 @@ class UsersView extends React.Component{
         .then(json => {
             console.log("Search Ajax success!");
             console.log(json)
-            this.setState({users:json.users})
-            this.props.users(json.users);
+            this.setState({users:json.users},
+                ()=>this.props.users(json.users));
             console.log("Search Ajax end");
         })
         .fail(err=>{

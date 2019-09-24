@@ -19,7 +19,8 @@ class Signup extends React.Component{
         this.password = React.createRef();
         this.password1 = React.createRef();
         this.state ={
-            visible: false
+            visible: false,
+            message: ''
         };
         this.onDismiss = this.onDismiss.bind(this);
     }
@@ -70,10 +71,38 @@ class Signup extends React.Component{
             this.props.history.replace("/login");
         })
         .fail(err=>{
-            if(err.status){
-                console.log(err.status);
+            let msg;
+            switch(err.status){
+                case(461):{
+                    msg = 'Passwords don\'t match';
+                    break;
+                }
+                case(462):{
+                    msg = 'Username taken';
+                    break;                    
+                }
+                case(463):{
+                    msg = 'Email is already in use';
+                    break;                    
+                }
+                case(464):{
+                    msg = 'Phone number is already in use';
+                    break;                    
+                }
+                case(465):{
+                    msg = 'Tax number is already in use';
+                    break;                    
+                }
+                case(400):{
+                    msg = 'Missing or empty parameters';
+                    break;                    
+                }
+                default:{
+                    msg = 'Internal server error';
+                    break;
+                }
             }
-            this.setState({visible:true, options:false});
+            this.setState({visible:true, options:false, message:msg});
             console.log(err)
         })
 
@@ -85,17 +114,11 @@ render(){
     return(
         <Container fluid id={content}>
             <Col>
-                <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                    Invalid inputs <br/>
-                    Check fields again
-                </Alert>
                 <Row className="mb-3"/>
                 <Row className="justify-content-center">
-                    {/* <Example username={this.state.username} onButtonClick={()=>{this.innerButton()}}/> */}
                     <Col className="align-self-center" xs="auto">
                         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                           Invalid inputs <br/>
-                           Check fields again
+                           {this.state.message}
                         </Alert>
                         <Card id="signup_form">
                             <CardHeader>
@@ -107,43 +130,43 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col> First Name </Col>
-                                            <Col> <input type="text" name="firstname" required ref={this.firstname}/> </Col>
+                                            <Col> <input type="text" name="firstname" maxLength="64" required ref={this.firstname}/> </Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col> Last Name </Col>
-                                            <Col> <input type="text" name="lastname" required ref={this.lastname}/> </Col>
+                                            <Col> <input type="text" name="lastname" maxLength="64" required ref={this.lastname}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Email </Col>
-                                            <Col><input type="email" name="email" required ref={this.email}/></Col>
+                                            <Col><input type="email" name="email" maxLength="128" required ref={this.email}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Country </Col>
-                                            <Col><input type="text" name="country" required ref={this.country}/> </Col>
+                                            <Col><input type="text" name="country" maxLength="32" required ref={this.country}/> </Col>
                                         </Row>
                                         <br/>
                                         <Row>
 
                                             <Col>Location</Col>
-                                            <Col> <input type="text" name="location" required ref={this.location}/></Col>
+                                            <Col> <input type="text" name="location" maxLength="64" required ref={this.location}/></Col>
                                         </Row>
                                         <br/>
 
                                         <Row>
 
                                         <Col>Phone number</Col>
-                                        <Col><input type="text" name="phone_number" required ref={this.phonenumber}/></Col>
+                                        <Col><input type="text" name="phone_number" maxLength="32" required ref={this.phonenumber}/></Col>
 
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>Tax registration number</Col>
-                                            <Col><input type="text" name="tax_registration_number" required ref={this.taxregristrationnumber}/></Col>
+                                            <Col><input type="text" name="tax_registration_number" maxLength="32" required ref={this.taxregristrationnumber}/></Col>
 
                                         </Row>
                                         <br/>
@@ -151,7 +174,7 @@ render(){
                                         <br/>
                                         <Row>
                                             <Col>Username</Col>
-                                            <Col><input type="text" name="username" required ref={this.username}/></Col>
+                                            <Col><input type="text" name="username" maxLength="128" required ref={this.username}/></Col>
 
 
                                         </Row>

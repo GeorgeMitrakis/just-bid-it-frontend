@@ -1,11 +1,8 @@
-.coords{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+.successContainer{
+    margin-top: 5vh;
 }
 
-.formelem{
+.row{
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
 }

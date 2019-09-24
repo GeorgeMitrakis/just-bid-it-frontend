@@ -26,29 +26,6 @@ class MessageForm extends React.Component{
 
     }
 
-    // submitHandler = (event) => {
-    //     event.persist();
-    //     event.preventDefault();
-    //     //console.log(event);
-    //     // console.log("[SearchBar.js] Submit Handler start");
-    //     // console.log("searchterm: "+this.state.searchterm);
-    //     // console.log("categoryvalue: "+this.state.categoryvalue);
-    //     // console.log("locationvalue: "+this.state.locationvalue);
-    //     // console.log("pricevalue: "+this.state.pricevalue);
-    //
-    //     let data={};
-    //
-    //     if(this.state.usernamesvalue!==''){
-    //         data = { ...data, usernames: this.state.usernamesvalue}
-    //     }
-    //
-    //
-    //     console.log(data);
-    //     console.log("[SearchBar.js] Submit Handler end");
-    //     this.props.searchHandler(data);
-    // }
-
-
     clearText(){
         this.setState({text:''})
     }
@@ -132,6 +109,7 @@ class MessageForm extends React.Component{
                                                 placeholder="username"
                                                 className="form-control form-control-sm"
                                                 value = {this.state.username}
+                                                maxLength="2048"
                                                 readOnly
                                             />
 

@@ -74,7 +74,7 @@ class Home extends React.Component{
                 <Row className="d-flex justify-content-around">
                     <Col>
                         <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>
-                        <h2>About US</h2>
+                        <h2>About us</h2>
                         </Row>
                         <br/>
                         <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>

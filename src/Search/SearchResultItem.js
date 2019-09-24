@@ -308,8 +308,8 @@ class SearchResultItem extends React.Component{
                                         <TabPane tabId="1">
                                             <Row>
                                                 <Col>
-                                                    <Card body>
-                                                        <Col className="d-flex justify-content-start">
+                                                    <Card body className="d-flex justify-content-start" style ={{width:'690px'}} >
+                                                        <Col>
                                                                 <Row><h4>Description:</h4></Row>
                                                                 <Row>{this.props.item.description}</Row>
                                                         </Col>

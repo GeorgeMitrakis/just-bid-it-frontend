@@ -1,0 +1,18 @@
+.carouselArrow{
+    width:70px!important;
+    background-color: black;
+}
+
+.carouselArrowLeft{
+    left: calc(50% - 70px - 336px)!important;
+}
+
+.carouselArrowRight{
+    right: calc(50% - 70px - 336px)!important;
+}
+
+.carouselInner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

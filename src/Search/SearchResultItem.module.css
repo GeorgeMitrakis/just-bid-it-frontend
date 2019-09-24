@@ -54,8 +54,12 @@
 
 }
 
-
 .showmap {
     width:384px;
     height:384px;
+}
+
+.collapse{
+    padding-left: 25px;
+    padding-right: 25px;
 }

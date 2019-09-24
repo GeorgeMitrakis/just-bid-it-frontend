@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button , Container } from 'reactstrap';
 import  './Home.css';
 import $ from 'jquery';
 
@@ -73,12 +73,53 @@ class Home extends React.Component{
                 <br/>
                 <Row className="d-flex justify-content-around">
                     <Col>
-                        <Button  onClick={() => this.redirectHandler("/search")}>
+                        <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>
+                        <h2>About US</h2>
+                        </Row>
+                        <br/>
+                        <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>
+                        <h3>What is JBI?</h3>
+                        </Row>
+                        <Row className="d-flex justify-content-around">
+
+                            <h5> JBI is a free online auction marketplace offering local trade with no fees for bidding, buying, or selling!<br/>
+                            You can turn your unwanted stuff into cash, and get the best possible deals for new or used things.
+                            </h5>
+                        </Row>
+                        <br/>
+                        <Row className="d-flex justify-content-around">
+                            <h5> Whether you're a serious collector or casual treasure hunter, JBI.com is the place to find that special item you've been looking for. <br/>
+                                Ready to start bidding?
+                            </h5>
+                        </Row>
+                        <br/>
+                        <br/>
+
+
+                        {/*<h4> Navigate between over 500 auctions! </h4>*/}
+
+                    </Col>
+                </Row>
+                <Row className= "d-flex justify-content-center" style={{marginTop:'100px'}}>
+
+                    <>
+                    <Col >
+                        <h3>Are you an Auctioneer?</h3>
+                        <h5> Navigate through your auctions! </h5> <br/>
+                        <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={() => this.redirectHandler("/items")}>
+                        My Auctions
+                    </Button>
+                    </Col>
+
+                    <Col>
+                        <h3>Are you a Bidder?</h3>
+                        <h5> Start bidding now!</h5><br/>
+                        <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={() => this.redirectHandler("/search")}>
                             Search
                         </Button>
-                        <h4> Navigate between over 500 auctions! </h4>
                     </Col>
-                </Row>  
+                    </>
+                </Row>
                 <br/>
                 {/*<div className="carousel">*/}
                 {/*    <Arrow direction="left" clickFunction={ this.previousSlide } glyph="&#9664;" />*/}

@@ -43,6 +43,9 @@ class Login extends React.Component{
             this.props.logInHandler(json.result.value);
         })
         .fail(err=>{
+            if(err.status){
+                console.log(err.status);
+            }
             this.setState({visible:true, options:false});
             console.log(err)
         })

@@ -73,19 +73,10 @@ class Home extends React.Component{
                 <br/>
                 <Row className="d-flex justify-content-around">
                     <Col>
-                        <Button  onClick={() => this.redirectHandler("/signup")}>
-                            Sign up
-                        </Button>
-                    </Col>
-                    <Col>
-                        <Button  onClick={() => this.redirectHandler("/login")}>
-                            Login
-                        </Button>
-                    </Col> 
-                    <Col>
                         <Button  onClick={() => this.redirectHandler("/search")}>
                             Search
                         </Button>
+                        <h4> Navigate between over 500 auctions! </h4>
                     </Col>
                 </Row>  
                 <br/>

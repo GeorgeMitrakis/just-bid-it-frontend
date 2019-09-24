@@ -70,6 +70,9 @@ class Signup extends React.Component{
             this.props.history.replace("/login");
         })
         .fail(err=>{
+            if(err.status){
+                console.log(err.status);
+            }
             this.setState({visible:true, options:false});
             console.log(err)
         })

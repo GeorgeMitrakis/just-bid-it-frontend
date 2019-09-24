@@ -33,7 +33,7 @@ class MessagesReceived extends React.Component{
                 console.log(json)
                 console.log(json.results);
                 this.setState({messages:json.messages})
-                this.props.messages(json.messages);
+                // this.props.messages(json.messages);
             })
             .fail(err=>{
                 console.log(err);
@@ -52,7 +52,8 @@ class MessagesReceived extends React.Component{
                 console.log(json)
                 this.setState(
                     produce(draft=>{
-                        draft.messages = this.state.messages.filter((elem, index)=>elem.id !== this.state.messages[index].id
+                        draft.messages = this.state.messages.filter((elem, index)=>
+                        {if(elem.id !== id) return elem}
                         )
                     })
                 )
@@ -65,9 +66,9 @@ class MessagesReceived extends React.Component{
     render()
     {
         return(
-            <>
-
                 <Container fluid id={received} className="d-flex justify-content-center" >
+                    <Row className="d-flex justify-content-center">
+
                     {this.state.messages.map((message,index) =>{
                         return(
                             <Card key={index} style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
@@ -100,8 +101,8 @@ class MessagesReceived extends React.Component{
                         )
                         }
                     )}
+                    </Row>
                 </Container>
-           </>
         );
     }
 }

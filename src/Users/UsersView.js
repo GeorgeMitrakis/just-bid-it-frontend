@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {Table} from 'reactstrap';
 //import styles from './UsersView.module.css';
 import $ from "jquery";
+import Row from "reactstrap/es/Row";
 
 
 class UsersView extends React.Component{
@@ -40,8 +41,10 @@ class UsersView extends React.Component{
     render(){
         return(
             <div>
+                <br/>
                 <h2 className="text-center">User Details</h2>
-                <Table className="table table-striped">
+                <Row className= "d-flex justify-content-center">
+                <Table className="table table-striped " style ={{width : '800px'}}>
                     <thead>
                     <tr>
                         <th className="hidden">User id</th>
@@ -68,6 +71,7 @@ class UsersView extends React.Component{
                     </tbody>
 
                 </Table>
+                </Row>
             </div>
         );
     }

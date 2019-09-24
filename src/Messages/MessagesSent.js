@@ -35,7 +35,7 @@ class MessagesSent extends React.Component{
                 console.log(json)
                 // console.log(json.results);
                 this.setState({messages:json.messages})
-                this.props.messages(json.messages);
+                // this.props.messages(json.messages);
             })
             .fail(err=>{
                 console.log(err);
@@ -54,7 +54,8 @@ class MessagesSent extends React.Component{
                 console.log(json)
                 this.setState(
                     produce(draft=>{
-                        draft.messages = this.state.messages.filter((elem, index)=>elem.id !== this.state.messages[index].id
+                        draft.messages = this.state.messages.filter((elem, index)=>
+                            {if(elem.id !== id) return elem}
                         )
                     })
                 )
@@ -67,7 +68,7 @@ class MessagesSent extends React.Component{
     render()
         {
         return(
-            <Container fluid id={sent} >
+            <Container fluid id={sent} className="d-flex justify-content-center">
                 {/*<Row className="d-flex justify-content-center">*/}
                 {/*    <button*/}
                 {/*        type="button" color="muted" className="btn btn-outline-secondary"*/}

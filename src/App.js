@@ -123,11 +123,11 @@ class App extends React.Component {
 		return(
 			<Switch>
 				<Route path={["/", "/welcome"]} exact component={Welcome}/>
-				<Route path="/home" exact component={Home}/>
+				{/*<Route path="/home" exact component={Home}/>*/}
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} role={this.state.role}/>)}/>
 				<Route path="/signup" exact render={() => (<Signup logInHandler={this.logInHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/map" exact component={Map}/>
+				{/*<Route path="/map" exact component={Map}/>*/}
 				<Route component={NotFound}/>
 			</Switch>
 		)

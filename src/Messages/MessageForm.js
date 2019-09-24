@@ -8,9 +8,10 @@ import Form from "reactstrap/es/Form";
 import MessagesPopUp from "./MessagesPopUp";
 import $ from "jquery";
 import produce from 'immer';
-import {content} from "./MessageForm.module.css";
+import styles, {content} from "./MessageForm.module.css";
 import AutoCompletePopup from "../Search/AutoCompletePopup";
 import {getUserInfoField} from "../Utility/Utility";
+
 
 class MessageForm extends React.Component{
     constructor(props){
@@ -101,12 +102,12 @@ class MessageForm extends React.Component{
             <div>
                 <Row className="mb-3"/>
                 <Row className="d-flex justify-content-around">
-                    <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/received")}
+                    <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.receivedbutton} onClick={()=>this.props.history.push("/messages/received")}
                     >
                         Messages Received
                     </Button>
 
-                    <Button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/sent")}
+                    <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.sentbutton} onClick={()=>this.props.history.push("/messages/sent")}
                     >
                         Messages Sent
                     </Button>
@@ -138,16 +139,16 @@ class MessageForm extends React.Component{
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col className="d-flex justify-content-center"  style={{width:'500px' , height:'200px'}}>
+                                            <Col className="d-flex justify-content-center "  style={{width:'500px' , height:'200px'}}>
                                                 {/*<input type="textarea" name="description" required  className="form-control " rows = "3"/>*/}
-                                                <textarea  type = "text"
+                                                <textarea
+                                                    type = "text"
                                                     className="form-control"
                                                     placeholder ="Write your message here"
+                                                    id="exampleFormControlTextarea3"
                                                     value={this.state.text}
                                                     onChange={(event) => this.inputChangeHandler('text', event)}
-                                                >
-
-                                                </textarea>
+                                                />
                                             </Col>
                                         </Row>
                                         <br/>

@@ -67,7 +67,10 @@ class Signup extends React.Component{
         })
         .then(json => {
             console.log(json)
-            this.props.logInHandler(json.result);
+            let data = json.result
+            let msg = json.messagesReceived;
+            data = {...data, msg};
+            this.props.logInHandler(data);
             this.props.history.replace("/login");
         })
         .fail(err=>{

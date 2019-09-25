@@ -19,9 +19,14 @@ class Login extends React.Component{
         };
         this.onDismiss = this.onDismiss.bind(this);
     }
+
+
     onDismiss() {
         this.setState({ visible: false });
     }
+
+
+
     submitHandler = (event) => {
         event.preventDefault();
         //this.props.history.replace("/welcome");
@@ -40,7 +45,11 @@ class Login extends React.Component{
         })
         .then(json => {
             console.log(json)
-            this.props.logInHandler(json.result.value);
+            let data = json.result.value;
+            let messagesReceived = json.messagesReceived;
+            data = {...data, messagesReceived};
+            console.log(data);
+            this.props.logInHandler(data);
         })
         .fail(err=>{
             if(err.status){

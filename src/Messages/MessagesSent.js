@@ -79,6 +79,7 @@ class MessagesSent extends React.Component{
                 {/*</Row>*/}
 
                 <Row className="d-flex justify-content-center">
+                    {this.state.messages.length === 0 && <p>No messages.</p>}
                 {this.state.messages.map((message,index) =>{
                     return(
                <Card key={index} style ={{width : '600px', marginTop:'30px' , marginBottom:'30px'}} className="d-flex justify-content-center">

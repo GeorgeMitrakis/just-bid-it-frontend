@@ -71,27 +71,39 @@ class Home extends React.Component{
         return(
             <div>
                 <br/>
-                <Row className="d-flex justify-content-around">
+                <Row className="d-flex justify-content-center">
                     <Col>
-                        <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>
+                        <Row className="d-flex justify-content-center">
                         <h2>About us</h2>
                         </Row>
                         <br/>
-                        <Row className="d-flex justify-content-around" style={{marginRight:'500px'}}>
+                        <Row className="d-flex justify-content-center">
                         <h3>What is JBI?</h3>
                         </Row>
-                        <Row className="d-flex justify-content-around">
+                        <Row className="d-flex justify-content-center">
 
                             <h5> JBI is a free online auction marketplace offering local trade with no fees for bidding, buying, or selling!<br/>
-                            You can turn your unwanted stuff into cash, and get the best possible deals for new or used things.
-                            </h5>
+                            You can turn your unwanted stuff into cash, and get the best possible deals .<br/>
+                                Whether you're a serious collector or casual treasure hunter, JBI.com is the place to find that special item you've been looking for. </h5>
+                            <br/>
+
+
                         </Row>
                         <br/>
-                        <Row className="d-flex justify-content-around">
-                            <h5> Whether you're a serious collector or casual treasure hunter, JBI.com is the place to find that special item you've been looking for. <br/>
-                                Ready to start bidding?
-                            </h5>
+                        <Row className="d-flex justify-content-center">
+                            <h3>Why an online auction?</h3>
                         </Row>
+                        <Row className="d-flex justify-content-center">
+
+                            <h5>
+                                Online auctions allow people to bid for items online at the same time. <br/>
+                                You can access auctions around the world and get in on all the action, right from your own computer.<br/>
+                                Ready to start bidding?
+
+                            </h5>
+                            <br/>
+                        </Row>
+
                         <br/>
                         <br/>
 
@@ -100,7 +112,8 @@ class Home extends React.Component{
 
                     </Col>
                 </Row>
-                <Row className= "d-flex justify-content-center" style={{marginTop:'100px'}}>
+                <hr/>
+                <Row className= "d-flex justify-content-center" style={{marginTop:'70px'}}>
 
                     <>
                     <Col >

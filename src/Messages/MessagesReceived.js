@@ -20,6 +20,7 @@ class MessagesReceived extends React.Component{
     componentDidMount(){
         this.showreceived();
     }
+
     showreceived(){
 
         $.ajax({
@@ -32,7 +33,8 @@ class MessagesReceived extends React.Component{
             .then(json => {
                 console.log(json)
                 console.log(json.results);
-                this.setState({messages:json.messages})
+                this.setState({messages:json.messages},
+                    ()=>this.props.counterHandler())
                 // this.props.messages(json.messages);
             })
             .fail(err=>{
@@ -68,6 +70,7 @@ class MessagesReceived extends React.Component{
         return(
                 <Container fluid id={received} className="d-flex justify-content-center" >
                     <Row className="d-flex justify-content-center">
+                    {this.state.messages.length === 0 && <p>No messages.</p>}
 
                     {this.state.messages.map((message,index) =>{
                         return(

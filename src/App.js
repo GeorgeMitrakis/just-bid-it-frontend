@@ -19,7 +19,7 @@ import NotFound from './NotFound';
 import Search from "./Search/Search";
 import Users from "./Users/Users";
 import OwnerAuctionItem from "./MyAuctions/OwnerAuctionItem";
-import { getUserInfoField } from './Utility/Utility';
+import { getUserInfoField, getUserInfo } from './Utility/Utility';
 import {Row} from "reactstrap";
 import MessageForm from "./Messages/MessageForm";
 import MessagesSent from "./Messages/MessagesSent";
@@ -32,8 +32,9 @@ class App extends React.Component {
 		this.state = {
 			access: getUserInfoField("access"),
 			//access values: "granted", "pending", "denied", null
-			role: getUserInfoField("role") ? getUserInfoField("role") : "guest"
+			role: getUserInfoField("role") ? getUserInfoField("role") : "guest",
 			//role values: "administrator", "common user", "guest"
+			messagesReceived: 0
 		}
 	}
 
@@ -44,7 +45,8 @@ class App extends React.Component {
         
         this.setState({
 			access: data.access,
-			role: data.role
+			role: data.role,
+			messagesReceived: data.messagesReceived
 		});
 
         //this.props.history.replace("/");
@@ -55,10 +57,20 @@ class App extends React.Component {
 
         this.setState({
 			access: "denied",
-			role: "guest"
+			role: "guest",
+			messagesReceived: 0
 		});
 
         //this.props.history.goBack();
+	}
+
+	unreadMessageCounterResetHandler = () =>{
+		this.setState({messagesReceived:0},
+			()=>{
+				let data = getUserInfo();
+				data.messagesReceived = 0;
+				localStorage.setItem('userInfo', JSON.stringify(data));
+			})
 	}
 
 	commonUserRoutes = () => {
@@ -77,7 +89,7 @@ class App extends React.Component {
 				<Route path="/search" exact component={Search}/>
 				{/*<Route path="/messages" exact component={MessageForm}/>*/}
 				<Route path="/messages/sent" exact component={MessagesSent}/>
-				<Route path="/messages/received" exact component={MessagesReceived}/>
+				<Route path="/messages/received" exact render={()=><MessagesReceived counterHandler={this.unreadMessageCounterResetHandler}/>}/>
 				<Route path="/messages/new" component={MessageForm}/>
 				<Route path="/messages/option"  component={MessageOption}/>
 				<Route path="/map" exact component={Map}/>
@@ -112,7 +124,7 @@ class App extends React.Component {
 				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" component={Users}/>
 				{/*  additional dynamic routes: /admin/users/{username} */}
-				<Route path="/map" exact component={Map}/>
+				{/* <Route path="/map" exact component={Map}/> */}
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -155,7 +167,7 @@ class App extends React.Component {
 
 		return (
 			<div className="App">
-				<Header role={this.state.role} access={this.state.access}/>
+				<Header role={this.state.role} access={this.state.access} messagesReceived={this.state.messagesReceived}/>
                 <Row className="justify-content-center">
                     <h1>JUST BID IT</h1>
                 </Row>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Row, Col, Button , Container } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import  './Home.css';
 import $ from 'jquery';
 
@@ -143,23 +143,5 @@ class Home extends React.Component{
         )
     }
 }
-const Arrow = ({ direction, clickFunction, glyph }) => (
-    <div
-        className={ `slide-arrow ${direction}` }
-        onClick={ clickFunction }>
-        { glyph }
-    </div>
-);
 
-const ImageSlide = ({ url }) => {
-    const styles = {
-        backgroundImage: `url(${url})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-    };
-
-    return (
-        <div className="image-slide" style={styles}></div>
-    );
-}
 export default withRouter(Home);

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Card, Col, Row, Table} from "reactstrap";
-import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
-import { Collapse, Button, CardText, 
-    Nav, NavItem, NavLink, TabContent, TabPane, CardTitle, Alert } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
+import { Collapse, Button,
+    Nav, NavItem, NavLink, TabContent, TabPane, Alert } from 'reactstrap';
 import classnames from 'classnames';
 import produce from 'immer';
 import styles from './OwnerAuctionItem.module.css';
@@ -37,28 +37,6 @@ class OwnerAuctionItem extends React.Component {
             });
         }
     }
-    // componentDidMount(){
-    //     this.showUsers();
-    // }
-    //
-    // showUsers(){
-    //     $.ajax({
-    //         url: "http://localhost:8765/app/api/items",
-    //         dataType: 'json',
-    //         type: 'GET'
-    //
-    //     })
-    //         .then(json => {
-    //             console.log("Ajax success!");
-    //             console.log(json)
-    //             this.setState({users:json.users})
-    //             this.props.users(json.users);
-    //             console.log("Search Ajax end");
-    //         })
-    //         .fail(err=>{
-    //             console.log(err)
-    //         })
-    // }
 
     onDismiss = () => {
         this.setState(
@@ -146,9 +124,10 @@ class OwnerAuctionItem extends React.Component {
                         </Row>
                         <br/>
                         <Row className="d-flex justify-content-between">
+                            {this.props.item.buyPrice!==null?
                             <Col className="d-flex justify-content-between" >
                                 Buy Price :${this.props.item.buyPrice}
-                            </Col>
+                            </Col>:null}
                             <Col className="d-flex justify-content-between" >
                                 Bids : {this.props.item.numberOfBids} 
                             </Col>

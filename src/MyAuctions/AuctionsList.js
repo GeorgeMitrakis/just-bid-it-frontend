@@ -1,14 +1,32 @@
 import React from 'react';
-import { withRouter,Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Row, Col, Button, Container} from 'reactstrap';
 import $ from 'jquery';
 import OwnerAuctionItem from "./OwnerAuctionItem";
-import AuctionForm from "./AuctionForm";
+//import AuctionForm from "./AuctionForm";
 import {getUserInfoField} from "../Utility/Utility";
 
 class AuctionsList extends React.Component{
     constructor(props){
         super(props);
+    }
+
+    componentDidMount(){
+        $.ajax({
+            url: "http://localhost:8765/app/api/items",
+            dataType : 'json',
+            type: 'GET',
+            data: {userId:getUserInfoField("id")}
+        })
+        .then(json => {
+            console.log(json) 
+            console.log(json.results); 
+            this.props.setItems(json.results)
+            //this.props.addItems(json.results);           
+        })
+        .fail(err=>{
+            console.log(err);
+        })
     }
 
     render(){

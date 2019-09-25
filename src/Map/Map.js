@@ -1,10 +1,7 @@
 import React from 'react';
-import L from 'leaflet';
 import { withRouter } from 'react-router-dom';
-import {Col} from "reactstrap";
 import { Map, TileLayer } from 'react-leaflet';
 import styles from './Map.module.css';
-import Marker from './Marker';
 
 
 

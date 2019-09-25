@@ -7,18 +7,18 @@ import Signup from './Signup/Signup';
 import Home from './Home/Home';
 import Logout from './Logout/Logout';
 import Welcome from './Welcome/Welcome';
-import UnderConstruction from './UnderConstruction';
-import AuctionsList from './MyAuctions/AuctionsList';
+//import UnderConstruction from './UnderConstruction';
+//import AuctionsList from './MyAuctions/AuctionsList';
 import NewAuction from './MyAuctions/NewAuction';
 import AuctionsPage from './MyAuctions/AuctionsPage';
 import Header from './Header/Header';
 //import Map from './Map';
 //import UserRequestData from './UserRequest/UserRequestData';
-import Map from './Map/Map';
+//import Map from './Map/Map';
 import NotFound from './NotFound';
 import Search from "./Search/Search";
 import Users from "./Users/Users";
-import OwnerAuctionItem from "./MyAuctions/OwnerAuctionItem";
+//import OwnerAuctionItem from "./MyAuctions/OwnerAuctionItem";
 import { getUserInfoField, getUserInfo } from './Utility/Utility';
 import {Row} from "reactstrap";
 import MessageForm from "./Messages/MessageForm";
@@ -83,17 +83,11 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/items/new" exact component={NewAuction}/>
 				<Route path="/items" component={AuctionsPage}/>
-				<Route path="/ownerauctionitem" exact component = {OwnerAuctionItem}/>
-				{/* additional dynamic routes: /items/{id} , /items/{id}/bid , items/{id}/buy */}
-				<Route path="/bids" exact component={UnderConstruction}/>
 				<Route path="/search" exact component={Search}/>
-				{/*<Route path="/messages" exact component={MessageForm}/>*/}
 				<Route path="/messages/sent" exact component={MessagesSent}/>
 				<Route path="/messages/received" exact render={()=><MessagesReceived counterHandler={this.unreadMessageCounterResetHandler}/>}/>
 				<Route path="/messages/new" component={MessageForm}/>
 				<Route path="/messages/option"  component={MessageOption}/>
-				<Route path="/map" exact component={Map}/>
-				{/* additional dynamic routes: /messages/{id} , /messages/{username} , /messages/{username}/send */}
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -108,7 +102,6 @@ class App extends React.Component {
 				<Route path="/login" exact render={() => (<Login logInHandler={this.logInHandler} access={this.state.access} role={this.state.role}/>)}/>
 				<Route path="/logout" exact render={() =>(<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
-				<Route path="/map" exact component={Map}/>
 				<Route component={NotFound}/>
 			</Switch>
 		)
@@ -123,8 +116,6 @@ class App extends React.Component {
 				<Route path="/logout" exact render={() => (<Logout logOutHandler={this.logOutHandler}/>)}/>
 				<Route path="/search" exact component={Search}/>
 				<Route path="/admin/users" component={Users}/>
-				{/*  additional dynamic routes: /admin/users/{username} */}
-				{/* <Route path="/map" exact component={Map}/> */}
 				<Route component={NotFound}/>
 			</Switch>
 		)

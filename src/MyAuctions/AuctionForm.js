@@ -8,7 +8,6 @@ import styles from './AuctionForm.module.css';
 //import Popup from "reactjs-popup";
 import Map from '../Map/Map';
 import Marker from '../Map/Marker';
-import $ from 'jquery';
 import { getUserInfoField } from '../Utility/Utility';
 
 
@@ -73,23 +72,6 @@ class AuctionForm extends React.Component {
     componentDidMount(){
         console.log(this.props.item);
         console.log(this.state);
-        // let d = new Date();
-        // console.log(d);
-        // console.log("d.getTime() = "+d.getTime());
-        // console.log("d.toDateString() =" +d.toDateString());
-        // console.log("d.toISOString() =" +d.toISOString());
-        // console.log("d.toLocaleDateString() =" +d.toLocaleDateString());
-        // console.log("d.toLocaleTimeString() =" +d.toLocaleTimeString());
-        // console.log("d.toLocaleString() =" +d.toLocaleString());
-        // console.log("d.toString() =" +d.toString());
-        // console.log("d.toUTCString() =" +d.toUTCString());
-        // console.log("d.valueOf() =" +d.valueOf());
-        // console.log("d.getDate() = "+d.getDate());
-        // console.log("d.getDay() = "+d.getDay());
-        // console.log("d.getFullYear() = "+d.getFullYear());
-        // console.log("d.getHours() = "+d.getHours());
-        // console.log("d.getMinutes() = "+d.getMinutes());
-        // console.log("formatDate(d) = "+formatDate(d));
         
     }
 
@@ -97,12 +79,6 @@ class AuctionForm extends React.Component {
         event.preventDefault();
         // console.log(this.state);
         console.log("[AuctionForm.js] submitHandler start");
-
-        // let categories = [];
-        // this.state.categoryList.map((elem, index) =>{
-        //     return categories.push(elem.category);
-        // })
-        // console.log(categories);
 
         let requestBody = {
             userId: getUserInfoField("id"),
@@ -298,7 +274,7 @@ class AuctionForm extends React.Component {
 
                                         <Row>
                                             <Col>Buy Price</Col>
-                                            <Col><input type="number" step="0.5" name="buy_price" required value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
+                                            <Col><input type="number" step="0.5" name="buy_price" value={this.state.buyPrice} onChange={(event) => this.inputChangeHandler('buyPrice', event)}/></Col>
 
                                         </Row>
                                         <br/>

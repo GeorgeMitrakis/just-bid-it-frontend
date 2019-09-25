@@ -1,14 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 //import logo from './logo.svg';
-import { Row, Col, Button } from 'reactstrap';
+import { Row } from 'reactstrap';
 import { getUserInfoField } from '../Utility/Utility';
 import styles from './Welcome.module.css';
 //import { getUserInfo } from './Utility';
-import imgsignup from '../images/signup.png';
-import signup from '../images/sgnup.png';
 
-import {Carousel,CarouselItem,CarouselControl,CarouselIndicators,CarouselCaption} from 'reactstrap';
+import {Carousel,CarouselItem,CarouselControl,CarouselIndicators} from 'reactstrap';
 
 class Welcome extends React.Component{
     constructor(props){

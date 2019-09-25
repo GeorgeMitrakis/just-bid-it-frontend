@@ -1,10 +1,10 @@
 import React from 'react';
-import {Button, Card, Col, Container, Row, Table} from "reactstrap";
-import { withRouter,Route, BrowserRouter as Router, Switch  } from 'react-router-dom';
+import {Card, Col, Container, Row} from "reactstrap";
+import { withRouter } from 'react-router-dom';
 // import styles from "../MyAuctions/OwnerAuctionItem.module.css";
 import {received} from "./MessageForm.module.css";
 import $ from "jquery";
-import {divIcon} from "leaflet/dist/leaflet-src.esm";
+//import {divIcon} from "leaflet/dist/leaflet-src.esm";
 import {getUserInfoField} from "../Utility/Utility";
 import produce from 'immer';
 

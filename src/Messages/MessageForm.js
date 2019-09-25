@@ -1,15 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import CardTitle from "reactstrap/es/CardTitle";
-import {Button, Card, CardHeader, Col, Container, Row, Table} from "reactstrap";
-import CardBody from "reactstrap/es/CardBody";
-import Form from "reactstrap/es/Form";
+import {Button, Card, Col, Container, Row, CardBody, Form} from "reactstrap";
 // import {content} from "../Signup/Signup.module.css";
-import MessagesPopUp from "./MessagesPopUp";
 import $ from "jquery";
 import produce from 'immer';
 import styles, {content} from "./MessageForm.module.css";
-import AutoCompletePopup from "../Search/AutoCompletePopup";
 import {getUserInfoField} from "../Utility/Utility";
 
 
@@ -67,7 +62,7 @@ class MessageForm extends React.Component{
         })
             .then(json => {
                 console.log(json)
-                {this.props.history.push("/messages/sent")}
+                this.props.history.push("/messages/sent")
             })
             .fail(err=>{
                 console.log(err)

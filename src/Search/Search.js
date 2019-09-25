@@ -1,19 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {Col, Container} from "reactstrap";
+import {Col, Container, Row} from "reactstrap";
 import styles from './Search.module.css';
 import $ from "jquery";
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
-import { Pagination,Form, Container as Cont } from 'semantic-ui-react';
-import Row from "reactstrap/es/Row";
+import { Pagination, Container as Cont } from 'semantic-ui-react';
 import {myinpt} from "./Search.module.css"
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
 
-        //this.popupRef = React.createRef();
         this.state = {
             limit: 10,
             activePage: 1,
@@ -58,22 +56,6 @@ class Search extends React.Component {
             console.log(err)
         })
     }
-
-
-    // outsideClickHandler(event){
-    //     event.persist();
-    //     event.preventDefault();
-    //     console.log(event);
-    //     if(event.type === "submit"){
-    //         this.searchItems();
-    //         return;
-    //     }
-    //     if(this.popupRef.current.contains(event.target)){
-    //         return;
-    //     }
-       
-    //     this.hidePopup();
-    // }
     
 
     render() {
@@ -97,14 +79,6 @@ class Search extends React.Component {
                     totalPages={10}
                 />
                 </Cont>
-                    {/*<Form.Input*/}
-                    {/*    style={{width:'50px'}}*/}
-                    {/*    name = 'activePage'*/}
-                    {/*    min={1}*/}
-                    {/*    onChange={this.handleInputChange}*/}
-                    {/*    type='number'*/}
-                    {/*    value={this.state.activePage}*/}
-                    {/*/>*/}
                 </Row>
                 <Col>
                 {

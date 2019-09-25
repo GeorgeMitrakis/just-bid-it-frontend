@@ -4,19 +4,17 @@ import {withRouter} from 'react-router-dom';
 import {
     Button,
     Card,
-    CardText,
-    CardTitle,
     Col,
-    Collapse, Container,
+    Collapse,
     Nav,
     NavItem,
     NavLink,
     Row,
-    TabContent, Table,
+    TabContent,
     TabPane, 
     Alert
 } from "reactstrap";
-import {bidcard, infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
+import {infoRow, itemTextArea, pairInput, pairButton, buy, bid} from './SearchResultItem.module.css';
 import $ from "jquery";
 import {getUserInfo, getUserInfoField} from "../Utility/Utility";
 import Map from '../Map/Map';
@@ -252,10 +250,11 @@ class SearchResultItem extends React.Component{
                                      "Auction has ended."
                                      }
                             </span>
+                            {this.props.item.buyPrice!==null ? 
                             <span>
                                 {"$ "}<input className={buy+" "+pairInput} type="number" step="0.5" readOnly value={this.props.item.buyPrice}/>
                                 <button  type="button" color="muted" className={"btn btn-outline-secondary "+pairButton}  onClick={()=>this.buyHandler()}>Buy</button>
-                            </span>
+                            </span>:null}
                         </Row>
                         <br/>
                         <Row className={infoRow}>
@@ -274,12 +273,6 @@ class SearchResultItem extends React.Component{
                             </span>
                         </Row>
                         <br/>
-                        {/*<Row className={infoRow}>*/}
-                        {/*    <span  className={itemTextArea}>*/}
-                        {/*        Description : {this.props.item.description}*/}
-                        {/*    </span>*/}
-                        {/*</Row>*/}
-                        {/*<br/>*/}
                         <Row className="d-flex justify-content-lg-end">
                             <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                         </Row>

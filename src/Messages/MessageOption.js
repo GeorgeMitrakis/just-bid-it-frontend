@@ -1,9 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Container from "reactstrap/es/Container";
-import Col from "reactstrap/es/Col";
-import {Button, Card, Row ,CardHeader} from "reactstrap";
-import CardBody from "reactstrap/es/CardBody";
+import {Button, Card, Row ,Col, CardBody} from "reactstrap";
 import {optioncontent} from "./MessageForm.module.css";
 class MessageOption extends React.Component{
 

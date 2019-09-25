@@ -15,27 +15,8 @@ class AuctionsPage extends React.Component{
         }        
     }
 
-    componentDidMount(){
-        console.log("WARNING [AuctionsPage.js]");
-        console.log("-----------------------");
-        console.log("sending request with dummy userId");
-        console.log("-----------------------");
-
-        $.ajax({
-            url: "http://localhost:8765/app/api/items",
-            dataType : 'json',
-            type: 'GET',
-            data: {userId:getUserInfoField("id")}
-        })
-        .then(json => {
-            console.log(json) 
-            console.log(json.results); 
-            this.setState({items:json.results})
-            //this.props.addItems(json.results);           
-        })
-        .fail(err=>{
-            console.log(err);
-        })
+    setItemsHandler = (items) =>{
+        this.setState({items:items},()=>console.log("AuctionsPage.js: success!"));
     }
 
     editHandler = (data, id)=>{
@@ -115,7 +96,7 @@ class AuctionsPage extends React.Component{
                     />     
                     <Route 
                         path="/items"
-                        render={()=>(<AuctionsList items={this.state.items} deleteHandler={this.deleteHandler}/>)}
+                        render={()=>(<AuctionsList items={this.state.items} setItems={this.setItemsHandler} deleteHandler={this.deleteHandler}/>)}
                     />                    
                 </Switch>
             </Router>       

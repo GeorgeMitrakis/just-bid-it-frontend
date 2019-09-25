@@ -1,9 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import AuctionForm from './AuctionForm';
-import produce from 'immer';
 import $ from 'jquery';
-import { Button, Card, CardBody, CardText, Container, Col, Row, Alert } from 'reactstrap';
+import { Button, Container, Row, Alert } from 'reactstrap';
 import {successContainer, row} from './NewAuction.module.css';
 
 class NewAuction extends React.Component{
@@ -49,7 +48,7 @@ class NewAuction extends React.Component{
                         </Alert>
                     </Row>
                     <Row className={row}>
-                        <Button color="link" onClick={()=>this.props.history.push("/items")}>Go to my Auctions</Button>
+                        <Button color="link" onClick={()=>this.props.history.goBack()}>Go to my Auctions</Button>
                     </Row>
                 </Container>
             )

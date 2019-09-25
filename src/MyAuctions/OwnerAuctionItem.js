@@ -114,12 +114,18 @@ class OwnerAuctionItem extends React.Component {
                             <Col className="d-flex justify-content-start" >
                                 <h4>{this.props.item.name}</h4>
                             </Col>
-                            <button 
+                            <button
+                                type="button"
+                                color="muted"
+                                className="btn btn-outline-secondary"
                                 onClick={this.editHandler}
                             >
                                 Edit
                             </button>
-                            <button 
+                            <button
+                                type="button"
+                                color="muted"
+                                className="btn btn-outline-secondary"
                                 onClick={this.deleteHandler}
                             >
                                 Delete

@@ -71,7 +71,6 @@ class MessagesReceived extends React.Component{
                 <Container fluid id={received} className="d-flex justify-content-center" >
                     <Row className="d-flex justify-content-center">
                     {this.state.messages.length === 0 && <p>No messages.</p>}
-
                     {this.state.messages.map((message,index) =>{
                         return(
                             <Card key={index} style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
@@ -108,6 +107,7 @@ class MessagesReceived extends React.Component{
                     )}
                     </Row>
                 </Container>
+
         );
     }
 }

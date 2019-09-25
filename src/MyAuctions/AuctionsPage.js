@@ -39,6 +39,7 @@ class AuctionsPage extends React.Component{
     }
 
     editHandler = (data, id)=>{
+        if(!window.confirm(`Submit changes?`)) return;
         $.ajax({
             url: "http://localhost:8765/app/api/items/"+id,
             dataType : 'json',
@@ -59,7 +60,7 @@ class AuctionsPage extends React.Component{
                             draft.items[index] = json.item;
                         }
                     }
-                })
+                }),()=>{this.props.history.goBack()}
             )            
         })
         .fail(err=>{

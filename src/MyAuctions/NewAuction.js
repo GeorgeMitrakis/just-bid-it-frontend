@@ -18,6 +18,7 @@ class NewAuction extends React.Component{
 
 
     postNewAuction = (data, dummy) =>{
+        if(!window.confirm(`Confirm auction?`)) return;
         $.ajax({
             url: "http://localhost:8765/app/api/items",
             dataType : 'json',

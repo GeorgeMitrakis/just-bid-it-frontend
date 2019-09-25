@@ -129,125 +129,101 @@ class OwnerAuctionItem extends React.Component {
                         <br/>
                         <Row className="d-flex justify-content-between">
                             <Col className="d-flex justify-content-start" >
-                            Auction Status: {(this.props.item.running) ? "running" : "completed"}
+                                Auction Status: {(this.props.item.running) ? "running" : "completed"}
                             </Col>
                         </Row>
                         <br/>
                         <Row className="d-flex justify-content-between">
                             <Col className="d-flex justify-content-start" >
-                            Auction ends at : {this.props.item.end}
+                                Auction ends at : {this.props.item.end}
                             </Col>
                         </Row>
                         <br/>
                         <Row className="d-flex justify-content-between">
                             <Col className="d-flex justify-content-between" >
-                                    Buy Price :${this.props.item.buyPrice}
+                                Buy Price :${this.props.item.buyPrice}
                             </Col>
-                                <Col className="d-flex justify-content-between" >
-                                    Bids : {this.props.item.numberOfBids} </Col>
                             <Col className="d-flex justify-content-between" >
-                            Highest Bid :$ {this.props.item.currentBid} by username (bidder review: 3/5) $
+                                Bids : {this.props.item.numberOfBids} 
+                            </Col>
+                            <Col className="d-flex justify-content-between" >
+                                Highest Bid :$ {this.props.item.currentBid} by username (bidder review: 3/5) $
                             </Col>
                         </Row>
                         <Row className="d-flex justify-content-lg-end">
-                        <Button outline color="secondary" onClick={this.toggle}>Details</Button>
+                            <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                         </Row>
                         <Row className="d-flex justify-content-center">
-                        <Collapse isOpen={this.state.collapse}>
-                            <Nav tabs className="d-flex justify-content-center">
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: this.state.activeTab === '1' })}
-                                        onClick={() => { this.togglefunc('1'); }}
-                                    >
-                                        Auction details
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: this.state.activeTab === '2' })}
-                                        onClick={() => { this.togglefunc('2'); }}
-                                    >
-                                        Location
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: this.state.activeTab === '3' })}
-                                        onClick={() => { this.togglefunc('3'); }}
-                                    >
-                                        Bids
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                            <TabContent activeTab={this.state.activeTab}>
-                                <TabPane tabId="1">
-                                    <Row>
-                                        <Col>
-                                            <Card body className="d-flex justify-content-start" style ={{width:'700px'}}>
-                                                <Col >
-                                                    <Row><h4>Description:</h4></Row>
-                                                    <Row>{this.props.item.description}</Row>
-                                                </Col>
-
-                                                <Col >
-                                                    <Row> <h4>Categories: </h4></Row>
-                                                    {this.props.item.categories.map((category,index) =>{
-                                                        return(
-                                                            <Row key={index}>{category}</Row>
-                                                        )}
-                                                    )}
-                                                </Col>
-                                                <br/>
-
-                                                <Col>
-                                                <Row> First bid: <input type="number" readOnly value={this.props.item.firstBid}/> </Row>
-                                                <br/>
-                                                <Row>Auction started at: {this.props.item.start}</Row>
-                                                </Col>
-
-                                            </Card>
-                                        </Col>
-
-                                    </Row>
-                                </TabPane>
-                                <TabPane tabId="2">
-                                    <Row className="d-flex justify-content-center" >
-                                        <Col>
-                                            <Row>
-                                                <Card body>
-                                                <Col>
-                                                    <CardText>Location: {this.props.item.location.name}</CardText>
-                                                </Col>
-                                                    <Col>
-                                                    <CardText>Country:{this.props.item.country}</CardText>
-                                                </Col>
-                                                </Card>
+                            <Col>
+                                <Collapse isOpen={this.state.collapse} className={styles.collapse}>
+                                    <Nav tabs className="d-flex justify-content-center">
+                                        <NavItem>
+                                            <NavLink
+                                                className={classnames({ active: this.state.activeTab === '1' })}
+                                                onClick={() => { this.togglefunc('1'); }}
+                                            >
+                                                Auction details
+                                            </NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink
+                                                className={classnames({ active: this.state.activeTab === '2' })}
+                                                onClick={() => { this.togglefunc('2'); }}
+                                            >
+                                                Location
+                                            </NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink
+                                                className={classnames({ active: this.state.activeTab === '3' })}
+                                                onClick={() => { this.togglefunc('3'); }}
+                                            >
+                                                Bids
+                                            </NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    <TabContent activeTab={this.state.activeTab}>
+                                        <TabPane tabId="1">
+                                            <br/>
+                                            <Row><h4>Description:</h4></Row>
+                                            <br/>
+                                            <Row>{this.props.item.description}</Row>
+                                            <hr/>
+                                            <Row> <h4>Categories: </h4></Row>
+                                            <br/>
+                                            {this.props.item.categories.map((category,index) =>{
+                                                return(
+                                                    <Row key={index}>{category}</Row>
+                                                )}
+                                            )}                                         
+                                            <hr/>
+                                            <Row><b> First bid:</b> {' $ '+this.props.item.firstBid} </Row>
+                                            <br/>
+                                            <Row><b>Auction started at:</b> {' '+this.props.item.start}</Row>
+                                            <br/>
+                                        </TabPane>
+                                        <TabPane tabId="2">         
+                                            <br/>                               
+                                            <Row className="d-flex justify-content-center"><p>Location: {this.props.item.location.name}</p></Row>
+                                            <Row className="d-flex justify-content-center"><p>Country:{this.props.item.country}</p></Row>
+                                            <br/>
+                                            <Row className="d-flex justify-content-center">
+                                                {hasCoords === true && this.state.activeTab==='2' &&
+                                                <Map 
+                                                    className = {styles.showmap} 
+                                                    zoom = {15}
+                                                    minZoom={13}
+                                                    maxZoom={17}
+                                                    position={[this.props.item.location.latitude, this.props.item.location.longitude]}
+                                                    coordsHandler={(event)=>console.log(event)}
+                                                >
+                                                    <Marker position={[this.props.item.location.latitude, this.props.item.location.longitude]} />
+                                                </Map>}
                                             </Row>
-                                            {hasCoords === true &&
-                                            <Row>
-                                                <Card body>
-                                                    <Col>
-                                                    {this.state.activeTab==='2' &&
-                                                        <Map 
-                                                            className = {styles.showmap} 
-                                                            zoom = {15}
-                                                            minZoom={13}
-                                                            maxZoom={17}
-                                                            position={[this.props.item.location.latitude, this.props.item.location.longitude]}
-                                                            coordsHandler={(event)=>console.log(event)}
-                                                        >
-                                                            <Marker position={[this.props.item.location.latitude, this.props.item.location.longitude]} />
-                                                        </Map>}
-                                                    </Col>
-                                                </Card>
-                                            </Row>}
-                                        </Col>
-                                    </Row>
-                                </TabPane>
-                                <TabPane tabId="3">
-                                    <div>
-                                        
+                                            <br/>
+                                        </TabPane>
+                                        <TabPane tabId="3">
+                                            <div>                                            
                                             {   this.props.item.bids!== null ?(
                                                 <Table className="table table-striped">
                                                 <thead>
@@ -272,12 +248,12 @@ class OwnerAuctionItem extends React.Component {
                                                 </Table>
                                                 ):
                                                 <div className={styles.noBid}>There are no bids in this auction yet.</div>
-
                                             }                                    
-                                    </div>
-                                </TabPane>
-                            </TabContent>
-                        </Collapse>
+                                            </div>
+                                        </TabPane>
+                                    </TabContent>
+                                </Collapse>
+                            </Col>
                         </Row>
                     </Col>
                 </Card>

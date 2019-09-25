@@ -284,8 +284,8 @@ class SearchResultItem extends React.Component{
                             <Button outline color="secondary" onClick={this.toggle}>Details</Button>
                         </Row>
                         <Row className="d-flex justify-content-center">
-                            <Collapse isOpen={this.state.collapse}>
-
+                            <Col>
+                                <Collapse isOpen={this.state.collapse} className={styles.collapse}>
                                     <Nav tabs className="d-flex justify-content-center">
                                         <NavItem>
                                             <NavLink
@@ -306,71 +306,50 @@ class SearchResultItem extends React.Component{
                                     </Nav>
                                     <TabContent activeTab={this.state.activeTab}>
                                         <TabPane tabId="1">
-                                            <Row>
-                                                <Col>
-                                                    <Card body className="d-flex justify-content-start" style ={{width:'700px'}} >
-                                                        <Col>
-                                                                <Row><h4>Description:</h4></Row>
-                                                                <Row>{this.props.item.description}</Row>
-                                                        </Col>
-
-                                                        <Col >
-                                                            <Row> <h4>Categories: </h4></Row>
-                                                                {this.props.item.categories.map((category,index) =>{
-                                                                    return(
-                                                                        <Row key={index}>{category}</Row>
-                                                                    )}
-                                                                )}
-                                                        </Col>
-                                                        <br/>
-                                                        <Col >
-                                                            <Row> First bid is: <input type="number" readOnly value={this.props.item.firstBid}/> </Row>
-                                                            <Row>Auction started at: {this.props.item.start}</Row>
-                                                        </Col>
-                                                    </Card>
-                                                </Col>
-
-                                            </Row>
+                                            <br/>
+                                            <Row><h4>Description:</h4></Row>
+                                            <br/>
+                                            <Row>{this.props.item.description}</Row>
+                                            <hr/>
+                                            <Row> <h4>Categories: </h4></Row>
+                                            <br/>
+                                            {this.props.item.categories.map((category,index) =>{
+                                                return(
+                                                    <Row key={index}>{category}</Row>
+                                                )}
+                                            )}                                         
+                                            <hr/>
+                                            <Row><b> First bid:</b> {' $ '+this.props.item.firstBid} </Row>
+                                            <br/>
+                                            <Row><b>Auction started at:</b> {' '+this.props.item.start}</Row>
+                                            <br/>
                                         </TabPane>
                                         <TabPane tabId="2">
-                                            <Row className="d-flex justify-content-center" >
-                                                <Col>
-                                                    <Row>
-                                                        <Card body>
-                                                        <Col>
-                                                            <CardText>Location: {this.props.item.location.name}</CardText>
-                                                        </Col>
-                                                            <Col>
-                                                            <CardText>Country:{this.props.item.country}</CardText>
-                                                        </Col>
-                                                        </Card>
-                                                    </Row>
-                                                    {hasCoords === true &&
-                                                    <Row>
-                                                        <Card body>
-                                                            <Col>
-                                                            {this.state.activeTab==='2' &&
-                                                                <Map 
-                                                                    className = {styles.showmap} 
-                                                                    zoom = {15}
-                                                                    minZoom={13}
-                                                                    maxZoom={17}
-                                                                    position={[this.props.item.location.latitude, this.props.item.location.longitude]}
-                                                                    coordsHandler={(event)=>console.log(event)}
-                                                                >
-                                                                    <Marker position={[this.props.item.location.latitude, this.props.item.location.longitude]} />
-                                                                </Map>}
-                                                            </Col>
-                                                        </Card>
-                                                    </Row>}
-                                                </Col>
-                                            </Row>
-                                    </TabPane>
-                                </TabContent>
-                            </Collapse>
+                                            <br/>
+                                            <Row className="d-flex justify-content-center"><p>Location: {this.props.item.location.name}</p></Row>                                                        
+                                            <Row className="d-flex justify-content-center"><p>Country:{this.props.item.country}</p></Row>
+                                            <br/>
+                                            {hasCoords === true &&
+                                            <Row className="d-flex justify-content-center">
+                                                {this.state.activeTab==='2' &&
+                                                    <Map 
+                                                        className = {styles.showmap} 
+                                                        zoom = {15}
+                                                        minZoom={13}
+                                                        maxZoom={17}
+                                                        position={[this.props.item.location.latitude, this.props.item.location.longitude]}
+                                                        coordsHandler={(event)=>console.log(event)}
+                                                    >
+                                                        <Marker position={[this.props.item.location.latitude, this.props.item.location.longitude]} />
+                                                    </Map>}
+                                            </Row>}
+                                            <br/>
+                                        </TabPane>
+                                    </TabContent>
+                                </Collapse>
+                            </Col>
                         </Row>
                     </Col>
-
                 </Card>
             </div>
         );

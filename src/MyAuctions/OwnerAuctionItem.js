@@ -46,7 +46,14 @@ class OwnerAuctionItem extends React.Component {
     }
 
     editHandler = () =>{
-        if(this.props.item.numberOfBids > 0){
+        if(this.props.item.running ===false ){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'Auction is closed. It cannot be edited!';
+                }))
+        }
+        else if(this.props.item.numberOfBids > 0){
             this.setState(
                 produce(draft=>{
                     draft.alert.visible = true;

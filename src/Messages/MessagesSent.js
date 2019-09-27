@@ -69,15 +69,6 @@ class MessagesSent extends React.Component{
         {
         return(
             <Container fluid id={sent} className="d-flex justify-content-center">
-                {/*<Row className="d-flex justify-content-center">*/}
-                {/*    <button*/}
-                {/*        type="button" color="muted" className="btn btn-outline-secondary"*/}
-                {/*        onClick={()=>this.props.history.push("/messages/new")}*/}
-                {/*    >*/}
-                {/*        Create a new message*/}
-                {/*    </button>*/}
-                {/*</Row>*/}
-
                 <Row className="d-flex justify-content-center">
                     {this.state.messages.length === 0 && <p>No messages.</p>}
                 {this.state.messages.map((message,index) =>{
@@ -96,7 +87,7 @@ class MessagesSent extends React.Component{
                     </Row>
                     <Row className="d-flex justify-content-around">
                         <Col className="d-flex justify-content-start" >
-                            <p>Sent: Dec-10-01 22:56 {message.date}</p>
+                            <p>Sent: {message.time}</p>
 
                         </Col>
                     </Row>

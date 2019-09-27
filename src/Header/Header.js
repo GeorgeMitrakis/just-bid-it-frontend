@@ -124,17 +124,24 @@ class Header extends React.Component {
     }
 
     render() {
+        let logoRoute = "/welcome";
+        if(getUserInfoField("role") ==="common user"){
+            logoRoute = "/home"
+        } else if (getUserInfoField("role") === "administrator"){
+            logoRoute = "/admin/users"
+        }
+
         return (
         <div className={styles.navbarStyle}>
             <Navbar className="bg-light d-flex justify-content-between">
                 <div className="d-flex justify-content-between">
-                    <a  className={styles.a} href="/home">
+                    <a  className={styles.a} href = {logoRoute}>
                         <img src={logo} style={{width: 100, height: 62} } className="img-fluid img-thumbnail"/>
                     </a>
                 </div>
                 { getUserInfo() ? (
                     <div>
-                        Welcome dear {" "+getUserInfoField("username")+" "}
+                        <h5> Welcome dear {" "+getUserInfoField("username")+" "} </h5>
                         <div className={"dropdown "+styles.dropdown} >
                             <div className={styles.button} onClick={this.showDropdownMenu}> Profile </div>
                             { this.state.displayMenu ? (

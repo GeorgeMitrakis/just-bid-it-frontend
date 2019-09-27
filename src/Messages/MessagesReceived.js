@@ -88,7 +88,7 @@ class MessagesReceived extends React.Component{
                             </Row>
                             <Row className="d-flex justify-content-around">
                                 <Col className="d-flex justify-content-start" >
-                                    <p>Sent: Dec-10-01 22:56{message.date}</p>
+                                    <p>Sent:{message.time}</p>
 
                                 </Col>
                             </Row>

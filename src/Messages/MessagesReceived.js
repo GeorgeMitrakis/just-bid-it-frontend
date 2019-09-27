@@ -68,44 +68,44 @@ class MessagesReceived extends React.Component{
     render()
     {
         return(
-                <Container fluid id={received} className="d-flex justify-content-center" >
-                    <Row className="d-flex justify-content-center">
-                    {this.state.messages.length === 0 && <p>No messages.</p>}
+                <Container fluid id={received} >
+                    {this.state.messages.length === 0 &&<Row className="d-flex justify-content-center"> <p>No messages.</p></Row>}
                     {this.state.messages.map((message,index) =>{
                         return(
-                            <Card key={index} style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
-                        <Col>
-                            <br/>
-                            <Row className="d-flex justify-content-around">
-                                <Col className="d-flex justify-content-start" >
-                                    <h4>From: {message.sender} </h4>
-                                </Col>
-                                <Col className="d-flex justify-content-end" >
-                                    <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
-                                    <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/new/"+message.sender)}> Reply </button>
-                                </Col>
+                        <Row  key={index} className="d-flex justify-content-center">
+                            <Card style ={{width : '600px' , marginTop:'30px' , marginBottom:'30px'}} >
+                                <Col>
+                                    <br/>
+                                    <Row className="d-flex justify-content-around">
+                                        <Col className="d-flex justify-content-start" >
+                                            <h4>From: {message.sender} </h4>
+                                        </Col>
+                                        <Col className="d-flex justify-content-end" >
+                                            <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
+                                            <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=>this.props.history.push("/messages/new/"+message.sender)}> Reply </button>
+                                        </Col>
 
-                            </Row>
-                            <Row className="d-flex justify-content-around">
-                                <Col className="d-flex justify-content-start" >
-                                    <p>Sent: Dec-10-01 22:56{message.date}</p>
+                                    </Row>
+                                    <Row className="d-flex justify-content-around">
+                                        <Col className="d-flex justify-content-start" >
+                                            <p>Sent: Dec-10-01 22:56{message.date}</p>
 
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <br/>
+                                    <Row className="d-flex justify-content-between">
+                                        <Col className="d-flex justify-content-start" >
+                                        " <h5>{message.text}</h5> ."
+                                        </Col>
+                                    </Row>
+                                    <br/>
                                 </Col>
-                            </Row>
-                            <hr/>
-                            <br/>
-                            <Row className="d-flex justify-content-between">
-                                <Col className="d-flex justify-content-start" >
-                                   " <h5>{message.text}</h5> ."
-                                </Col>
-                            </Row>
-                            <br/>
-                        </Col>
-                    </Card>
+                            </Card>
+                        </Row>
                         )
                         }
                     )}
-                    </Row>
                 </Container>
 
         );

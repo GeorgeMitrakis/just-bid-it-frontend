@@ -68,55 +68,45 @@ class MessagesSent extends React.Component{
     render()
         {
         return(
-            <Container fluid id={sent} className="d-flex justify-content-center">
-                {/*<Row className="d-flex justify-content-center">*/}
-                {/*    <button*/}
-                {/*        type="button" color="muted" className="btn btn-outline-secondary"*/}
-                {/*        onClick={()=>this.props.history.push("/messages/new")}*/}
-                {/*    >*/}
-                {/*        Create a new message*/}
-                {/*    </button>*/}
-                {/*</Row>*/}
-
-                <Row className="d-flex justify-content-center">
-                    {this.state.messages.length === 0 && <p>No messages.</p>}
+            <Container fluid id={sent}>
+                {this.state.messages.length === 0 && <Row className="d-flex justify-content-center"><p>No messages.</p></Row>}
                 {this.state.messages.map((message,index) =>{
                     return(
-               <Card key={index} style ={{width : '600px', marginTop:'30px' , marginBottom:'30px'}}>
-                <Col>
-                    <br/>
-                    <Row className="d-flex justify-content-around">
-                        <Col className="d-flex justify-content-start" >
-                            <h4>To: {message.receiver}</h4>
+                        <Row className="d-flex justify-content-center">
+                            <Card key={index} style ={{width : '600px', marginTop:'30px' , marginBottom:'30px'}}>
+                                <Col>
+                                    <br/>
+                                    <Row className="d-flex justify-content-around">
+                                        <Col className="d-flex justify-content-start" >
+                                            <h4>To: {message.receiver}</h4>
 
-                        </Col>
-                        <Col className="d-flex justify-content-end">
-                            <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
-                        </Col>
-                    </Row>
-                    <Row className="d-flex justify-content-around">
-                        <Col className="d-flex justify-content-start" >
-                            <p>Sent: Dec-10-01 22:56 {message.date}</p>
+                                        </Col>
+                                        <Col className="d-flex justify-content-end">
+                                            <button type="button" color="muted" className="btn btn-outline-secondary" onClick={()=> this.deleteHandler(message.id)}> Delete</button>
+                                        </Col>
+                                    </Row>
+                                    <Row className="d-flex justify-content-around">
+                                        <Col className="d-flex justify-content-start" >
+                                            <p>Sent: Dec-10-01 22:56 {message.date}</p>
 
-                        </Col>
-                    </Row>
-                    <hr/>
-                    <br/>
-                    <Row className="d-flex justify-content-between">
-                        <Col className="d-flex justify-content-start" >
-                            <h5> "{message.text}."</h5>
-                        </Col>
-                    </Row>
-                    <br/>
-                </Col>
-                   <br/>
-               </Card>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <br/>
+                                    <Row className="d-flex justify-content-between">
+                                        <Col className="d-flex justify-content-start" >
+                                            <h5> "{message.text}."</h5>
+                                        </Col>
+                                    </Row>
+                                    <br/>
+                                </Col>
+                                <br/>
+                            </Card>
+                            </Row>
 
                     )
                 }
                 )}
-
-                </Row>
             </Container>
 
 

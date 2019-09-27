@@ -102,6 +102,17 @@ class SearchResultItem extends React.Component{
             return;
         }
 
+        if(this.props.item.currentBid >= this.state.bid){
+            this.setState(
+                produce(draft=>{
+                    draft.alert.visible = true;
+                    draft.alert.message = 'You need to bid more that the last bidder.';
+                    draft.alert.type = 'danger';
+                })
+            )
+            return;
+        }
+
         if(!window.confirm(`Are you sure you want to bid on this item? You can't undo this action `)) return;
         $.ajax({
             url: "http://localhost:8765/app/api/items/"+this.props.item.id+"/bid",
@@ -121,7 +132,12 @@ class SearchResultItem extends React.Component{
                     draft.alert.visible = true;
                     draft.alert.message = 'Bid successful';
                     draft.alert.type = 'success';
-                })
+                }),()=>{
+                    this.props.setItem(this.props.index, json.item)
+                    if(json.item.running===false){
+                        this.props.history.push("/messages/option/"+this.props.item.seller.username)
+                    }
+                }
             )
         })
         .fail(err=>{
@@ -143,7 +159,7 @@ class SearchResultItem extends React.Component{
         console.log(this.props.item);
         console.log( getUserInfoField("id"));
         console.log(getUserInfo());
-
+        if(!window.confirm(`Are you sure you want to buy this item? You can't undo this action `)) return;
         if(this.props.item.running === false){
             this.setState(
                 produce(draft=>{
@@ -259,10 +275,10 @@ class SearchResultItem extends React.Component{
                         <br/>
                         <Row className={infoRow}>
                             <span  className={itemTextArea}>
-                                Highest Bid : $ {this.props.item.currentBid} by username (bidder review: 3/5)
+                                Highest Bid : $ {this.props.item.currentBid}
                             </span>
                             <span>
-                                {"$ "}<input className={bid+" "+ pairInput} type="number" step="0.5" min={this.props.item.currentBid+0.5} value={this.state.bid} onChange={(event)=> this.inputChangeHandler(event)}/>
+                                {"$ "}<input className={bid+" "+ pairInput} type="number" step="0.5" min={this.props.item.currentBid+0.5} value={Number(this.state.bid)} onChange={(event)=> this.inputChangeHandler(event)}/>
                                 <button type="button" color="muted" className={"btn btn-outline-secondary "+pairButton} onClick={()=>this.bidHandler()} > Bid</button>
                             </span>
                         </Row>

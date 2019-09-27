@@ -7,6 +7,7 @@ import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import { Pagination, Container as Cont } from 'semantic-ui-react';
 import {myinpt} from "./Search.module.css"
+import produce from 'immer';
 
 class Search extends React.Component {
     constructor(props) {
@@ -56,6 +57,14 @@ class Search extends React.Component {
             console.log(err)
         })
     }
+
+    setItem = (index, item) =>{
+        this.setState(
+            produce(draft=>{
+                draft.items[index] = item;
+            })
+        )
+    }
     
 
     render() {
@@ -84,7 +93,7 @@ class Search extends React.Component {
                 {
                     this.state.items.length!==0 ?(
                     this.state.items.map((item,index)=>
-                    <SearchResultItem item = {item} key = {index} />)
+                    <SearchResultItem item = {item} key = {index} index = {index} setItem={this.setItem}/>)
                     ):
                     <div className="mt-5"><p>Sorry, no results could match your search.</p></div>
                 }

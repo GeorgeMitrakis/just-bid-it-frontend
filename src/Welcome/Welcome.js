@@ -99,7 +99,7 @@ class Welcome extends React.Component{
                 {/*        </Button>*/}
                 {/*    </Col>*/}
                 {/*</Row>*/}
-                <div>
+                <div className={styles.carouselContainer}>
                     <br/>
                     <Carousel
                         activeIndex={activeIndex}

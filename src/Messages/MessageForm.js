@@ -73,22 +73,25 @@ class MessageForm extends React.Component{
         return(
             <div>
                 <Row className="mb-3"/>
-                <Row className="d-flex justify-content-around">
-                    <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.receivedbutton} onClick={()=>this.props.history.push("/messages/received")}
-                    >
-                        Messages Received
-                    </Button>
 
-                    <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.sentbutton} onClick={()=>this.props.history.push("/messages/sent")}
-                    >
-                        Messages Sent
-                    </Button>
-                </Row>
 
                 <Container fluid id={content}>
                     <Row className="mb-3"/>
                     <Row className="justify-content-center">
                         <Col className="align-self-center" xs="auto">
+                            <Row className="d-flex justify-content-between">
+                                <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.receivedbutton} onClick={()=>this.props.history.push("/messages/received")}
+                                >
+                                    Messages Received
+                                </Button>
+
+                                <Button type="button" color="muted" className={"btn btn-outline-secondary "+styles.sentbutton} onClick={()=>this.props.history.push("/messages/sent")}
+                                >
+                                    Messages Sent
+                                </Button>
+                            </Row>
+                            <br/>
+                            <br/>
                             <Card id="signup_form">
                                 <h2>
                                     New Message

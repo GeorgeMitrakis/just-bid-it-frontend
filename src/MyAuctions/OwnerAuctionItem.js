@@ -132,7 +132,7 @@ class OwnerAuctionItem extends React.Component {
                                 Bids : {this.props.item.numberOfBids} 
                             </Col>
                             <Col className="d-flex justify-content-between" >
-                                Highest Bid :$ {this.props.item.currentBid} by username (bidder review: 3/5) $
+                                Highest Bid :$ {this.props.item.currentBid}
                             </Col>
                         </Row>
                         <Row className="d-flex justify-content-lg-end">

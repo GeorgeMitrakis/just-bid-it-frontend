@@ -230,7 +230,7 @@ class SearchResultItem extends React.Component{
 
     render() {
         let hasCoords = false;
-        if(this.props.item.location.latitude !== 0 && this.props.item.location.longitude !== 0){
+        if(this.props.item.location.latitude !== null && this.props.item.location.longitude !== null){
             hasCoords = true;
         }
         let bidcardStyle = styles.bidcard;

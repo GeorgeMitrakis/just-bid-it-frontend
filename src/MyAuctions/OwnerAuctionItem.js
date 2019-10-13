@@ -80,7 +80,7 @@ class OwnerAuctionItem extends React.Component {
 
     render() {
         let hasCoords = false;
-        if(this.props.item.latitude !== 0 && this.props.item.longitude !== 0){
+        if(this.props.item.location.latitude !== null && this.props.item.location.longitude !== null){
             hasCoords = true;
         }
         let bidcardStyle = styles.bidcard;

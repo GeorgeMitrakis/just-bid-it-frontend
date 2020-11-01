@@ -1,3 +1,18 @@
+# **JustBidIt**
+
+An [ebay.com](https://www.ebay.com/) clone written as a Single Page Web Application using React and a RESTful API implemented in Java.
+
+It was a group project required for the 'Technologies of Web Applications' University Subject (DIT, NKUA).
+
+The project was split in a Frontend Repo (current) and a [Backend Repo](https://github.com/GeorgeMitrakis/just-bid-it-backend).
+
+
+## Team members:
+
+- [Mitrakis Georgios](https://www.linkedin.com/in/george-mitrakis-867b74191/) (Backend)
+- [Xanthopoulou Mary](https://www.linkedin.com/in/maryxan/) (Frontend)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
